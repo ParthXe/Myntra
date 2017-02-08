@@ -1,0 +1,106 @@
+/*!
+ * bootstrap-vertical-tabs - v1.1.0
+ * https://dbtek.github.io/bootstrap-vertical-tabs
+ * 2014-06-06
+ * Copyright (c) 2014 İsmail Demirbilek
+ * License: MIT
+ */
+.tabs-left, .tabs-right {
+  border-bottom: none;
+  padding-top: 0px;
+}
+.tabs-left {
+  	z-index:0;
+}
+.tabs-right {
+}
+.tabs-left>li, .tabs-right>li {
+  float: none;
+  margin-bottom: 0px;
+}
+.tabs-left>li {
+  margin-right: -1px;
+  z-index:99;
+}
+.tabs-right>li {
+  margin-left: 0px;
+}
+.tabs-left>li.active>a,
+.tabs-left>li.active>a:hover,
+.tabs-left>li.active>a:focus {
+  border:1px solid #ccc;
+  border-right-color: transparent;
+  color:#ff7d14;
+  font-size:14px;
+}
+
+.tabs-right>li.active>a,
+.tabs-right>li.active>a:hover,
+.tabs-right>li.active>a:focus {
+  border-bottom: 1px solid #ccc;
+  border-left-color: transparent;
+}
+.tabs-left>li>a {
+  margin-right: 0;
+  display:block;
+  border-radius:0px;
+  padding:15px;
+  background-color:#f3f3f3;
+  border: 1px solid #ccc;
+  font-size:14px;
+}
+.tabs-right>li>a {
+  margin-right: 0;
+}
+@media all and (max-width: 1024px) and (min-width: 800px){
+	.tabs-left>li.active>a,
+	.tabs-left>li.active>a:hover,
+	.tabs-left>li.active>a:focus {
+	  border:1px solid #ccc;
+	  border-right-color: transparent;
+	  color:#ff7d14;
+	  font-size:12px;
+	}
+	
+	.tabs-right>li.active>a,
+	.tabs-right>li.active>a:hover,
+	.tabs-right>li.active>a:focus {
+	  border-bottom: 1px solid #ccc;
+	  border-left-color: transparent;
+	}
+	.tabs-left>li>a {
+	  margin-right: 0;
+	  display:block;
+	  border-radius:0px;
+	  padding:15px;
+	  background-color:#f3f3f3;
+	  border: 1px solid #ccc;
+	  font-size:12px;
+	}
+}
+@media (max-width:768px){
+	.tabs-left>li.active>a,
+	.tabs-left>li.active>a:hover,
+	.tabs-left>li.active>a:focus {
+	  border:1px solid #ccc;
+	  border-right-color: transparent;
+	  color:#ff7d14;
+	  font-size:12px;
+	}
+	
+	.tabs-right>li.active>a,
+	.tabs-right>li.active>a:hover,
+	.tabs-right>li.active>a:focus {
+	  border-bottom: 1px solid #ccc;
+	  border-left-color: transparent;
+	}
+	.tabs-left>li>a {
+	  margin-right: 0;
+	  display:block;
+	  border-radius:0px;
+	  padding:15px;
+	  background-color:#f3f3f3;
+	  border: 1px solid #ccc;
+	  font-size:12px;
+	}
+}

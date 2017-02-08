@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS `product_images` (
+  `prd_img_id` int(11) NOT NULL AUTO_INCREMENT,
+  `prd_img_prd_id` int(11) NOT NULL,
+  `prd_img_prd_var_id` int(11) NOT NULL,
+  `prd_img_uri` varchar(255) NOT NULL,
+  `prd_img_is_active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`prd_img_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+////////////////////////////////////////////////
+
+
+ALTER TABLE  `orders` ADD  `order_product_total` DECIMAL( 16, 5 ) NOT NULL AFTER  `order_total` ;
+
+CREATE TABLE IF NOT EXISTS `cart` (
+  `cart_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cart_uid` int(11) NOT NULL,
+  `cart_prod_vars` longtext NOT NULL,
+  `cart_user_ip` varchar(256) NOT NULL,
+  `cart_created_on` timestamp NOT NULL,
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+ALTER TABLE  `products` ADD  `prod_slug` VARCHAR( 100 ) NOT NULL AFTER  `prod_title` ;
+
+ALTER TABLE  `cart` ADD  `cart_coupon_applied` TINYINT( 1 ) NULL AFTER  `cart_user_ip` ;
+
+ALTER TABLE  `cart` ADD  `cart_coupon_code` VARCHAR( 155 ) NULL ;
+
+
+ALTER TABLE  `coupons` ADD  `cp_from_date` TIMESTAMP NULL AFTER  `cp_cashback_type` ,
+ADD  `cp_to_date` TIMESTAMP NULL AFTER  `cp_from_date` ;
+
+ALTER TABLE `products` ADD `prod_featured` INT(11) NOT NULL AFTER `prod_brand`;
+<<<<<<< HEAD
+
+ALTER TABLE  `cart` ADD  `cart_cookie_key` VARCHAR( 155 ) NULL AFTER  `cart_id` ;
+
+ALTER TABLE  `cart` ADD  `cart_total` DECIMAL( 16, 5 ) NOT NULL AFTER  `cart_prod_vars` ;
+=======
+>>>>>>> 0a89b7abe394708e907aa043415bc857a8e9bde1
+
+
+ALTER TABLE `product_vars` ADD `pvar_discount` DECIMAL(16,5) NOT NULL AFTER `pvar_sell_price`;
+>>>>>>> 2aba3ccbdd6c36e433c08fcecf96603996ad3e8e

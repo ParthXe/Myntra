@@ -1,0 +1,24 @@
+@media (min-width: 768px) {
+	#orderQuickView .modal-dialog {
+	    width: 900px;
+	}
+}
+
+.text-capital { text-transform:capitalize}
+.text-uppercase { text-transform:uppercase}
+ 
+
+.fontbold , b{ font-weight: 700;}
+.graybg{background-color: #ecf0f5;}
+#bookTemplate{
+	margin-top: 10px;
+}
+
+.select2-container--default .select2-selection--single {
+	border-radius: 0;
+	height: 35px;
+}
+
+.product_cat_select {
+	cursor: pointer;
+}

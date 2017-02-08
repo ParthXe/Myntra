@@ -1,0 +1,116 @@
+ <?xml version="1.0"?>
+    <config>
+		<ModuleType><![CDATA[outlander]]></ModuleType> <!-- catalogue outlander motogp roadster -->	
+		<jsonProdFilters><![CDATA[http://developer.myntra.com/v2/search/data/roadster]]></jsonProdFilters>
+		<jsonProdLooks><![CDATA[http://192.168.1.45/myntraCore/dump.php]]></jsonProdLooks>
+		<rowCounts>200</rowCounts>
+		<timeOutSec>10000</timeOutSec>
+		<screensaver>
+			<bgPath posX="0" posY="0" width="1080" height="1920"><![CDATA[assets/videos/videoplayback.mp4]]></bgPath>
+			<exploreBtnPath posX="300" posY="900"><![CDATA[assets/images/btn_explorenow.png]]></exploreBtnPath>
+		</screensaver>
+		<collectionVideo>
+			<bgPath posX="30" posY="80" transparency=".9"><![CDATA[assets/images/bg.png]]></bgPath>
+			<homebuttonImage posX="940" posY="70"><![CDATA[assets/images/4.png]]></homebuttonImage>
+			<scrtext posX="300" posY="270" width="550" height="400"><![CDATA[<font color="#000000"><b>_planning to head out on the highway?<br><br>not before checking out the <font color="#006600">outlander collection</font>, you're not!</b></font>]]></scrtext>
+			<insttext posX="100" posY="1400" width="950" height="400"><![CDATA[<font color="#000000"><b>Please wear headsets for enhanced video experience</b></font>]]></insttext>
+			<motoGpvideo posX="150" posY="750" width="800" height="600"><![CDATA[assets/videos/MotoGP.mp4]]></motoGpvideo>
+			<outLandervideo posX="150" posY="750" width="800" height="600"><![CDATA[assets/videos/Outlander.mp4]]></outLandervideo>
+			<buttonImage posX="270" posY="1600"><![CDATA[assets/images/btn_watchthevideo.png]]></buttonImage>
+			<!--<playbuttonImage posX="550" posY="870"><![CDATA[assets/images/btn_play.png]]></playbuttonImage>-->
+			<closeImageButton posX="950" posY="100"><![CDATA[assets/images/btn_close.png]]></closeImageButton>
+		</collectionVideo>
+		<genderSelection>
+			<image1 posX="0" posY="0"><![CDATA[assets/images/active_men.png]]></image1>
+			<image2 posX="0" posY="960"><![CDATA[assets/images/active_women.png]]></image2>
+			<thunderimage posX="0" posY="950"><![CDATA[assets/images/sepration1.png]]></thunderimage>
+			<image1Disabled posX="0" posY="0"><![CDATA[assets/images/inactive_men.png]]></image1Disabled>
+			<image2Disabled posX="0" posY="960"><![CDATA[assets/images/inactive_women.png]]></image2Disabled>
+		</genderSelection>
+		<roadSterSlection>
+			<topBarImage posX="0" posY="0"><![CDATA[assets/images/1.jpg]]></topBarImage>
+			<BackbuttonImage posX="40" posY="70"><![CDATA[assets/images/2.png]]></BackbuttonImage>
+			<collectionMenImage posX="60" posY="360"><![CDATA[assets/images/Asset1.png]]></collectionMenImage>
+			<catalogueMenImage posX="560" posY="1100"><![CDATA[assets/images/Asset2.png]]></catalogueMenImage>
+			<collectionWomenImage posX="60" posY="360"><![CDATA[assets/images/women2.jpg]]></collectionWomenImage>
+			<catalogueWomenImage posX="560" posY="1100"><![CDATA[assets/images/women1.jpg]]></catalogueWomenImage>
+			<collectionHeadingTxt posX="60" posY="310"><![CDATA[THE COLLECTION]]></collectionHeadingTxt>
+			<collectionTxt posX="520" posY="500"><![CDATA[_It's only fair that you take a closer look at your future wardrobe.]]></collectionTxt>
+			<collectionBtnImage posX="520" posY="700"><![CDATA[assets/images/ViewLooks.png]]></collectionBtnImage>
+			<catalogueHeadingTxt posX="560" posY="1050"><![CDATA[THE CATALOGUE]]></catalogueHeadingTxt>
+			<catalogueTxt posX="20" posY="1250"><![CDATA[_take the short cur, apply your filters, check it all out, and check out.]]></catalogueTxt>
+			<catalogueBtnImage posX="20" posY="1430"><![CDATA[assets/images/ViewCatalog.png]]></catalogueBtnImage>
+		</roadSterSlection>
+		<listVidew>
+			<topBarImage posX="0" posY="0"><![CDATA[assets/images/1.jpg]]></topBarImage>
+			<headingTxt posX="150" posY="70"><![CDATA[<font color="#ffffff" size="55">CATALOG</font>]]></headingTxt>
+			<BackbuttonImage posX="40" posY="70"><![CDATA[assets/images/2.png]]></BackbuttonImage>
+			<homebuttonImage posX="940" posY="70"><![CDATA[assets/images/4.png]]></homebuttonImage>
+			<sortBtnImage posX="0" posY="214"><![CDATA[assets/images/sortbtn.png]]></sortBtnImage>
+			<sortRollBtnImage posX="0" posY="214"><![CDATA[assets/images/sortroll.png]]></sortRollBtnImage>
+			<filterBtnImage posX="542" posY="214"><![CDATA[assets/images/filterbtn.png]]></filterBtnImage>
+			<filterRollBtnImage posX="542" posY="214"><![CDATA[assets/images/filterRoll.png]]></filterRollBtnImage>
+			<myntralogoImage posX="440" posY="20"><![CDATA[assets/images/3.png]]></myntralogoImage>
+			<blackbgImage posX="0" posY="200"><![CDATA[assets/images/7.png]]></blackbgImage>
+			<imageGalleryPos posX="20" posY="330"></imageGalleryPos>
+		</listVidew>
+		<sortby posX="270" posY="800">
+			<headingTxt><![CDATA[SORT BY]]></headingTxt>
+			<closeImageButton posX="500" posY="20"><![CDATA[assets/images/btn_exit.png]]></closeImageButton>
+			<sortList>
+				<listText><![CDATA[POPULARITY]]></listText>
+				<listText><![CDATA[WHAT'S NEW]]></listText>
+				<listText><![CDATA[PRICE: HIGH - LOW]]></listText>
+				<listText><![CDATA[PRICE: LOW - HIGH]]></listText>
+			</sortList>
+		</sortby>
+		<filterby posX="170" posY="500">
+			<headingTxt><![CDATA[FILTER BY]]></headingTxt>
+			<closeImageButton posX="700" posY="15"><![CDATA[assets/images/btn_exit.png]]></closeImageButton>
+			<clearButton posX="0" posY="800" width="384" height="100"><![CDATA[CLEAR ALL]]></clearButton>
+			<applyButton posX="385" posY="800" width="384" height="100"><![CDATA[APPLY]]></applyButton>
+			<filterList>
+				<listText><![CDATA[CATEGORIES]]></listText>
+				<listText><![CDATA[COLOURS]]></listText>
+				<listText><![CDATA[SIZES]]></listText>
+				<listText><![CDATA[PRICE]]></listText>
+			</filterList>
+		</filterby>
+		<productDesc>
+			<topBarImage posX="0" posY="0"><![CDATA[assets/images/1.jpg]]></topBarImage>
+			<BackbuttonImage posX="40" posY="70"><![CDATA[assets/images/2.png]]></BackbuttonImage>
+			<homebuttonImage posX="940" posY="70"><![CDATA[assets/images/4.png]]></homebuttonImage>
+			<myntralogoImage posX="300" posY="10"><![CDATA[assets/images/3.png]]></myntralogoImage>
+			<getProdBtn posX="109.75" posY="1270"><![CDATA[assets/images/GetProduct.png]]></getProdBtn>
+			<relatedProdHeadingTxt posX="385" posY="1425"><![CDATA[<font color="#ffffff" size="30"><b>RELATED PRODUCTS</font>]]></relatedProdHeadingTxt>
+			<descTxtHeading posX="540" posY="450"><![CDATA[]]></descTxtHeading>
+			<!--<sizeChartBtn><![CDATA[SEE SIZE CHART]]></sizeChartBtn>-->
+			<colorSelectionHeading><![CDATA[COLOURS]]></colorSelectionHeading>
+			<sizeSelectionHeading><![CDATA[SIZES]]></sizeSelectionHeading>
+			<notsureHeading><![CDATA[Not Sure?]]></notsureHeading>
+			<closeImageButton posX="1000" posY="20"><![CDATA[assets/images/btn_exit.png]]></closeImageButton>
+			<sizePopupHeadingTxt><![CDATA[SIZE CHART]]></sizePopupHeadingTxt>
+			<sizePopupFirstTabTxt><![CDATA[SIZE]]></sizePopupFirstTabTxt>
+			<prodUrl><![CDATA[http://developer.myntra.com/style/]]></prodUrl>
+			<sizeUrl><![CDATA[http://www.myntra.com/web/myntra-catalog-service/sizechart/]]></sizeUrl>
+			<nextbuttonImage posX="1040" posY="1000"><![CDATA[assets/images/ArrowRight.png]]></nextbuttonImage>
+			<backbuttonImage posX="0" posY="1000"><![CDATA[assets/images/ArrowLeft.png]]></backbuttonImage>
+		</productDesc>
+		<license><!-- topBarImage headingTxt BackbuttonImage tab1 tab2 tab3 tab4 tab5 -->
+			<topBarImage posX="0" posY="0"><![CDATA[assets/images/1.jpg]]></topBarImage>
+			<headingTxt posX="380" posY="100"><![CDATA[LICENSE TERMS]]></headingTxt>
+			<BackbuttonImage posX="40" posY="70"><![CDATA[assets/images/2.png]]></BackbuttonImage>
+			<tabs posX="40" posY="250">
+				<tab name="A. LICENSE TERMS"><![CDATA[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.]]></tab>
+				<tab name="B. TERMS AND CONDITIONS"><![CDATA[The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.]]></tab>
+				<tab name="C. PRIVACY POLICY"><![CDATA[There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage ]]></tab>
+			</tabs>
+		</license>
+		<smssent>
+			<headingTxt><![CDATA[CONGRATULATIONS]]></headingTxt>
+			<closeImageButton posX="60" posY="500"><![CDATA[assets/images/btn_close.png]]></closeImageButton>
+			<bodyTxt><![CDATA[You will receive an sms link of your shoosen product which you can purchase online on Myntra.]]></bodyTxt>
+			<button1><![CDATA[RETRY SMS]]></button1>
+			<button2><![CDATA[CONTINUE SHOPPING]]></button2>
+		</smssent>
+    </config>
