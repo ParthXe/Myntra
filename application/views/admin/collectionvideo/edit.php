@@ -14,10 +14,17 @@ var config = {
 									'F00,FF8C00,FFD700,008000,0FF,00F,EE82EE,A9A9A9,' +
 									'FFA07A,FFA500,FFFF00,00FF00,AFEEEE,ADD8E6,DDA0DD,D3D3D3,' +
 									'FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF',
+				basicEntities : false,
 				entities : false,
-				fillEmptyBlocks : false,
-				tabSpaces : 0,
-			}
+				coreStyles_bold: {
+                        element: 'b',
+                        overrides: 'strong',
+                    },
+				fontSize_style : {
+			    element:'font',attributes:{'color':'#(color)'},
+				overrides:element:'span',styles:{'style':null},
+				}
+			}	  
 </script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
