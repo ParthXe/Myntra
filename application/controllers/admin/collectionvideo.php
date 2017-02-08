@@ -55,16 +55,6 @@ class collectionvideo extends CI_Controller {
 		$time=time();
 		$created = date ("Y-m-d H:i:s", $time);					
 		$flag=0;
-		function generateRandomNumber($length = 10) 
-		{
-			$number = '1234567890';
-			$numberLength = strlen($number);
-			$randomNumber = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomNumber .= $number[rand(0, $numberLength - 1)];
-			}
-			return $randomNumber;
-		}
 		
 			if(!empty($_FILES['bgPath']['name']))
 				{
@@ -211,23 +201,7 @@ class collectionvideo extends CI_Controller {
 			$flag=0;
 			$uploadPath = 'upload/collectionvideo/';
 			$checkcollectionvideo = $this->collectionvideo_model->checkcollectionvideoinfo($did);
-			
-			//exit;
-			//$this->form_validation->set_rules('bgPath', "This field is required", 'required');
-			//$this->form_validation->set_rules('exploreBtnPath', "This field is required", 'required');
-
-			//$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
- 
-	    function generateRandomNumber($length = 10) 
-		{
-			$number = '1234567890';
-			$numberLength = strlen($number);
-			$randomNumber = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomNumber .= $number[rand(0, $numberLength - 1)];
-			}
-			return $randomNumber;
-		}
+		
 			 	
 				if(!empty($_FILES['bgPath']['name']))
 				{
@@ -320,7 +294,7 @@ class collectionvideo extends CI_Controller {
 					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
-					if($this->upload->do_upload('buttonImage'))
+					if($this->upload->do_upload('closeImageButton'))
 					{
 						$fileData = $this->upload->data();
 					}
@@ -359,7 +333,7 @@ class collectionvideo extends CI_Controller {
 					$data ['closeImageButton'] = $_FILES['closeImageButton']['name'];
 				}
 				$data ['create_date'] = $created;
-				
+
 				$this->collectionvideo_model->updatecollectionvideoinfo($data);
 
 				$this->session->set_flashdata('message', 'Setting has been saved');

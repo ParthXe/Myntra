@@ -48,4 +48,15 @@ class MY_Controller extends CI_Controller {
 	// public function abc(){
 	// 	return "chocolate";
 	// }
+	
+	 function generateRandomNumber($length = 10) 
+		{
+			$number = '1234567890';
+			$numberLength = strlen($number);
+			$randomNumber = '';
+			for ($i = 0; $i < $length; $i++) {
+				$randomNumber .= $number[rand(0, $numberLength - 1)];
+			}
+			return $randomNumber;
+		}
 }

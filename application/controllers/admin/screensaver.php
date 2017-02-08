@@ -54,16 +54,6 @@ class screensaver extends CI_Controller {
 		$time=time();
 		$created = date ("Y-m-d H:i:s", $time);	
 		$flag=0;
-		function generateRandomNumber($length = 10) 
-		{
-				$number = '1234567890';
-				$numberLength = strlen($number);
-				$randomNumber = '';
-				for ($i = 0; $i < $length; $i++) {
-					$randomNumber .= $number[rand(0, $numberLength - 1)];
-				}
-				return $randomNumber;
-		}
 		
 				if(!empty($_FILES['bgPath']['name']))
 				{
@@ -124,22 +114,8 @@ class screensaver extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);				
 			$flag=0;
-			//$this->form_validation->set_rules('bgPath', "This field is required", 'required');
-			//$this->form_validation->set_rules('exploreBtnPath', "This field is required", 'required');
-
-			//$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
- 
-		function generateRandomNumber($length = 10) 
-		{
-			$number = '1234567890';
-			$numberLength = strlen($number);
-			$randomNumber = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomNumber .= $number[rand(0, $numberLength - 1)];
-			}
-			return $randomNumber;
-		}
 		
+
 			  if(!empty($_FILES['bgPath']['name'])){
 				$_FILES['bgPath']['name']=generateRandomNumber().$_FILES['bgPath']['name'];
                 $uploadPath = 'upload/screensaver/';
