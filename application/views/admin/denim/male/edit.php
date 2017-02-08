@@ -1,5 +1,19 @@
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
+<script type="text/javascript">
+ function imageRemove(img,id,action)
+{
+    $.ajax({
+         type: "POST",
+         url: base_url+"denim/remove_maleimage",
+        data: "image=" + img+"&id="+id+"&action="+action,
+         success: function(data){
+         		  alert('delete');
+                  location.reload();
+    }
+});
+}
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -23,27 +37,12 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                	<?php $images = json_decode($denim_male['anatomy']);
-                	//print_r($images);
-                	//exit();
-                	$images1 = [];
-                	for($i=0; $i< count($images); $i++)
-                	{
-                		$filename1[] = explode(',',$images[$i]);
-                		print_r($filename1);
-                	}
-                	
-	  foreach($filename1 as $file){ ?>
-	  
-
-                	 <img src="<?php echo base_url(); ?>upload/denim/male/anatomy/<?php echo $file; ?>">
-                	 <?php } ?> 
 
 					<?php if (isset($error)) : ?>
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off"') ; ?>
+					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 <!-- 						<div class="form-group">
 							<label for="userEditName">Anatomy</label>
 							<input type="file" class="form-control" name="userFiles[]" value="" required multiple>
@@ -56,10 +55,21 @@
 							<label for="userEditMail">Champions Products Description</label>
 							<textarea class="form-control" id="destinationDesc" name="champions_products_desc" placeholder="Champions Products Description" required><?php echo isset($denim_male['champion_products_desc']) ? $denim_male['champion_products_desc'] : "NA"; ?></textarea>
 						</div>
-<!-- 						<div class="form-group">
+						<div class="form-group">
 							<label for="userEditFname">Champions Products Images</label>
-							<input type="file" class="form-control" name="championsProductsImages[]" value="" required multiple>
-						</div> -->
+							<input type="file" class="form-control" name="championsProductsImages[]" value="" multiple>
+							<?php if($images = $denim_male['champion_products_images']){
+								$image = explode(",", $images);
+								foreach ($image as $img) {
+								echo '<img src="'.base_url().'upload/denim/male/champion_products/'.$img.'" width="150px"><a href="#" onclick="imageRemove('."'".$img."'".','."'".$denim_male['id']."'".','."'champion-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
+						</div>
 						<div class="form-group">
 							<label for="userEditLname">Trends Launch Date</label>
 							<input type="text" class="form-control" id="HowFar" name="trends_launch_date" placeholder="Trends Launch Date" value="<?php echo isset($denim_male['trends_launch_date']) ? $denim_male['trends_launch_date'] : "NA"; ?>" required>
@@ -68,18 +78,40 @@
 							<label for="userEditMobile">Trends Title</label>
 							<input type="text" class="form-control" id="BestTimeVisit" name="trends_title" placeholder="Trends Title" value="<?php echo isset($denim_male['trends_title']) ? $denim_male['trends_title'] : "NA"; ?>" required>
 						</div>
-<!-- 						<div class="form-group">
+						<div class="form-group">
 							<label for="userEditMobile">Trends Images</label>
-							<input type="file" class="form-control" name="trendsImages[]" value="" required multiple>
+							<input type="file" class="form-control" name="trendsImages[]" value="" multiple>
+							<?php if($trend_images = $denim_male['trends_images']){
+								$trend_image = explode(",", $trend_images);
+								foreach ($trend_image as $trend_img) {
+								echo '<img src="'.base_url().'upload/denim/male/trend_images/'.$trend_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$trend_img."'".','."'".$denim_male['id']."'".','."'trends_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
 						</div>			
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Images</label>
-							<input type="file" class="form-control" name="vintageImage[]" value="" required multiple>
+							<input type="file" class="form-control" name="vintageImage[]" value="" multiple>
+							<?php if($vintage_images = $denim_male['vintage_images']){
+								$vintage_image = explode(",", $vintage_images);
+								foreach ($vintage_image as $vintage_img) {
+								echo '<img src="'.base_url().'upload/denim/male/vintage_images/'.$vintage_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$vintage_img."'".','."'".$denim_male['id']."'".','."'vintage_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
 						</div>	
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Video</label>
-							<input type="file" class="form-control" name="vintageVideo" value="" required>
-						</div> -->
+							<input type="file" class="form-control" name="vintageVideo" value="" >
+						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Title</label>
 							<input type="text" class="form-control" id="vintageTitle" name="vintage_title" placeholder="Vintage Title" value="<?php echo isset($denim_male['vintage_title']) ? $denim_male['vintage_title'] : "NA"; ?>" required>

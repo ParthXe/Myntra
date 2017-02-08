@@ -1,5 +1,19 @@
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
+<script type="text/javascript">
+ function imageRemove(img,id,action)
+{
+    $.ajax({
+         type: "POST",
+         url: base_url+"shirts/remove_femaleimage",
+        data: "image=" + img+"&id="+id+"&action="+action,
+         success: function(data){
+         		  alert('delete');
+                  location.reload();
+    }
+});
+}
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -27,7 +41,7 @@
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off"') ; ?>
+					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 <!-- 						<div class="form-group">
 							<label for="userEditName">Anatomy</label>
 							<input type="file" class="form-control" name="userFiles[]" value="" required multiple>
@@ -40,10 +54,21 @@
 							<label for="userEditMail">Champions Products Description</label>
 							<textarea class="form-control" id="destinationDesc" name="champions_products_desc" placeholder="Champions Products Description" required><?php echo isset($shirt_female['champion_products_desc']) ? $shirt_female['champion_products_desc'] : "NA"; ?></textarea>
 						</div>
-<!-- 						<div class="form-group">
+						<div class="form-group">
 							<label for="userEditFname">Champions Products Images</label>
-							<input type="file" class="form-control" name="championsProductsImages[]" value="" required multiple>
-						</div> -->
+							<input type="file" class="form-control" name="championsProductsImages[]" value=""  multiple>
+							<?php if($champion_images = $shirt_female['champion_products_images']){
+								$champion_image = explode(",", $champion_images);
+								foreach ($champion_image as $champion_img) {
+								echo '<img src="'.base_url().'upload/shirts/female/champion_products/'.$champion_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$champion_img."'".','."'".$shirt_female['id']."'".','."'champion-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
+						</div>
 						<div class="form-group">
 							<label for="userEditLname">Trends Launch Date</label>
 							<input type="text" class="form-control" id="HowFar" name="trends_launch_date" placeholder="Trends Launch Date" value="<?php echo isset($shirt_female['trends_launch_date']) ? $shirt_female['trends_launch_date'] : "NA"; ?>" required>
@@ -52,15 +77,37 @@
 							<label for="userEditMobile">Trends Title</label>
 							<input type="text" class="form-control" id="BestTimeVisit" name="trends_title" placeholder="Trends Title" value="<?php echo isset($shirt_female['trends_title']) ? $shirt_female['trends_title'] : "NA"; ?>" required>
 						</div>
-<!-- 						<div class="form-group">
+						<div class="form-group">
 							<label for="userEditMobile">Trends Images</label>
-							<input type="file" class="form-control" name="trendsImages[]" value="" required multiple>
+							<input type="file" class="form-control" name="trendsImages[]" value="" multiple>
+							<?php if($trends_images = $shirt_female['trends_images']){
+								$trends_image = explode(",", $trends_images);
+								foreach ($trends_image as $trends_img) {
+								echo '<img src="'.base_url().'upload/shirts/female/trend_images/'.$trends_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$trends_img."'".','."'".$shirt_female['id']."'".','."'trends_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
 						</div>			
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Images</label>
-							<input type="file" class="form-control" name="vintageImage[]" value="" required multiple>
+							<input type="file" class="form-control" name="vintageImage[]" value="" multiple>
+							<?php if($vintage_images = $shirt_female['vintage_images']){
+								$vintage_image = explode(",", $vintage_images);
+								foreach ($vintage_image as $vintage_img) {
+								echo '<img src="'.base_url().'upload/shirts/female/vintage_images/'.$vintage_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$vintage_img."'".','."'".$shirt_female['id']."'".','."'vintage_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
 						</div>	
-						<div class="form-group">
+<!-- 						<div class="form-group">
 							<label for="userEditMobile">Vintage Video</label>
 							<input type="file" class="form-control" name="vintageVideo" value="" required>
 						</div> -->

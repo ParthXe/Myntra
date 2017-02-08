@@ -1,5 +1,20 @@
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
+<script type="text/javascript">
+ function imageRemove(img,id,action)
+{
+	
+    $.ajax({
+         type: "POST",
+         url: base_url+"destination/delete_image",
+        data: "image=" + img+"&id="+id+"&action="+action,
+         success: function(data){
+         		  alert('delete');
+                  location.reload();
+    }
+});
+}
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -14,6 +29,7 @@
 
     <!-- Main content -->
     <section class="content">
+
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
@@ -27,7 +43,7 @@
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off"') ; ?>
+					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="userEditName">Destination Name</label>
 							<input type="text" class="form-control" id="destinationName" name="destination_name" placeholder="Destination Name" autocomplete="off" value="<?php echo $destination['destination_name']; ?>" required>
@@ -52,26 +68,64 @@
 							<label for="userEditMobile">Best Time Visit</label>
 							<input type="text" class="form-control" id="BestTimeVisit" name="best_time_visit" placeholder="Best Time Visit" value="<?php echo $destination['best_time_visit']; ?>" required>
 						</div>
-						<!-- <div class="form-group">
+						<div class="form-group">
 							<label for="userEditMobile">Destination Background Image</label>
-							<input type="file" class="form-control" name="destination_bg_img" value="" required>
-						</div>		 -->	
-						<!-- <div class="form-group">
+							<input type="file" class="form-control" name="destination_bg_img" value="" >
+							<?php if($destination['destination_bg_image']){
+								echo '<img src="'.base_url().'upload/destination/destination_bg/'.$destination['destination_bg_image'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_bg_image']."'".','."'".$destination['id']."'".','."'bg-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								
+							}
+							else
+							{
+
+							}
+							?>
+						</div>			
+						<div class="form-group">
 							<label for="userEditMobile">Destination Images</label>
-							<input type="file" class="form-control" name="userFiles[]" value="" required multiple>
-						</div> -->	
-						<!-- <div class="form-group">
+							<input type="file" class="form-control" name="userFiles[]" value="" multiple>
+							<?php if($images = $destination['destination_images']){
+								$image = explode(",", $images);
+								foreach ($image as $img) {
+								echo '<img src="'.base_url().'upload/destination/destination_images/'.$img.'" width="150px"><a href="#" onclick="imageRemove('."'".$img."'".','."'".$destination['id']."'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+
+							}
+							?>
+						</div>	
+						<div class="form-group">
 							<label for="userEditMobile">Destination Matching Male Image</label>
-							<input type="file" class="form-control" name="destination_matching_male" value="" required>
-						</div> -->
+							<input type="file" class="form-control" name="destination_matching_male" value="" >
+							<?php if($destination['destination_matching_male_img']){
+								echo '<img src="'.base_url().'upload/destination/male/'.$destination['destination_matching_male_img'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_matching_male_img']."'".','."'".$destination['id']."'".','."'matching-male'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								
+							}
+							else
+							{
+
+							}
+							?>
+						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Destination Matching Male Info</label>
-							<textarea class="form-control" name="destination_info_male" placeholder="Destination Matching Male Info" required><?php echo $destination['destination_matching_male_info']; ?></textarea>
+							<textarea class="form-control" name="destination_info_male" placeholder="Destination Matching Male Info" ><?php echo $destination['destination_matching_male_info']; ?></textarea>
 						</div>
-						<!-- <div class="form-group">
+						<div class="form-group">
 							<label for="userEditMobile">Destination Matching Female Image</label>
-							<input type="file" class="form-control" name="destination_matching_female" value="" required>
-						</div> -->
+							<input type="file" class="form-control" name="destination_matching_female" value="" >
+							<?php if($destination['destination_matching_female_img']){
+								echo '<img src="'.base_url().'upload/destination/female/'.$destination['destination_matching_female_img'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_matching_female_img']."'".','."'".$destination['id']."'".','."'matching-female'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								
+							}
+							else
+							{
+
+							}
+							?>
+						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Destination Matching Female Info</label>
 							<textarea class="form-control" name="destination_info_female" placeholder="Destination Matching Female Info" required><?php echo $destination['destination_matching_female_info']; ?></textarea>
