@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class xml_model extends MY_Model {
+class Xml_model extends MY_Model {
     function __construct() {
         parent::__construct();
     } 

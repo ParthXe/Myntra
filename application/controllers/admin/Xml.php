@@ -13,27 +13,39 @@ class Xml extends CI_Controller
 		$this->lang->load('en_admin', 'english');
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
-		$this->load->model('xml_model');
+		$this->load->model('Xml_model');
     }
-
+	
+	/* function param($parameter1 = null) 
+    {
+      if ($this->uri->segment(4) === FALSE)
+	  {
+		$type = 0;
+	  }
+	  else
+	  {
+		  $type=$this->uri->segment(4);
+	  }
+    }
+	 */
     function index ()
     {
         /* 	if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 			{ */
 				$did=1;
 				$menu_details['session'] = $this->session->userdata;
+				$getscreensaver = $this->Xml_model->getscreensaverlist($did);
+				$getcollectionvideo = $this->Xml_model->getcollectionvideolist($did);
+				$getgenderselection = $this->Xml_model->getgenderselectionlist($did);
+				$getroadsterselection = $this->Xml_model->getroadsterselectionlist($did);
+				$getlistvideo = $this->Xml_model->getlistvideolist($did);
+				$getsortby = $this->Xml_model->getsortbylist($did);
+				$getfilterby = $this->Xml_model->getfilterbylist($did);
+				$getproductdesc = $this->Xml_model->getproductdesclist($did);
+				$getlicense = $this->Xml_model->getlicenselist($did);
+				$getsmssent = $this->Xml_model->getsmssentlist($did);
 				
-				$getscreensaver = $this->xml_model->getscreensaverlist($did);
-				$getcollectionvideo = $this->xml_model->getcollectionvideolist($did);
-				$getgenderselection = $this->xml_model->getgenderselectionlist($did);
-				$getroadsterselection = $this->xml_model->getroadsterselectionlist($did);
-				$getlistvideo = $this->xml_model->getlistvideolist($did);
-				$getsortby = $this->xml_model->getsortbylist($did);
-				$getfilterby = $this->xml_model->getfilterbylist($did);
-				$getproductdesc = $this->xml_model->getproductdesclist($did);
-				$getlicense = $this->xml_model->getlicenselist($did);
-				$getsmssent = $this->xml_model->getsmssentlist($did);
-				
+				$data['type']=urldecode(trim($this->uri->segment(3)));
 				if($getscreensaver->num_rows() == 1) 
 				{
 						// Create the data array to pass to view

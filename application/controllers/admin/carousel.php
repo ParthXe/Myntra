@@ -68,7 +68,7 @@ class Carousel extends CI_Controller {
 			}
 				if(!empty($_FILES['imagePath']['name']))
 				{
-						$_FILES['imagePath']['name'] = $this->generateRandomNumber().$_FILES['imagePath']['name'];
+						$_FILES['imagePath']['name'] = $this->$this->generateRandomNumber().$_FILES['imagePath']['name'];
 						$uploadPath = 'upload/carousel/';
 						$config['upload_path'] = $uploadPath;
 						$config['allowed_types'] = 'gif|jpg|png';
@@ -117,7 +117,7 @@ class Carousel extends CI_Controller {
 			
 			if(!empty($_FILES['imagePath']['name']))
 			{	
-				$_FILES['imagePath']['name'] = $this->generateRandomNumber().$_FILES['imagePath']['name'];
+				$_FILES['imagePath']['name'] = $this->$this->generateRandomNumber().$_FILES['imagePath']['name'];
                 $uploadPath1 = 'upload/carousel/';
                 $config['upload_path'] = $uploadPath1;
                 $config['allowed_types'] = 'gif|jpg|png';

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class collectionvideo extends CI_Controller {
+class collectionvideo extends MY_Controller {
 	
 	function __construct() {
 		parent::__construct();
@@ -55,11 +55,12 @@ class collectionvideo extends CI_Controller {
 		$time=time();
 		$created = date ("Y-m-d H:i:s", $time);					
 		$flag=0;
+		$uploadPath = 'upload/collectionvideo/';
 		
 			if(!empty($_FILES['bgPath']['name']))
 				{
-					$_FILES['bgPath']['name']=generateRandomNumber().$_FILES['bgPath']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['bgPath']['name']=$this->$this->generateRandomNumber().$_FILES['bgPath']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -72,8 +73,8 @@ class collectionvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{     
-					$_FILES['homebuttonImage']['name']=generateRandomNumber().$_FILES['homebuttonImage']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -87,8 +88,8 @@ class collectionvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['motoGpvideo']['name']))
 				{       
-					$_FILES['motoGpvideo']['name']=generateRandomNumber().$_FILES['motoGpvideo']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['motoGpvideo']['name']=$this->generateRandomNumber().$_FILES['motoGpvideo']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					
@@ -102,8 +103,8 @@ class collectionvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['outLandervideo']['name']))
 				{           
-			        $_FILES['outLandervideo']['name']=generateRandomNumber().$_FILES['outLandervideo']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+			        $_FILES['outLandervideo']['name']=$this->generateRandomNumber().$_FILES['outLandervideo']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					
@@ -117,8 +118,8 @@ class collectionvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['buttonImage']['name']))
 				{      
-					$_FILES['buttonImage']['name']=generateRandomNumber().$_FILES['buttonImage']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['buttonImage']['name']=$this->generateRandomNumber().$_FILES['buttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -132,8 +133,7 @@ class collectionvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['closeImageButton']['name']))
 				{      
-					$_FILES['closeImageButton']['name']=generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['closeImageButton']['name']=$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -205,7 +205,7 @@ class collectionvideo extends CI_Controller {
 			 	
 				if(!empty($_FILES['bgPath']['name']))
 				{
-					$_FILES['bgPath']['name']=generateRandomNumber().$_FILES['bgPath']['name'];
+					$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -213,16 +213,16 @@ class collectionvideo extends CI_Controller {
 					if($this->upload->do_upload('bgPath'))
 					{
 						$fileData = $this->upload->data();
-						$oldbgPathfile=$checkcollectionvideo->result()['0']->bgPath;
-						$oldbgPathfile_path=$uploadPath.$checkcollectionvideo->result()['0']->oldbgPathfile;
-						unlink($oldbgPathfile_path);
+						$old_bgPathfile=$checkcollectionvideo->result()['0']->bgPath;
+						$old_bgPathfile_path=$uploadPath.$old_bgPathfile;
+						unlink($old_bgPathfile_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{     
-					$_FILES['homebuttonImage']['name']=generateRandomNumber().$_FILES['homebuttonImage']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -231,16 +231,16 @@ class collectionvideo extends CI_Controller {
 					if($this->upload->do_upload('homebuttonImage'))
 					{
 						$fileData = $this->upload->data();
-						$oldhomebuttonImage=$checkcollectionvideo->result()['0']->homebuttonImage;
-						$oldhomebuttonImage_path=$uploadPath.$checkcollectionvideo->result()['0']->oldhomebuttonImage;
-						unlink($oldhomebuttonImage_path);
+						$old_homebuttonImage=$checkcollectionvideo->result()['0']->homebuttonImage;
+						$old_homebuttonImage_path=$uploadPath.$old_homebuttonImage;
+						unlink($old_homebuttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['motoGpvideo']['name']))
 				{       
-					$_FILES['motoGpvideo']['name']=generateRandomNumber().$_FILES['motoGpvideo']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['motoGpvideo']['name']=$this->generateRandomNumber().$_FILES['motoGpvideo']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					
@@ -249,16 +249,16 @@ class collectionvideo extends CI_Controller {
 					if($this->upload->do_upload('motoGpvideo'))
 					{
 						$fileData = $this->upload->data();
-						$oldmotoGpvide=$checkcollectionvideo->result()['0']->motoGpvideo;
-						$oldhomebuttonImage_path=$uploadPath.$checkcollectionvideo->result()['0']->oldmotoGpvide;
-						unlink($oldhomebuttonImage_path);
+						$old_motoGpvideo=$checkcollectionvideo->result()['0']->motoGpvideo;
+						$old_motoGpvideo_path=$uploadPath.$old_motoGpvideo;
+						unlink($old_motoGpvideo_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['outLandervideo']['name']))
 				{           
-			        $_FILES['outLandervideo']['name']=generateRandomNumber().$_FILES['outLandervideo']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+			        $_FILES['outLandervideo']['name']=$this->generateRandomNumber().$_FILES['outLandervideo']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					
@@ -267,28 +267,34 @@ class collectionvideo extends CI_Controller {
 					if($this->upload->do_upload('outLandervideo'))
 					{
 						$fileData = $this->upload->data();
+						$old_outLandervideo=$checkcollectionvideo->result()['0']->outLandervideo;
+						$old_outLandervideo_path=$uploadPath.$old_outLandervideo;
+						unlink($old_outLandervideo_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['buttonImage']['name']))
 				{      
-					$_FILES['buttonImage']['name']=generateRandomNumber().$_FILES['buttonImage']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['buttonImage']['name']=$this->generateRandomNumber().$_FILES['buttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
-					if($this->upload->do_upload('closeImageButton'))
+					if($this->upload->do_upload('buttonImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_buttonImage=$checkcollectionvideo->result()['0']->buttonImage;
+						$old_buttonImage_path=$uploadPath.$old_buttonImage;
+						unlink($old_buttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['closeImageButton']['name']))
 				{      
-					$_FILES['closeImageButton']['name']=generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/collectionvideo/';
+					$_FILES['closeImageButton']['name']=$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -297,6 +303,9 @@ class collectionvideo extends CI_Controller {
 					if($this->upload->do_upload('closeImageButton'))
 					{
 						$fileData = $this->upload->data();
+						$old_closeImageButton=$checkcollectionvideo->result()['0']->closeImageButton;
+						$old_closeImageButton_path=$uploadPath.$old_closeImageButton;
+						unlink($old_closeImageButton_path);
 					}
 					$flag=1;
 				}

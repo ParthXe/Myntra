@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class productdesc extends CI_Controller {
+class productdesc extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -57,7 +57,7 @@ class productdesc extends CI_Controller {
 				
 				if(!empty($_FILES['topBarImage']['name']))
 				{
-					$_FILES['topBarImage']['name']=generateRandomNumber().$_FILES['topBarImage']['name'];
+					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -71,7 +71,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{    
-					$_FILES['BackbuttonImage']['name']=generateRandomNumber().$_FILES['BackbuttonImage']['name'];
+					$_FILES['BackbuttonImage']['name']=$this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -86,7 +86,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{    
-					$_FILES['homebuttonImage']['name']=generateRandomNumber().$_FILES['homebuttonImage']['name'];			
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];			
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -101,7 +101,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['myntralogoImage']['name']))
 				{       
-					$_FILES['myntralogoImage']['name']=generateRandomNumber().$_FILES['myntralogoImage']['name'];
+					$_FILES['myntralogoImage']['name']=$this->generateRandomNumber().$_FILES['myntralogoImage']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -116,7 +116,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['getProdBtn']['name']))
 				{   
-					$_FILES['getProdBtn']['name']=generateRandomNumber().$_FILES['getProdBtn']['name'];
+					$_FILES['getProdBtn']['name']=$this->generateRandomNumber().$_FILES['getProdBtn']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -131,7 +131,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['closeImageButton']['name']))
 				{   
-					$_FILES['closeImageButton']['name']=generateRandomNumber().$_FILES['closeImageButton']['name'];
+					$_FILES['closeImageButton']['name']=$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -146,7 +146,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['nextbuttonImage']['name']))
 				{    
-					$_FILES['nextbuttonImage']['name']=generateRandomNumber().$_FILES['nextbuttonImage']['name'];
+					$_FILES['nextbuttonImage']['name']=$this->generateRandomNumber().$_FILES['nextbuttonImage']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -161,7 +161,7 @@ class productdesc extends CI_Controller {
 				}
 				if(!empty($_FILES['backbtnImage']['name']))
 				{        
-					$_FILES['backbtnImage']['name']=generateRandomNumber().$_FILES['backbtnImage']['name'];
+					$_FILES['backbtnImage']['name']=$this->generateRandomNumber().$_FILES['backbtnImage']['name'];
 					$uploadPath = 'upload/productdesc/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -245,11 +245,12 @@ class productdesc extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
 			$flag=0;		
-
+			$checkproductdesc = $this->productdesc_model->checkproductdescinfo($did);
+			$uploadPath = 'upload/productdesc/';
 				if(!empty($_FILES['topBarImage']['name']))
 				{
-					$_FILES['topBarImage']['name']=generateRandomNumber().$_FILES['topBarImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -257,13 +258,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('topBarImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_topBarImage=$checkproductdesc->result()['0']->topBarImage;
+						$old_topBarImage_path=$uploadPath.$old_topBarImage;
+						unlink($old_topBarImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{    
-					$_FILES['BackbuttonImage']['name']=generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['BackbuttonImage']['name']=$this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -272,13 +276,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('BackbuttonImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_BackbuttonImage=$checkproductdesc->result()['0']->BackbuttonImage;
+						$old_BackbuttonImage_path=$uploadPath.$old_BackbuttonImage;
+						unlink($old_BackbuttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{    
-					$_FILES['homebuttonImage']['name']=generateRandomNumber().$_FILES['homebuttonImage']['name'];			
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];			
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -287,13 +294,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('homebuttonImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_homebuttonImage=$checkproductdesc->result()['0']->homebuttonImage;
+						$old_homebuttonImage_path=$uploadPath.$old_homebuttonImage;
+						unlink($old_homebuttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['myntralogoImage']['name']))
 				{       
-					$_FILES['myntralogoImage']['name']=generateRandomNumber().$_FILES['myntralogoImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['myntralogoImage']['name']=$this->generateRandomNumber().$_FILES['myntralogoImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -302,13 +312,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('myntralogoImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_myntralogoImage=$checkproductdesc->result()['0']->myntralogoImage;
+						$old_myntralogoImage_path=$uploadPath.$old_myntralogoImage;
+						unlink($old_myntralogoImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['getProdBtn']['name']))
 				{   
-					$_FILES['getProdBtn']['name']=generateRandomNumber().$_FILES['getProdBtn']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['getProdBtn']['name']=$this->generateRandomNumber().$_FILES['getProdBtn']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -317,13 +330,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('getProdBtn'))
 					{
 						$fileData = $this->upload->data();
+						$old_getProdBtn=$checkproductdesc->result()['0']->getProdBtn;
+						$old_getProdBtn_path=$uploadPath.$old_getProdBtn;
+						unlink($old_getProdBtn_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['closeImageButton']['name']))
 				{   
-					$_FILES['closeImageButton']['name']=generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['closeImageButton']['name']=$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -332,13 +348,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('closeImageButton'))
 					{
 						$fileData = $this->upload->data();
+						$old_closeImageButton=$checkproductdesc->result()['0']->closeImageButton;
+						$old_closeImageButton_path=$uploadPath.$old_closeImageButton;
+						unlink($old_closeImageButton_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['nextbuttonImage']['name']))
 				{    
-					$_FILES['nextbuttonImage']['name']=generateRandomNumber().$_FILES['nextbuttonImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['nextbuttonImage']['name']=$this->generateRandomNumber().$_FILES['nextbuttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -347,13 +366,16 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('nextbuttonImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_nextbuttonImage=$checkproductdesc->result()['0']->nextbuttonImage;
+						$old_nextbuttonImage_path=$uploadPath.$old_nextbuttonImage;
+						unlink($old_nextbuttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['backbtnImage']['name']))
 				{        
-					$_FILES['backbtnImage']['name']=generateRandomNumber().$_FILES['backbtnImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					$_FILES['backbtnImage']['name']=$this->generateRandomNumber().$_FILES['backbtnImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -362,6 +384,9 @@ class productdesc extends CI_Controller {
 					if($this->upload->do_upload('backbtnImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_backbtnImage=$checkproductdesc->result()['0']->backbtnImage;
+						$old_backbtnImage_path=$uploadPath.$old_backbtnImage;
+						unlink($old_backbtnImage_path);
 					}
 					$flag=1;
 				}
@@ -424,8 +449,6 @@ class productdesc extends CI_Controller {
 			} 
 			else {
 				if(is_numeric($did)) {
-				
-					$checkproductdesc = $this->productdesc_model->checkproductdescinfo($did);
 					if($checkproductdesc->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;

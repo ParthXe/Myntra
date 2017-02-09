@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class listvideo extends CI_Controller {
+class listvideo extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -57,7 +57,7 @@ class listvideo extends CI_Controller {
 				
 				if(!empty($_FILES['topBarImage']['name']))
 				{
-					$_FILES['topBarImage']['name']=generateRandomNumber().$_FILES['topBarImage']['name'];
+					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -71,7 +71,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{    
-					$_FILES['BackbuttonImage']['name']=generateRandomNumber().$_FILES['BackbuttonImage']['name'];
+					$_FILES['BackbuttonImage']['name']=$this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -86,7 +86,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{    
-					$_FILES['homebuttonImage']['name']=generateRandomNumber().$_FILES['homebuttonImage']['name'];			
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];			
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -101,7 +101,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['myntralogoImage']['name']))
 				{       
-					$_FILES['myntralogoImage']['name']=generateRandomNumber().$_FILES['myntralogoImage']['name'];
+					$_FILES['myntralogoImage']['name']=$this->generateRandomNumber().$_FILES['myntralogoImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -116,7 +116,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['sortBtnImage']['name']))
 				{   
-					$_FILES['sortBtnImage']['name']=generateRandomNumber().$_FILES['sortBtnImage']['name'];
+					$_FILES['sortBtnImage']['name']=$this->generateRandomNumber().$_FILES['sortBtnImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -131,7 +131,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['sortRollBtnImage']['name']))
 				{   
-					$_FILES['sortRollBtnImage']['name']=generateRandomNumber().$_FILES['sortRollBtnImage']['name'];
+					$_FILES['sortRollBtnImage']['name']=$this->generateRandomNumber().$_FILES['sortRollBtnImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -146,7 +146,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['filterBtnImage']['name']))
 				{   
-					$_FILES['filterBtnImage']['name']=generateRandomNumber().$_FILES['filterBtnImage']['name'];
+					$_FILES['filterBtnImage']['name']=$this->generateRandomNumber().$_FILES['filterBtnImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -161,7 +161,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['filterRollBtnImage']['name']))
 				{   
-					$_FILES['filterRollBtnImage']['name']=generateRandomNumber().$_FILES['filterRollBtnImage']['name'];
+					$_FILES['filterRollBtnImage']['name']=$this->generateRandomNumber().$_FILES['filterRollBtnImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -176,7 +176,7 @@ class listvideo extends CI_Controller {
 				}
 				if(!empty($_FILES['blackbgImage']['name']))
 				{   
-					$_FILES['blackbgImage']['name']=generateRandomNumber().$_FILES['blackbgImage']['name'];
+					$_FILES['blackbgImage']['name']=$this->generateRandomNumber().$_FILES['blackbgImage']['name'];
 					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -257,11 +257,12 @@ class listvideo extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
 			$flag=0;		
+			$checklistvideo = $this->listvideo_model->checklistvideoinfo($did);
+			$uploadPath = 'upload/listvideo/';
 
 				if(!empty($_FILES['topBarImage']['name']))
 				{
-					$_FILES['topBarImage']['name']=generateRandomNumber().$_FILES['topBarImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -269,13 +270,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('topBarImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_topBarImage=$checklistvideo->result()['0']->topBarImage;
+						$old_topBarImage_path=$uploadPath.$old_topBarImage;
+						unlink($old_topBarImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{    
-					$_FILES['BackbuttonImage']['name']=generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['BackbuttonImage']['name']=$this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -284,13 +288,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('BackbuttonImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_BackbuttonImage=$checklistvideo->result()['0']->BackbuttonImage;
+						$old_BackbuttonImage_path=$uploadPath.$old_BackbuttonImage;
+						unlink($old_BackbuttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{    
-					$_FILES['homebuttonImage']['name']=generateRandomNumber().$_FILES['homebuttonImage']['name'];			
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];			
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -299,13 +306,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('homebuttonImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_homebuttonImage=$checklistvideo->result()['0']->homebuttonImage;
+						$old_homebuttonImage_path=$uploadPath.$old_homebuttonImage;
+						unlink($old_homebuttonImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['myntralogoImage']['name']))
 				{       
-					$_FILES['myntralogoImage']['name']=generateRandomNumber().$_FILES['myntralogoImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['myntralogoImage']['name']=$this->generateRandomNumber().$_FILES['myntralogoImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -314,13 +324,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('myntralogoImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_myntralogoImage=$checklistvideo->result()['0']->myntralogoImage;
+						$old_myntralogoImage_path=$uploadPath.$old_myntralogoImage;
+						unlink($old_myntralogoImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['sortBtnImage']['name']))
 				{   
-					$_FILES['sortBtnImage']['name']=generateRandomNumber().$_FILES['sortBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['sortBtnImage']['name']=$this->generateRandomNumber().$_FILES['sortBtnImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -329,13 +342,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('sortBtnImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_sortBtnImage=$checklistvideo->result()['0']->sortBtnImage;
+						$old_sortBtnImage_path=$uploadPath.$old_sortBtnImage;
+						unlink($old_sortBtnImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['sortRollBtnImage']['name']))
 				{   
-					$_FILES['sortRollBtnImage']['name']=generateRandomNumber().$_FILES['sortRollBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['sortRollBtnImage']['name']=$this->generateRandomNumber().$_FILES['sortRollBtnImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -344,13 +360,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('sortRollBtnImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_sortRollBtnImage=$checklistvideo->result()['0']->sortRollBtnImage;
+						$old_sortRollBtnImage_path=$uploadPath.$old_sortRollBtnImage;
+						unlink($old_sortRollBtnImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['filterBtnImage']['name']))
 				{   
-					$_FILES['filterBtnImage']['name']=generateRandomNumber().$_FILES['filterBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['filterBtnImage']['name']=$this->generateRandomNumber().$_FILES['filterBtnImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -359,13 +378,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('filterBtnImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_filterBtnImage=$checklistvideo->result()['0']->filterBtnImage;
+						$old_filterBtnImage_path=$uploadPath.$old_filterBtnImage;
+						unlink($old_filterBtnImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['filterRollBtnImage']['name']))
 				{   
-					$_FILES['filterRollBtnImage']['name']=generateRandomNumber().$_FILES['filterRollBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['filterRollBtnImage']['name']=$this->generateRandomNumber().$_FILES['filterRollBtnImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -374,13 +396,16 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('filterRollBtnImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_filterRollBtnImage=$checklistvideo->result()['0']->filterRollBtnImage;
+						$old_filterRollBtnImage_path=$uploadPath.$old_filterRollBtnImage;
+						unlink($old_filterRollBtnImage_path);
 					}
 					$flag=1;
 				}
 				if(!empty($_FILES['blackbgImage']['name']))
 				{   
-					$_FILES['blackbgImage']['name']=generateRandomNumber().$_FILES['blackbgImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['blackbgImage']['name']=$this->generateRandomNumber().$_FILES['blackbgImage']['name'];
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -389,6 +414,9 @@ class listvideo extends CI_Controller {
 					if($this->upload->do_upload('blackbgImage'))
 					{
 						$fileData = $this->upload->data();
+						$old_blackbgImage=$checklistvideo->result()['0']->blackbgImage;
+						$old_blackbgImage_path=$uploadPath.$old_blackbgImage;
+						unlink($old_blackbgImage_path);
 					}
 					$flag=1;
 				}
@@ -448,8 +476,6 @@ class listvideo extends CI_Controller {
 			} 
 			else {
 				if(is_numeric($did)) {
-				
-					$checklistvideo = $this->listvideo_model->checklistvideoinfo($did);
 					if($checklistvideo->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;

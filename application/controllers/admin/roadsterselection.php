@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class RoadsterSelection extends CI_Controller {
+class RoadsterSelection extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -197,109 +197,134 @@ class RoadsterSelection extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
-			
+			$checkRoadsterSelection = $this->roadsterSelection_model->checkRoadsterSelectionInfo($did);
+			$uploadPath = 'upload/roadsterSelection/';
 			
 			if(!empty($_FILES['topBarImage']['name']))
 			{	
 				$_FILES['topBarImage']['name'] = $this->generateRandomNumber().$_FILES['topBarImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+               
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('topBarImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_topBarImage=$checkRoadsterSelection->result()['0']->topBarImage;
+						$old_topBarImage_path=$uploadPath.$old_topBarImage;
+						unlink($old_topBarImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['BackbuttonImage']['name']))
 			{	
 				$_FILES['BackbuttonImage']['name'] = $this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('BackbuttonImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_BackbuttonImage=$checkRoadsterSelection->result()['0']->BackbuttonImage;
+						$old_BackbuttonImage_path=$uploadPath.$old_BackbuttonImage;
+						unlink($old_BackbuttonImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['collectionMenImage']['name']))
 			{	
 				$_FILES['collectionMenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionMenImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('collectionMenImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_collectionMenImage=$checkRoadsterSelection->result()['0']->collectionMenImage;
+						$old_collectionMenImage_path=$uploadPath.$old_collectionMenImage;
+						unlink($old_collectionMenImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['catalogueMenImage']['name']))
 			{	
 				$_FILES['catalogueMenImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueMenImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('catalogueMenImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_catalogueMenImage=$checkRoadsterSelection->result()['0']->catalogueMenImage;
+						$old_catalogueMenImage_path=$uploadPath.$old_catalogueMenImage;
+						unlink($old_catalogueMenImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['collectionWomenImage']['name']))
 			{	
 				$_FILES['collectionWomenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionWomenImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('collectionWomenImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_collectionWomenImage=$checkRoadsterSelection->result()['0']->collectionWomenImage;
+						$old_collectionWomenImage_path=$uploadPath.$old_collectionWomenImage;
+						unlink($old_collectionWomenImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['catalogueWomenImage']['name']))
 			{	
 				$_FILES['catalogueWomenImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueWomenImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('catalogueWomenImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_catalogueWomenImage=$checkRoadsterSelection->result()['0']->catalogueWomenImage;
+						$old_catalogueWomenImage_path=$uploadPath.$old_catalogueWomenImage;
+						unlink($old_catalogueWomenImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['collectionBtnImage']['name']))
 			{	
 				$_FILES['collectionBtnImage']['name'] = $this->generateRandomNumber().$_FILES['collectionBtnImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('collectionBtnImage')){
-                    $fileData = $this->upload->data();
+                    	$fileData = $this->upload->data();
+						$old_collectionBtnImage=$checkRoadsterSelection->result()['0']->collectionBtnImage;
+						$old_collectionBtnImage_path=$uploadPath.$old_collectionBtnImage;
+						unlink($old_collectionBtnImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['catalogueBtnImage']['name']))
 			{	
 				$_FILES['catalogueBtnImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueBtnImage']['name'];
-                $uploadPath1 = 'upload/roadsterSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/roadsterSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('catalogueBtnImage')){
-                    $fileData = $this->upload->data();
+                    	$fileData = $this->upload->data();
+						$old_catalogueBtnImage=$checkRoadsterSelection->result()['0']->catalogueBtnImage;
+						$old_catalogueBtnImage_path=$uploadPath.$old_catalogueBtnImage;
+						unlink($old_catalogueBtnImage_path);
                 }
 				$flag = 1;
             }
@@ -356,8 +381,6 @@ class RoadsterSelection extends CI_Controller {
 			} 
 			else {
 				if(is_numeric($did)) {
-				
-					$checkRoadsterSelection = $this->roadsterSelection_model->checkRoadsterSelectionInfo($did);
 					if($checkRoadsterSelection->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;

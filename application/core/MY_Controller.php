@@ -49,7 +49,7 @@ class MY_Controller extends CI_Controller {
 	// 	return "chocolate";
 	// }
 	
-	 function generateRandomNumber($length = 10) 
+	public function generateRandomNumber($length = 10) 
 		{
 			$number = '1234567890';
 			$numberLength = strlen($number);
