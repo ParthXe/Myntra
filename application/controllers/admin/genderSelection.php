@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class genderSelection extends CI_Controller {
+class genderSelection extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -157,17 +157,22 @@ class genderSelection extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
+			$checkGenderSelect = $this->genderSelection_model->checkGenderSelectInfo($did);
+			$uploadPath = 'upload/genderSelection/';
 			
 			if(!empty($_FILES['image1']['name'])){
 				
 				$_FILES['image1']['name'] = $this->generateRandomNumber().$_FILES['image1']['name'];
-                $uploadPath1 = 'upload/genderSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/genderSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('image1')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_image1=$checkGenderSelect->result()['0']->image1;
+						$old_image1_path=$uploadPath.$old_image1;
+						unlink($old_image1_path);
                 }
 				$flag = 1;
 
@@ -175,56 +180,68 @@ class genderSelection extends CI_Controller {
 			if(!empty($_FILES['image2']['name'])){
 				
 				$_FILES['image2']['name'] = $this->generateRandomNumber().$_FILES['image2']['name'];
-                $uploadPath1 = 'upload/genderSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/genderSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('image2')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_image2=$checkGenderSelect->result()['0']->image2;
+						$old_image2_path=$uploadPath.$old_image2;
+						unlink($old_image2_path);
                 }
 				$flag = 1;
             } 
 			if(!empty($_FILES['image1Disabled']['name'])){
 				
 				$_FILES['image1Disabled']['name'] = $this->generateRandomNumber().$_FILES['image1Disabled']['name'];
-                $uploadPath1 = 'upload/genderSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/genderSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('image1Disabled')){
-                    $fileData = $this->upload->data();
+                   		$fileData = $this->upload->data();
+						$old_image1Disabled=$checkGenderSelect->result()['0']->image1Disabled;
+						$old_image1Disabled_path=$uploadPath.$old_image1Disabled;
+						unlink($old_image1Disabled_path);
                 }
 				$flag = 1;
             } 
 			if(!empty($_FILES['image2Disabled']['name'])){
 				
 				$_FILES['image2Disabled']['name'] = $this->generateRandomNumber().$_FILES['image2Disabled']['name'];
-                $uploadPath1 = 'upload/genderSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/genderSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('image2Disabled')){
-                    $fileData = $this->upload->data();
+                    	$fileData = $this->upload->data();
+						$old_image2Disabled=$checkGenderSelect->result()['0']->image2Disabled;
+						$old_image2Disabled_path=$uploadPath.$old_image2Disabled;
+						unlink($old_image2Disabled_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['thunderImage']['name'])){
 				
 				$_FILES['thunderImage']['name'] = $this->generateRandomNumber().$_FILES['thunderImage']['name'];
-                $uploadPath1 = 'upload/genderSelection/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/genderSelection/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('thunderImage')){
-                    $fileData = $this->upload->data();
+                   		$fileData = $this->upload->data();
+						$old_thunderImage=$checkGenderSelect->result()['0']->thunderImage;
+						$old_thunderImage_path=$uploadPath.$old_thunderImage;
+						unlink($old_thunderImage_path);
                 }
 				$flag = 1;
             }
@@ -264,8 +281,6 @@ class genderSelection extends CI_Controller {
 			} 
 			else {
 				if(is_numeric($did)) {
-				
-					$checkGenderSelect = $this->genderSelection_model->checkGenderSelectInfo($did);
 					if($checkGenderSelect->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;

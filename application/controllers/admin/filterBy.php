@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FilterBy extends CI_Controller {
+class FilterBy extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -98,18 +98,22 @@ class FilterBy extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
-			
+			$checkFilterBy = $this->filterBy_model->checkFilterByInfo($did);
+			$uploadPath = 'upload/filterBy/';
 			
 			if(!empty($_FILES['closeImageButton']['name']))
 			{	
 				$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-                $uploadPath1 = 'upload/filterBy/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/filterBy/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('closeImageButton')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_closeImageButton=$checkFilterBy->result()['0']->closeImageButton;
+						$old_closeImageButton_path=$uploadPath.$old_closeImageButton;
+						unlink($old_closeImageButton_path);
                 }
 				$flag = 1;
             }
@@ -142,7 +146,6 @@ class FilterBy extends CI_Controller {
 			else {
 				if(is_numeric($did)) {
 				
-					$checkFilterBy = $this->filterBy_model->checkFilterByInfo($did);
 					if($checkFilterBy->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;

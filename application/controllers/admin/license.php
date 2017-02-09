@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class License extends CI_Controller {
+class License extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -109,30 +109,38 @@ class License extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
-			
+			$checkLicense = $this->license_model->checkLicenseInfo($did);
+			$uploadPath = 'upload/license/';
+			 
 			if(!empty($_FILES['topBarImage']['name']))
 			{	
 				$_FILES['topBarImage']['name'] = $this->generateRandomNumber().$_FILES['topBarImage']['name'];
-                $uploadPath1 = 'upload/license/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/license/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('topBarImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_topBarImage=$checkLicense->result()['0']->topBarImage;
+						$old_topBarImage_path=$uploadPath.$old_topBarImage;
+						unlink($old_topBarImage_path);
                 }
 				$flag = 1;
             }
 			if(!empty($_FILES['BackbuttonImage']['name']))
 			{	
 				$_FILES['BackbuttonImage']['name'] = $this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-                $uploadPath1 = 'upload/license/';
-                $config['upload_path'] = $uploadPath1;
+                $uploadPath = 'upload/license/';
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('BackbuttonImage')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_BackbuttonImage=$checkLicense->result()['0']->BackbuttonImage;
+						$old_BackbuttonImage_path=$uploadPath.$old_BackbuttonImage;
+						unlink($old_BackbuttonImage_path);
                 }
 				$flag = 1;
             }
@@ -166,7 +174,6 @@ class License extends CI_Controller {
 			else {
 				if(is_numeric($did)) {
 				
-					$checkLicense = $this->license_model->checkLicenseInfo($did);
 					if($checkLicense->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
@@ -204,16 +211,4 @@ class License extends CI_Controller {
 			redirect('admin/login');
 		}
 	}
-		/* Done */
-	public function generateRandomNumber($length = 10) 
-	{
-			$number = '1234567890';
-			$numberLength = strlen($number);
-			$randomNumber = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomNumber .= $number[rand(0, $numberLength - 1)];
-			}
-			return $randomNumber;
-	}
-	
 }

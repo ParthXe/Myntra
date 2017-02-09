@@ -96,17 +96,22 @@ class SendSMS extends MY_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
-			
+			$checksendSMS = $this->sendSMS_model->checkSendSMSInfo($did);
+			$uploadPath = 'upload/sendSMS/';
+			  
 			if(!empty($_FILES['closeImageButton']['name']))
 			{	
-				$_FILES['closeImageButton']['name'] = $this->$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-                $uploadPath1 = 'upload/sendSMS/';
-                $config['upload_path'] = $uploadPath1;
+				$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
+              
+                $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('closeImageButton')){
-                    $fileData = $this->upload->data();
+						$fileData = $this->upload->data();
+						$old_closeImageButton=$checksendSMS->result()['0']->closeImageButton;
+						$old_closeImageButton_path=$uploadPath.$old_closeImageButton;
+						unlink($old_closeImageButton_path);
                 }
 				$flag = 1;
 
@@ -136,8 +141,7 @@ class SendSMS extends MY_Controller {
 			} 
 			else {
 				if(is_numeric($did)) {
-				
-					$checksendSMS = $this->sendSMS_model->checkSendSMSInfo($did);
+
 					if($checksendSMS->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
@@ -174,16 +178,4 @@ class SendSMS extends MY_Controller {
 			redirect('admin/login');
 		}
 	}
-	
-	public function generateRandomNumber($length = 10) 
-	{
-			$number = '1234567890';
-			$numberLength = strlen($number);
-			$randomNumber = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomNumber .= $number[rand(0, $numberLength - 1)];
-			}
-			return $randomNumber;
-	}
-	
 }
