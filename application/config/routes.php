@@ -81,3 +81,6 @@ $route['user/seller'] 				= 'frontend/user/seller';
 $route['user/seller/product'] 		= 'frontend/user/seller_products';
 $route['user/orders']				= 'frontend/user/myorders';
 $route['user/update_details'] 		= 'frontend/user/update_details';
+
+//Admin URL's
+$route['admin/Xml/(:any)'] 	= 'admin/Xml/index/$1';

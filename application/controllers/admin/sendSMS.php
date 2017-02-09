@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SendSMS extends CI_Controller {
+class SendSMS extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -50,7 +50,7 @@ class SendSMS extends CI_Controller {
 			$created = date ("Y-m-d H:i:s", $time);					
 				if(!empty($_FILES['closeImageButton']['name']))
 				{
-					$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
+					$_FILES['closeImageButton']['name'] = $this->$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
 					$uploadPath = 'upload/sendSMS/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -99,7 +99,7 @@ class SendSMS extends CI_Controller {
 			
 			if(!empty($_FILES['closeImageButton']['name']))
 			{	
-				$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
+				$_FILES['closeImageButton']['name'] = $this->$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
                 $uploadPath1 = 'upload/sendSMS/';
                 $config['upload_path'] = $uploadPath1;
                 $config['allowed_types'] = 'gif|jpg|png';

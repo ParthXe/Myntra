@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<script type="text/javascript" src="../assets/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../../../assets/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 var config = {
 				width:720,
@@ -20,10 +20,15 @@ var config = {
                         element: 'b',
                         overrides: 'strong',
                     },
-				fontSize_style : {
-			    element:'font',attributes:{'color':'#(color)'},
-				overrides:element:'span',styles:{'style':null},
-				}
+				/* colorButton_foreStyle: {
+					element: 'font',
+					styles: { 'color': '#(color)' },
+					overrides: [ { element: 'span', attributes: { 'style': null } } ],
+					childRule: function( element ) {
+						return !element.is( 'a' );
+					} 
+				}, */
+
 			}	  
 </script>
 <div class="content-wrapper">

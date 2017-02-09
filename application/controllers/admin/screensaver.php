@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class screensaver extends CI_Controller {
+class screensaver extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -46,18 +46,13 @@ class screensaver extends CI_Controller {
 	public function add() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
-			// Set validation rules for view filters
-			//$this->form_validation->set_rules('destination_name', "Name field is required", 'required');
-			///$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
-
-			//$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
-		$time=time();
-		$created = date ("Y-m-d H:i:s", $time);	
-		$flag=0;
+			$time=time();
+			$created = date ("Y-m-d H:i:s", $time);	
+			$flag=0;
 		
 				if(!empty($_FILES['bgPath']['name']))
 				{
-					$_FILES['bgPath']['name']=generateRandomNumber().$_FILES['bgPath']['name'];
+					$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
 					$uploadPath = 'upload/screensaver/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
@@ -71,7 +66,7 @@ class screensaver extends CI_Controller {
 				}
 				if(!empty($_FILES['exploreBtnPath']['name']))
 				{    
-					$_FILES['exploreBtnPath']['name']=generateRandomNumber().$_FILES['exploreBtnPath']['name'];			
+					$_FILES['exploreBtnPath']['name']=$this->generateRandomNumber().$_FILES['exploreBtnPath']['name'];			
 					$uploadPath = 'upload/screensaver/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -114,32 +109,41 @@ class screensaver extends CI_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);				
 			$flag=0;
-		
+			$checkscreensaver = $this->screensaver_model->checkscreensaverinfo($did);
+		    $uploadPath = 'upload/screensaver/';
 
 			  if(!empty($_FILES['bgPath']['name'])){
-				$_FILES['bgPath']['name']=generateRandomNumber().$_FILES['bgPath']['name'];
-                $uploadPath = 'upload/screensaver/';
+				$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
+             
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('bgPath')){
-                    $fileData = $this->upload->data();
+					
+						$fileData = $this->upload->data();
+						$old_bgPath=$checkscreensaver->result()['0']->bgPath;
+						$old_bgPath_path=$uploadPath.$old_bgPath;
+						unlink($old_bgPath_path);
                 }
 				$flag=1;
 
             } 
 			  if(!empty($_FILES['exploreBtnPath']['name'])){
-				$_FILES['exploreBtnPath']['name']=generateRandomNumber().$_FILES['exploreBtnPath']['name'];
-                $uploadPath = 'upload/screensaver/';
+				$_FILES['exploreBtnPath']['name']=$this->generateRandomNumber().$_FILES['exploreBtnPath']['name'];
+                
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('exploreBtnPath')){
-                    $fileData = $this->upload->data();
+					
+						$fileData = $this->upload->data();
+						$old_exploreBtnPath=$checkscreensaver->result()['0']->exploreBtnPath;
+						$old_exploreBtnPath_path=$uploadPath.$old_exploreBtnPath;
+						unlink($old_exploreBtnPath_path);
                 }
 				$flag=1;
             } 
@@ -170,8 +174,7 @@ class screensaver extends CI_Controller {
 			} 
 			else {
 				if(is_numeric($did)) {
-				
-					$checkscreensaver = $this->screensaver_model->checkscreensaverinfo($did);
+			
 					if($checkscreensaver->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
