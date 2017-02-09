@@ -12,6 +12,8 @@ class Carousel_model extends MY_Model {
 	
     public function getCarouselList($page) {
         $sendSMSList = [];
+		$this->db->order_by('gender','DESC');
+		$this->db->order_by('type','ASC');
         $query = $this->db->get('carousel_data');
         // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
@@ -38,10 +40,11 @@ class Carousel_model extends MY_Model {
     }
 	
 	public function deleteCarouselInfo($data) {
+		$this->db->where('carousel_id',$data['id']);
+        $this->db->delete('styles_data');
+		
         $this->db->where('id',$data['id']);
         $this->db->delete('carousel_data');
-		
-		return $user_id;
     }
 	/*Done*/
 }

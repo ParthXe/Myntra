@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Carousel extends MY_Controller {
+class Style extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -11,40 +11,42 @@ class Carousel extends MY_Controller {
 		$this->lang->load('en_admin', 'english');
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
-		$this->load->model('carousel_model');
+		$this->load->model('style_model');
 	}	
 	/* Done */
 	public function index() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Carousel Images";
+			$header['page_title'] = "Style Images";
 			$page = 1;	
 			
-			$carouselList = $this->carousel_model->getCarouselList($page);
+			$styleList = $this->style_model->getStyleList($page);
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
-			$data['carouselList'] = $carouselList;
+			$data['styleList'] = $styleList;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
-			$this->load->view('admin/carousel/list', $data);
+			$this->load->view('admin/style/list', $data);
 			$this->load->view('admin/common/footer');
 		} else {
 			redirect('admin/login');
 		}
 	}
-	public function add_image() {
+	public function add_style() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Carousel Images";
-			$page = 1;		
+			$header['page_title'] = "Style Images";
+			$page = 1;
+			$carousel_id = trim($this->uri->segment(4));
+			$data['carousel_id'] = $carousel_id;	
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
-			$this->load->view('admin/carousel/add');
+			$this->load->view('admin/style/add',$data);
 			$this->load->view('admin/common/footer');
 		} else {
 			redirect('admin/login');
@@ -54,6 +56,7 @@ class Carousel extends MY_Controller {
 	public function add() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
+			
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			if(isset($_REQUEST['active']))
@@ -64,31 +67,17 @@ class Carousel extends MY_Controller {
 			{
 				$status = "0";
 			}
-				if(!empty($_FILES['imagePath']['name']))
-				{
-						$_FILES['imagePath']['name'] = $this->generateRandomNumber().$_FILES['imagePath']['name'];
-						$uploadPath = 'upload/carousel/';
-						$config['upload_path'] = $uploadPath;
-						$config['allowed_types'] = 'gif|jpg|png';
-						$this->load->library('upload', $config);
-						$this->upload->initialize($config);
-						if($this->upload->do_upload('imagePath'))
-						{
-							$fileData = $this->upload->data();
-						}
-				}
 				
-				if(	!empty($_FILES['imagePath']['name'])) 
+				if(	!empty($this->input->post('style_id')) && !empty($this->input->post('title')) && !empty($this->input->post('carousel_id')) ) 
 				{
 					$addData = array(
-						'imagePath' => $_FILES['imagePath']['name'],
 						'title' => $this->input->post('title'),
+						'style_id' => $this->input->post('style_id'),
 						'status' => $status,
-						'gender' => $this->input->post('gender'),
-						'type' => $this->input->post('type'),
+						'carousel_id' => $this->input->post('carousel_id'),
 						'create_date' => $created
 					);
-						$id = $this->carousel_model->addcarouselInfo($addData);
+						$id = $this->style_model->addStyleInfo($addData);
 						$this->session->set_flashdata('message', 'Data Saved successfully!!!');
 				}
 				else
@@ -96,7 +85,7 @@ class Carousel extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/carousel');				
+					redirect('admin/style');				
 				
 			} 
 			else 
@@ -111,27 +100,9 @@ class Carousel extends MY_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
-			$checkcarousel = $this->carousel_model->checkcarouselInfo($did);
 			
-			if(!empty($_FILES['imagePath']['name']))
-			{	
-				$_FILES['imagePath']['name'] = $this->generateRandomNumber().$_FILES['imagePath']['name'];
-                $uploadPath1 = 'upload/carousel/';
-                $config['upload_path'] = $uploadPath1;
-                $config['allowed_types'] = 'gif|jpg|png';
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if($this->upload->do_upload('imagePath')){
-                    $fileData = $this->upload->data();
-					$fileData = $this->upload->data();
-						$oldbgPathfile=$checkcarousel->result()['0']->imagePath;
-						$oldbgPathfile_path=$uploadPath1.$oldbgPathfile;
-						unlink($oldbgPathfile_path);
-                }
-				$flag = 1;
-            }
 			
-			if(	isset($_REQUEST['title']) || isset($_REQUEST['gender']))
+			if(	isset($_REQUEST['title']) || isset($_REQUEST['style_id']))
 			{
 				$flag = 1;	
 			}
@@ -144,47 +115,42 @@ class Carousel extends MY_Controller {
 				$status = "0";
 			}
 			if($flag == 1) {
-				
-				if(!empty($_FILES['imagePath']['name']))
-				{
-					$data['imagePath'] = $_FILES['imagePath']['name'];
-				}
 				$data['id'] = $did;
 				$data['title'] = $this->input->post('title');
-				$data['gender'] = $this->input->post('gender');
+				$data['style_id'] = $this->input->post('style_id');
+				$data['carousel_id'] = $this->input->post('carousel_id');
 				$data['status'] = $status;
-				$data['type'] = $this->input->post('type');
 				$data['create_date'] = $created;
-				$this->carousel_model->updatecarouselInfo($data);
+				$this->style_model->updateStyleInfo($data);
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/carousel');
+				redirect('admin/style');
 				
 			} 
 			else {
+				$checkStyle = $this->style_model->checkStyleInfo($did);
 				if(is_numeric($did)) {
-					if($checkcarousel->num_rows() == 1) {
+					if($checkStyle->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
 
 						// Set Page Title
 						$header['page_title'] = "Edit Sort By";				
 
-						foreach ($checkcarousel->result() as $row) {
-							$data['carouselList'] = array(
+						foreach ($checkStyle->result() as $row) {
+							$data['styleList'] = array(
 								'title' => $row->title,
-								'imagePath' => $row->imagePath,
-								'gender' => $row->gender,
-								'type'=>$row->type,
-								'status'=>$row->status,
-								'create_date'=>$created, 
+								'carousel_id' => $row->carousel_id,
+								'style_id' => $row->style_id,
+								'status' => $row->status,
+								'create_date' => $created, 
 							);		
 						}
 						
 						$this->load->view('admin/common/header', $header);
 						$this->load->view('admin/common/left_menu', $menu_details);
-						$this->load->view('admin/carousel/edit', $data);
+						$this->load->view('admin/style/edit', $data);
 						$this->load->view('admin/common/footer');
 					} else {
 						$this->session->set_flashdata('message', 'User not found');
@@ -203,20 +169,12 @@ class Carousel extends MY_Controller {
 	public function delete() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Carousel Images";
+			$header['page_title'] = "Style Images";
 			$page = 1;	
-			$carousel_id = trim($this->uri->segment(4));
-			$uploadPath1 = 'upload/carousel/';
-			$checkcarousel = $this->carousel_model->checkcarouselInfo($carousel_id);
-			$file=$checkcarousel->result()['0']->imagePath;
-			if(isset($file) && !empty($file))
-			{
-				$file_Path=$uploadPath1.$file;
-				unlink($file_Path);
-			}
-			$data['id'] = $carousel_id;
-			$this->carousel_model->deleteCarouselInfo($data);
-			redirect('admin/carousel');
+			$style_id = trim($this->uri->segment(4));
+			$data['id'] = $style_id;
+			$this->style_model->deleteStyleInfo($data);
+			redirect('admin/style');
 		} else {
 			redirect('admin/login');
 		}
