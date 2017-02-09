@@ -1,0 +1,42 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Style_model extends MY_Model {
+    function __construct() {
+        parent::__construct();
+    } 
+	/*Done*/
+	public function addStyleInfo($addData) {
+        $this->db->insert('styles_data',$addData);
+        return $user_id;
+    }
+	
+    public function getStyleList($page) {
+        $sendStyleList = [];
+		$this->db->order_by("carousel_id","ASC");
+		$this->db->order_by("title","ASC");
+        $query = $this->db->get('styles_data');
+        foreach ($query->result() as $row) {
+            $sendStyleList[] = $row;
+        }
+		return $sendStyleList;
+    } 
+	
+    public function checkStyleInfo($did) {
+        $this->db->where('id', $did);
+        $query = $this->db->get('styles_data');
+        return $query;        
+    }
+
+    public function updateStyleInfo($data) {
+        $this->db->where('id',$data['id']);
+        $this->db->update('styles_data',$data);
+		
+		return $user_id;
+    }
+	
+	public function deleteStyleInfo($data) {
+        $this->db->where('id',$data['id']);
+        $this->db->delete('styles_data');
+    }
+	/*Done*/
+}
