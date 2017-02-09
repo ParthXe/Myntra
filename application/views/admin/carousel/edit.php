@@ -4,12 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-         License
+        Carousel
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Screensaver</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -19,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Change Send SMS </h3>
+                  <h3 class="box-title">Edit Carousel Image </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -30,7 +26,7 @@
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="topBarImage">Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
+							<input type="file" class="form-control" id="imagePath" name="imagePath" value="" />
 							<span><?php echo substr($carouselList['imagePath'],10);?></span>
 						</div>
 						<div class="form-group">
@@ -44,6 +40,21 @@
 								<option value="women" <?php if($carouselList['gender'] == "women") echo "selected";?>>FEMALE</option>
 							</select>
 						</div>
+						<div class="form-group">
+							<label for="type">Type:</label><br>
+							<select name="type">
+								<option value="motogp" <?php if($carouselList['type'] == "motogp") echo "selected";?> >MOTOGP</option>
+								<option value="outlander" <?php if($carouselList['type'] == "outlander") echo "selected";?>>OUTLANDER</option>
+							</select>
+						</div>
+						<div class="form-group">
+		                	<label>Status</label>
+		                    <div class="checkbox">
+		                      <label class="no-padding">
+		                        <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" <?php if($carouselList['status']=="1")  echo "checked";?> class="minimal themed" name="active" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Active
+		                    </label>
+		                    </div>
+		                </div>
 						<div class="row">
 							<!-- /.col -->
 							<div class="col-xs-3">

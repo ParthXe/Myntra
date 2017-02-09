@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-         Carousel 
+         Style 
       </h1>
       <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,7 +19,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Add Carousel Image</h3>
+                  <h3 class="box-title">Add Style</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -27,29 +27,20 @@
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('admin/carousel/add', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
+					<?php echo form_open('admin/style/add', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						
 						<div class="form-group">
 							<label for="title">Title:</label>
 							<input type="text" class="form-control" id="title" name="title" value="" required/>
 						</div>
 						<div class="form-group">
-							<label for="imagePath">Image:</label>
-							<input type="file" class="form-control" id="imagePath" name="imagePath" value="" required/>
+							<label for="title">Carousel ID:</label>
+							<input type="text" class="form-control" id="carousel_id" name="" value="<?php echo $carousel_id;?>" disabled required/>
+							<input type="hidden" class="form-control" id="" name="carousel_id" value="<?php echo $carousel_id;?>" required/>
 						</div>
 						<div class="form-group">
-							<label for="gender">Gender:</label><br>
-							<select name="gender">
-								<option value="men">MALE</option>
-								<option value="women">FEMALE</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="type">Gender:</label><br>
-							<select name="type">
-								<option value="motogp">MOTOGP</option>
-								<option value="outlander">OUTLANDER</option>
-							</select>
+							<label for="title">Style ID:</label>
+							<input type="text" class="form-control" id="style_id" name="style_id"  required/>
 						</div>
 						<div class="form-group">
 		                	<label>Status</label>

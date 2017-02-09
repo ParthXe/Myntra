@@ -3,8 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Carousel
-		<!--<small><a href="<?php echo base_url("admin/genderSelection/add"); ?>">Gender Selection</a></small>-->
+        Style
       </h1>
     </section>
 
@@ -15,7 +14,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">List Of Carousel Images</h3>
+                  <h3 class="box-title">List Of Style Images</h3>
                   <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -37,25 +36,21 @@
                   <table class="table">
                     <tr>
 						<th>Title</th>
-						<th>Carousel Image</th>
-						<th>Gender</th>
-						<th>Type</th>
+						<th>Carousel ID</th>
+						<th>Style ID</th>
 						<th>Status</th>
-						<th>LINK</th>
 						<th>EDIT</th>
 						<th>DELETE</th>
 					</tr>
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
-                    <?php foreach($carouselList as $info) : ?>
+                    <?php foreach($styleList as $info) : ?>
                         <tr>
 							<td><?php echo isset($info->title) ? $info->title : "NA";?></td>
-							<td><?php echo isset($info->imagePath ) ? substr($info->imagePath,10) : "NA";?></td>
-							<td><?php echo isset($info->gender) ? $info->gender : "NA";?></td>
-							<td><?php echo isset($info->type) ? strtoupper($info->type) : "NA";?></td>
+							<td><?php echo isset($info->style_id ) ? $info->carousel_id : "NA";?></td>
+							<td><?php echo isset($info->carousel_id) ? $info->style_id : "NA";?></td>
 							<td><?php echo isset($info->status) ? $info->status : "NA";?></td>
-							<td><a href="<?php echo base_url("admin/style/add_style/".$info->id); ?>"><small class="label bg-red">LINK</small></a></td>
-                            <td><a href="<?php echo base_url("admin/carousel/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
-							<td><a href="<?php echo base_url("admin/carousel/delete/".$info->id); ?>"><small class="label bg-red">DELETE</small></a></td>
+                            <td><a href="<?php echo base_url("admin/style/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
+							<td><a href="<?php echo base_url("admin/style/delete/".$info->id); ?>"><small class="label bg-red">DELETE</small></a></td>
                         </tr>
                     <?php endforeach; ?>
                   </table>
