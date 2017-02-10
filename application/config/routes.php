@@ -57,7 +57,6 @@ $route['sell'] 						= 'frontend/home/sell';
 
 $route['(:any)'] 					= 'frontend/$1';
 $route['admin/(:any)'] 				= 'admin/$1';
-
 $route['product/details/(:any)'] 	= 'frontend/product/product_details/$1';
 $route['store/category'] 			= 'frontend/store/category/topwear';
 $route['store/category/(:any)'] 	= 'frontend/store/category/$1';
@@ -82,5 +81,4 @@ $route['user/seller/product'] 		= 'frontend/user/seller_products';
 $route['user/orders']				= 'frontend/user/myorders';
 $route['user/update_details'] 		= 'frontend/user/update_details';
 
-//Admin URL's
-$route['admin/Xml/(:any)'] 	= 'admin/Xml/index/$1';
+$route['admin/looksJSON/(:any)/(:any)']= 'admin/looksJSON/index/$1/$2';
