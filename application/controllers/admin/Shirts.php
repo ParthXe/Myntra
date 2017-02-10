@@ -168,7 +168,7 @@ class Shirts extends CI_Controller {
 
                 $uploadPath = 'upload/shirts/male/vintage_video';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'mp4';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
@@ -319,19 +319,19 @@ class Shirts extends CI_Controller {
                 }
             }
         }
-        // if(!empty($_FILES['vintageVideo']['name'])){
+        if(!empty($_FILES['vintageVideo']['name'])){
            
 
-        //         $uploadPath = 'upload/shirts/male/vintage_video';
-        //         $config['upload_path'] = $uploadPath;
-        //         $config['allowed_types'] = 'gif|jpg|png';
+                $uploadPath = 'upload/shirts/male/vintage_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'mp4';
                 
-        //         $this->load->library('upload', $config);
-        //         $this->upload->initialize($config);
-        //         if($this->upload->do_upload('vintageVideo')){
-        //             $fileData = $this->upload->data();
-        //         }
-        //     }
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('vintageVideo')){
+                    $fileData = $this->upload->data();
+                }
+            }
 
        // $image_array = implode(",",$_FILES['userFiles']['name']);
        	$championsproducts_array = implode(",",$_FILES['championsProductsImages']['name']);
@@ -348,7 +348,7 @@ class Shirts extends CI_Controller {
 						'trends_title' => $this->input->post('trends_title'),
 						'trends_images' => $trendsImages_array,
 						'vintage_images' => $vintageImage_array,
-						//'vintage_video' => $_FILES['vintageVideo']['name'],
+						'vintage_video' => $_FILES['vintageVideo']['name'],
 						'vintage_title' => $this->input->post('vintage_title'),
 						'vintage_desc' => $this->input->post('vintage_description'),
 						'active' => ($this->input->post('active') == "on") ? 1 : 0,
@@ -383,6 +383,7 @@ class Shirts extends CI_Controller {
 								'trends_images' => $row->trends_images,
 								'vintage_images' => $row->vintage_images,
 								'vintage_title' => $row->vintage_title,
+                                'vintage_video' => $row->vintage_video,
 								'vintage_desc' => $row->vintage_desc,
 								'active' => $row->active,
 
@@ -699,19 +700,19 @@ class Shirts extends CI_Controller {
                 }
             }
         }
-        // if(!empty($_FILES['vintageVideo']['name'])){
+        if(!empty($_FILES['vintageVideo']['name'])){
            
 
-        //         $uploadPath = 'upload/shirts/female/vintage_video';
-        //         $config['upload_path'] = $uploadPath;
-        //         $config['allowed_types'] = 'gif|jpg|png';
+                $uploadPath = 'upload/shirts/female/vintage_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'mp4';
                 
-        //         $this->load->library('upload', $config);
-        //         $this->upload->initialize($config);
-        //         if($this->upload->do_upload('vintageVideo')){
-        //             $fileData = $this->upload->data();
-        //         }
-        //     }
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('vintageVideo')){
+                    $fileData = $this->upload->data();
+                }
+            }
 
         //$image_array = implode(",",$_FILES['userFiles']['name']);
        	$championsproducts_array = implode(",",$_FILES['championsProductsImages']['name']);
@@ -728,7 +729,7 @@ class Shirts extends CI_Controller {
 						'trends_title' => $this->input->post('trends_title'),
 						'trends_images' => $trendsImages_array,
 						'vintage_images' => $vintageImage_array,
-						//'vintage_video' => $_FILES['vintageVideo']['name'],
+						'vintage_video' => $_FILES['vintageVideo']['name'],
 						'vintage_title' => $this->input->post('vintage_title'),
 						'vintage_desc' => $this->input->post('vintage_description'),
 						'active' => ($this->input->post('active') == "on") ? 1 : 0,
@@ -763,6 +764,7 @@ class Shirts extends CI_Controller {
 								'trends_images' => $row->trends_images,
 								'vintage_images' => $row->vintage_images,
 								'vintage_title' => $row->vintage_title,
+                                'vintage_video' => $row->vintage_video,
 								'vintage_desc' => $row->vintage_desc,
 								'active' => $row->active,
 
@@ -832,6 +834,21 @@ class Shirts extends CI_Controller {
 
             break;
 
+            case "vintage_video":
+
+            $data = array(
+            'id' => $this->input->post('id'),
+            'action' => $this->input->post('action'),
+            'image' => $this->input->post('image')
+            );
+            $path = 'upload/shirts/female/vintage_video/'.$this->input->post('image');
+            $this->Shirt_model->removeFemaleImage($data);
+            unlink($path);
+
+            break;
+
+
+
             default:
             echo "Error";
         }
@@ -879,6 +896,19 @@ class Shirts extends CI_Controller {
 			$path = 'upload/denim/male/vintage_images/'.$this->input->post('image');
 			$this->Shirt_model->removeMaleImage($data);
 			unlink($path);
+
+            break;
+
+            case "vintage_video":
+
+            $data = array(
+            'id' => $this->input->post('id'),
+            'action' => $this->input->post('action'),
+            'image' => $this->input->post('image')
+            );
+            $path = 'upload/shirts/male/vintage_video/'.$this->input->post('image');
+            $this->Shirt_model->removeMaleImage($data);
+            unlink($path);
 
             break;
 

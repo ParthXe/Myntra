@@ -18,7 +18,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Signature Denim Video Edit
+       Signature Tshirt Video Edit
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -40,14 +40,14 @@
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off"  enctype="multipart/form-data"') ; ?>
-					<?php  $path = base_url()."upload/signature/denim/".$signature['video']; ?>
+					<?php  $path = base_url()."upload/signature/tshirt/".$signature['video']; ?>
 						<div class="form-group">
 							<label for="userEditMobile">Denim Signature Video</label>
-							<input type="file" class="form-control" name="denim_signature_video" value="" >
+							<input type="file" class="form-control" name="tshirt_signature_video" value="" >
 							<?php if(!empty($signature['video'])) {?> 
 							<video width="200">
                             <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
-                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$signature['video']."'".','."'".$signature['id']."'".','."'denim'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
+                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$signature['video']."'".','."'".$signature['id']."'".','."'t-shirt'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
                             <?php } else { ?>
                             No videos
                            <?php } ?>

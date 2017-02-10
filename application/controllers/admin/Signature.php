@@ -32,25 +32,76 @@ class Signature extends CI_Controller {
 	public function index() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Destination List";
+			$header['page_title'] = "Video List";
 			$page = 1;		
-
-			$destination = $this->Signature_model->getAllDestination($page);
+			$id = 1;
+			$videos = $this->Signature_model->getAllVideo($id);
 
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
-			$data['destinations'] = $destination;
+			$data['videos'] = $videos;
+
 			$data['message'] = $this->session->flashdata('message');
 
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
-			$this->load->view('admin/destination/list', $data);
+			$this->load->view('admin/signature_video/list', $data);
 			$this->load->view('admin/common/footer');
 		} else {
 			redirect('admin/login');
 		}
 	}
+
+	public function shirt_list() {
+		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+			// Set Page Title
+			$header['page_title'] = "Destination List";
+			$page = 1;		
+			$id = 2;
+			$videos = $this->Signature_model->getShirtVideo($id);
+
+			// Create the data array to pass to view
+			$menu_details['session'] = $this->session->userdata;
+
+			$data['videos'] = $videos;
+
+			$data['message'] = $this->session->flashdata('message');
+
+			$this->load->view('admin/common/header', $header);
+			$this->load->view('admin/common/left_menu', $menu_details);
+			$this->load->view('admin/signature_video/shirt_list', $data);
+			$this->load->view('admin/common/footer');
+		} else {
+			redirect('admin/login');
+		}
+	}
+
+	public function tshirt_list() {
+		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+			// Set Page Title
+			$header['page_title'] = "Destination List";
+			$page = 1;		
+			$id = 3;
+			$videos = $this->Signature_model->getTshirtVideo($id);
+
+			// Create the data array to pass to view
+			$menu_details['session'] = $this->session->userdata;
+
+			$data['videos'] = $videos;
+
+			$data['message'] = $this->session->flashdata('message');
+
+			$this->load->view('admin/common/header', $header);
+			$this->load->view('admin/common/left_menu', $menu_details);
+			$this->load->view('admin/signature_video/tshirt_list', $data);
+			$this->load->view('admin/common/footer');
+		} else {
+			redirect('admin/login');
+		}
+	}
+
+
 
 	public function add_denim_video() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
@@ -62,7 +113,7 @@ class Signature extends CI_Controller {
            
                 $uploadPath = 'upload/signature/denim';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'mp4';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
@@ -121,7 +172,7 @@ class Signature extends CI_Controller {
            
                 $uploadPath = 'upload/signature/shirt';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'mp4';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
@@ -148,7 +199,7 @@ class Signature extends CI_Controller {
 
 					$this->session->set_flashdata('message', 'Shirt signature video has been added');
 
-					redirect('admin/signature');				
+					redirect('admin/signature/shirt_list');				
 				
 			} else {
 				// Create the data array to pass to view
@@ -180,7 +231,7 @@ class Signature extends CI_Controller {
            
                 $uploadPath = 'upload/signature/tshirt';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'mp4';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
@@ -207,7 +258,7 @@ class Signature extends CI_Controller {
 
 					$this->session->set_flashdata('message', 'Tshirt signature video has been added');
 
-					redirect('admin/signature');				
+					redirect('admin/signature/tshirt_list');				
 				
 			} else {
 				// Create the data array to pass to view
@@ -233,57 +284,57 @@ class Signature extends CI_Controller {
 
 			$did = trim($this->uri->segment(4));
 
-			$this->form_validation->set_rules('destination_name', "Name field is required", 'required');
-			$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
+			$this->form_validation->set_rules('active', "Status field is required", 'required');
+			//$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
 
 			$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
-
+			$time=time();
+			$created = date ("Y-m-d H:i:s", $time);	
 			if($this->form_validation->run() == TRUE) {
+
+				if(!empty($_FILES['denim_signature_video']['name'])){
+           
+                $uploadPath = 'upload/signature/denim';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'mp4';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('denim_signature_video')){
+                    $fileData = $this->upload->data();
+                }
+            }
+
 				$data = array(
 					'Id' => $did,
-					'destination_name' => $this->input->post('destination_name'),
-					'destination_state' => $this->input->post('destination_state'),
-					'destination_desc' => $this->input->post('destination_desc'),
-					'why_go_there' => $this->input->post('why_go'),
-					'how_far' => $this->input->post('how_far'),
-					'best_time_visit' => $this->input->post('best_time_visit'),
-					//'destination_bg_image' => $_FILES['destination_bg_img']['name'],
-					//'destination_images' => json_encode($image_array, true),
-					//'destination_matching_male_img' => $_FILES['destination_matching_male']['name'],
-					'destination_matching_male_info' => $this->input->post('destination_info_male'),
-					//'destination_matching_female_img' => $_FILES['destination_matching_female']['name'],
-					'destination_matching_female_info' => $this->input->post('destination_info_female'),
+					'category_id' => 1,
+					'video' => $_FILES['denim_signature_video']['name'],
 					'active' => ($this->input->post('active') == "on") ? 1 : 0,
+					'modify' => $created
 				);
 
-				$this->Destination_model->updateDestination($data);
+				$this->Signature_model->updateSignatureVideo($data);
 
-				$this->session->set_flashdata('message', 'User has been updated');
+				$this->session->set_flashdata('message', 'Video has been updated');
 
-				redirect('admin/destination');
+				redirect('admin/signature');
 
 			} else {
 				if(is_numeric($did)) {
 				
-					$checkDestination = $this->Destination_model->checkDestination($did);
-					if($checkDestination->num_rows() == 1) {
+					$signatureVideo = $this->Signature_model->checkVideo($did);
+					if($signatureVideo->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
 
 						// Set Page Title
-						$header['page_title'] = "Edit Destination";				
+						$header['page_title'] = "Edit denim signature video";				
 
-						foreach ($checkDestination->result() as $row) {
-							$data['destination'] = array(
+						foreach ($signatureVideo->result() as $row) {
+							$data['signature'] = array(
 								'id' => $row->Id,
-								'destination_name' => $row->destination_name,
-								'destination_state' => $row->destination_state,
-								'destination_desc' => $row->destination_desc,
-								'why_go_there' => $row->why_go_there,
-								'how_far' => $row->how_far,
-								'best_time_visit' => $row->best_time_visit,
-								'destination_matching_male_info' => $row->destination_matching_male_info,
-								'destination_matching_female_info' => $row->destination_matching_female_info,
+								'category_id' => $row->category_id,
+								'video' => $row->video,
 								'active' => $row->active,
 
 							);		
@@ -291,7 +342,7 @@ class Signature extends CI_Controller {
 
 						$this->load->view('admin/common/header', $header);
 						$this->load->view('admin/common/left_menu', $menu_details);
-						$this->load->view('admin/destination/edit', $data);
+						$this->load->view('admin/signature_video/edit', $data);
 						$this->load->view('admin/common/footer');
 					} else {
 						$this->session->set_flashdata('message', 'User not found');
@@ -306,6 +357,209 @@ class Signature extends CI_Controller {
 		} else {
 			redirect('admin/login');
 		}
+	}
+
+	public function shirt_edit() {
+		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+
+			$did = trim($this->uri->segment(4));
+
+			$this->form_validation->set_rules('active', "Status field is required", 'required');
+			//$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
+
+			$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
+			$time=time();
+			$created = date ("Y-m-d H:i:s", $time);	
+			if($this->form_validation->run() == TRUE) {
+
+				if(!empty($_FILES['shirt_signature_video']['name'])){
+           
+                $uploadPath = 'upload/signature/shirt';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'mp4';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('shirt_signature_video')){
+                    $fileData = $this->upload->data();
+                }
+            }
+
+				$data = array(
+					'Id' => $did,
+					'category_id' => 2,
+					'video' => $_FILES['shirt_signature_video']['name'],
+					'active' => ($this->input->post('active') == "on") ? 1 : 0,
+					'modify' => $created
+				);
+
+				$this->Signature_model->updateSignatureVideo($data);
+
+				$this->session->set_flashdata('message', 'Video has been updated');
+
+				redirect('admin/signature/shirt_list');
+
+			} else {
+				if(is_numeric($did)) {
+				
+					$signatureVideo = $this->Signature_model->checkVideo($did);
+					if($signatureVideo->num_rows() == 1) {
+						// Create the data array to pass to view
+						$menu_details['session'] = $this->session->userdata;
+
+						// Set Page Title
+						$header['page_title'] = "Edit shirt signature video";				
+
+						foreach ($signatureVideo->result() as $row) {
+							$data['signature'] = array(
+								'id' => $row->Id,
+								'category_id' => $row->category_id,
+								'video' => $row->video,
+								'active' => $row->active,
+
+							);		
+						}
+
+						$this->load->view('admin/common/header', $header);
+						$this->load->view('admin/common/left_menu', $menu_details);
+						$this->load->view('admin/signature_video/shirt_edit', $data);
+						$this->load->view('admin/common/footer');
+					} else {
+						$this->session->set_flashdata('message', 'User not found');
+						redirect('admin/users');
+					}
+				} else {
+					$this->session->set_flashdata('message', 'User not found');
+					redirect('admin/users');
+				}
+			}
+
+		} else {
+			redirect('admin/login');
+		}
+	}
+
+	public function tshirt_edit() {
+		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+
+			$did = trim($this->uri->segment(4));
+
+			$this->form_validation->set_rules('active', "Status field is required", 'required');
+			//$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
+
+			$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
+			$time=time();
+			$created = date ("Y-m-d H:i:s", $time);	
+			if($this->form_validation->run() == TRUE) {
+
+				if(!empty($_FILES['tshirt_signature_video']['name'])){
+           
+                $uploadPath = 'upload/signature/tshirt';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'mp4';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('tshirt_signature_video')){
+                    $fileData = $this->upload->data();
+                }
+            }
+
+				$data = array(
+					'Id' => $did,
+					'category_id' => 3,
+					'video' => $_FILES['tshirt_signature_video']['name'],
+					'active' => ($this->input->post('active') == "on") ? 1 : 0,
+					'modify' => $created
+				);
+
+				$this->Signature_model->updateSignatureVideo($data);
+
+				$this->session->set_flashdata('message', 'Video has been updated');
+
+				redirect('admin/signature/tshirt_list');
+
+			} else {
+				if(is_numeric($did)) {
+				
+					$signatureVideo = $this->Signature_model->checkVideo($did);
+					if($signatureVideo->num_rows() == 1) {
+						// Create the data array to pass to view
+						$menu_details['session'] = $this->session->userdata;
+
+						// Set Page Title
+						$header['page_title'] = "Edit Tshirt signature video";				
+
+						foreach ($signatureVideo->result() as $row) {
+							$data['signature'] = array(
+								'id' => $row->Id,
+								'category_id' => $row->category_id,
+								'video' => $row->video,
+								'active' => $row->active,
+
+							);		
+						}
+
+						$this->load->view('admin/common/header', $header);
+						$this->load->view('admin/common/left_menu', $menu_details);
+						$this->load->view('admin/signature_video/tshirt_edit', $data);
+						$this->load->view('admin/common/footer');
+					} else {
+						$this->session->set_flashdata('message', 'User not found');
+						redirect('admin/users');
+					}
+				} else {
+					$this->session->set_flashdata('message', 'User not found');
+					redirect('admin/users');
+				}
+			}
+
+		} else {
+			redirect('admin/login');
+		}
+	}
+	public function delete_video()
+	{	
+		switch ($this->input->post('action'))
+        {
+            case "denim":
+
+            $data = array(
+			'id' => $this->input->post('id'),
+			'action' => $this->input->post('action'));
+			$path = 'upload/signature/denim/'.$this->input->post('image');
+					$this->Signature_model->removeVideo($data);
+					unlink($path);
+
+            break;
+
+            case "shirt":
+
+            $data = array(
+			'id' => $this->input->post('id'),
+			'action' => $this->input->post('action'));
+			$path = 'upload/signature/shirt/'.$this->input->post('image');
+					$this->Signature_model->removeVideo($data);
+					unlink($path);
+
+            break;
+
+            case "t-shirt":
+
+            $data = array(
+			'id' => $this->input->post('id'),
+			'action' => $this->input->post('action'));
+			$path = 'upload/signature/tshirt/'.$this->input->post('image');
+					$this->Signature_model->removeVideo($data);
+					unlink($path);
+
+            break;
+
+            default:
+
+   			echo "Error";
+        }
+		
 	}
 
 

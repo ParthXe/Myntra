@@ -111,6 +111,14 @@
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Video</label>
 							<input type="file" class="form-control" name="vintageVideo" value="" >
+							<?php
+							$path = base_url()."upload/denim/male/vintage_video/".$denim_male['vintage_video'];  if(!empty($denim_male['vintage_video'])) {?> 
+							<video width="200">
+                            <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
+                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$denim_male['vintage_video']."'".','."'".$denim_male['id']."'".','."'vintage_video'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
+                            <?php } else { ?>
+                            No videos
+                           <?php } ?>
 						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Title</label>

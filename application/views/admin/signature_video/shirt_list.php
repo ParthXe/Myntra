@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Signature Video List<small><a href="<?php echo base_url("admin/signature/add_denim_video"); ?>">Add Signature Video</a></small>
+        Signature Video List<small><a href="<?php echo base_url("admin/signature/add_shirt_video"); ?>">Add Signature Video</a></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -45,12 +45,12 @@
                      <?php if (count($videos) > 0 ){ ?>
                     <?php foreach($videos as $video) : ?>
                         <tr>
-                          <?php $path = base_url()."upload/signature/denim/".$video->video; ?>
+                          <?php $path = base_url()."upload/signature/shirt/".$video->video; ?>
                             <td><video width="200">
                             <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
                             </video></td>
                             <td><?php echo (isset($video->active) ? $video->active : "0" == 1) ? "<small class='label bg-green'>Active</small>" : "<small class='label bg-red'>Inactive</small>" ;?></small></td>
-                            <td><a href="<?php echo base_url("admin/signature/edit/".$video->Id); ?>"><small class="label bg-red">edit</small></a></td>
+                            <td><a href="<?php echo base_url("admin/signature/shirt_edit/".$video->Id); ?>"><small class="label bg-red">edit</small></a></td>
                         </tr>
                     <?php endforeach; ?>
                     <?php } else { ?>

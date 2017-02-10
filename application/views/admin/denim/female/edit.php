@@ -107,10 +107,18 @@
 							}
 							?>
 						</div>	
-<!-- 						<div class="form-group">
+						<div class="form-group">
 							<label for="userEditMobile">Vintage Video</label>
-							<input type="file" class="form-control" name="vintageVideo" value="" required>
-						</div> -->
+							<input type="file" class="form-control" name="vintageVideo" value="">
+							<?php
+							$path = base_url()."upload/denim/female/vintage_video/".$denim_female['vintage_video'];  if(!empty($denim_female['vintage_video'])) {?> 
+							<video width="200">
+                            <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
+                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$denim_female['vintage_video']."'".','."'".$denim_female['id']."'".','."'vintage_video'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
+                            <?php } else { ?>
+                            No videos
+                           <?php } ?>
+						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Title</label>
 							<input type="text" class="form-control" id="vintageTitle" name="vintage_title" placeholder="Vintage Title" value="<?php echo isset($denim_female['vintage_title']) ? $denim_female['vintage_title'] : "NA"; ?>" required>

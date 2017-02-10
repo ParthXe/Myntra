@@ -102,6 +102,13 @@ class Denim_model extends MY_Model {
         $data['vintage_images'] = $images_name[0]->vintage_images;
     }
 
+    if (!empty($data['vintage_video'])) {
+        $data['vintage_video'];
+    }
+    else{
+        $data['vintage_video'] = $images_name[0]->vintage_video;
+    }
+
         $this->db->where('Id',$data['Id']);
         $this->db->update('denim_male',$data);
     }
@@ -155,6 +162,13 @@ class Denim_model extends MY_Model {
     else
     {
         $data['vintage_images'] = $images_name[0]->vintage_images;
+    }
+
+    if (!empty($data['vintage_video'])) {
+        $data['vintage_video'];
+    }
+    else{
+        $data['vintage_video'] = $images_name[0]->vintage_video;
     }
 
         $this->db->where('Id',$data['Id']);
@@ -241,6 +255,12 @@ class Denim_model extends MY_Model {
             $this->db->update('denim_male');
         }
 
+        if($data['action']=='vintage_video')
+        {
+            $this->db->where('Id',$data['id']);
+            $this->db->set('vintage_video',"");
+            $this->db->update('denim_male');
+        }
 
 
     } 
@@ -325,7 +345,12 @@ class Denim_model extends MY_Model {
             $this->db->update('denim_female');
         }
 
-
+        if($data['action']=='vintage_video')
+        {
+            $this->db->where('Id',$data['id']);
+            $this->db->set('vintage_video',"");
+            $this->db->update('denim_female');
+        }
 
     }
 

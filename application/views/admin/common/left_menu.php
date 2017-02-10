@@ -344,26 +344,26 @@
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Denim<i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>List</a></li>
+                <li><a href="<?php echo $this->config->item('base_url_admin')."/signature"; ?>"><i class="fa fa-circle-o"></i>List</a></li>
                 <li><a href="<?php echo $this->config->item('base_url_admin')."/signature/add_denim_video"; ?>"><i class="fa fa-circle-o"></i>Add</a></li>
               </ul>
             </li>          	
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Shirts<i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>List</a></li>
+                <li><a href="<?php echo $this->config->item('base_url_admin')."/signature/shirt_list"; ?>"><i class="fa fa-circle-o"></i>List</a></li>
                 <li><a href="<?php echo $this->config->item('base_url_admin')."/signature/add_shirt_video"; ?>"><i class="fa fa-circle-o"></i>Add</a></li>
               </ul>
             </li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>T-shirts<i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i>List</a></li>
+                <li><a href="<?php echo $this->config->item('base_url_admin')."/signature/tshirt_list"; ?>"><i class="fa fa-circle-o"></i>List</a></li>
                 <li><a href="<?php echo $this->config->item('base_url_admin')."/signature/add_tshirt_video"; ?>"><i class="fa fa-circle-o"></i>Add</a></li>
               </ul>
             </li> 
           </ul>
-        </li> 
+        </li>  
 		  <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Looks</span>
