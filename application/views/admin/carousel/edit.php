@@ -27,7 +27,7 @@
 						<div class="form-group">
 							<label for="topBarImage">Image:</label>
 							<input type="file" class="form-control" id="imagePath" name="imagePath" value="" />
-							<span><?php echo substr($carouselList['imagePath'],10);?></span>
+							<span><img style="background-color:grey;height:200px;width:200px" src="<?php echo ASSET_PATH."carousel/".$carouselList['imagePath']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="title">Title:</label>
@@ -51,7 +51,7 @@
 		                	<label>Status</label>
 		                    <div class="checkbox">
 		                      <label class="no-padding">
-		                        <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" <?php if($carouselList['status']=="1")  echo "checked";?> class="minimal themed" name="active" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Active
+		                        <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" <?php if($carouselList['status']=="1")  echo "checked";?> class="minimal themed" name="active" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> &nbsp;Active
 		                    </label>
 		                    </div>
 		                </div>

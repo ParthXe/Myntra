@@ -34,9 +34,9 @@
 							<input type="text" class="form-control" id="headingTxt" name="headingTxt" value="<?php echo $sortByList['headingTxt'];?>" 	/>
 						</div>
 						<div class="form-group">
-							<label for="BackbuttonImage">Back Button Image:</label>
+							<label for="BackbuttonImage">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><?php echo substr($sortByList['closeImageButton'],10);?></span>
+							<span><img style="background-color:grey;height:40px;width:40px" src="<?php echo ASSET_PATH."sortBy/".$sortByList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="option1">Option1 Text:</label>

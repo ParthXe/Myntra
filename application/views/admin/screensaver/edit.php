@@ -35,7 +35,7 @@
 						<div class="form-group">
 							<label for="explorebutton">Explore Button:</label>
 							<input type="file" class="form-control" id="exploreBtnPath" name="exploreBtnPath" value=""/>
-							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."screensaver/".$screensaverinfo['exploreBtnPath']; ?>"</span>
+							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."screensaver/".$screensaverinfo['exploreBtnPath']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->

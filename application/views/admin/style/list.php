@@ -36,7 +36,7 @@
                   <table class="table">
                     <tr>
 						<th>Title</th>
-						<th>Carousel ID</th>
+						<th>Carousel</th>
 						<th>Style ID</th>
 						<th>Status</th>
 						<th>EDIT</th>
@@ -46,8 +46,8 @@
                     <?php foreach($styleList as $info) : ?>
                         <tr>
 							<td><?php echo isset($info->title) ? $info->title : "NA";?></td>
-							<td><?php echo isset($info->style_id ) ? $info->carousel_id : "NA";?></td>
-							<td><?php echo isset($info->carousel_id) ? $info->style_id : "NA";?></td>
+							<td><?php echo isset($info->carousel_id ) ? $info->imagePath : "NA";?></td>
+							<td><?php echo isset($info->style_id) ? $info->style_id : "NA";?></td>
 							<td><?php echo isset($info->status) ? $info->status : "NA";?></td>
                             <td><a href="<?php echo base_url("admin/style/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
 							<td><a href="<?php echo base_url("admin/style/delete/".$info->id); ?>"><small class="label bg-red">DELETE</small></a></td>

@@ -49,7 +49,7 @@
                     <?php foreach($carouselList as $info) : ?>
                         <tr>
 							<td><?php echo isset($info->title) ? $info->title : "NA";?></td>
-							<td><?php echo isset($info->imagePath ) ? substr($info->imagePath,10) : "NA";?></td>
+							<td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."carousel/".$info->imagePath; ?>" /></td>
 							<td><?php echo isset($info->gender) ? $info->gender : "NA";?></td>
 							<td><?php echo isset($info->type) ? strtoupper($info->type) : "NA";?></td>
 							<td><?php echo isset($info->status) ? $info->status : "NA";?></td>

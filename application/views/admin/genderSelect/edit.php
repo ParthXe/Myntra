@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Configure Gender Select
+        Configure Gender Selection
       </h1>
     </section>
 
@@ -27,27 +27,27 @@
 						<div class="form-group">
 							<label for="image1">Men Active:</label>
 							<input type="file" class="form-control" id="image1" name="image1" value="" 	/>
-							<span><?php echo substr($genderSelectList['image1'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['image1']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image1Disabled">Men Inactive:</label>
 							<input type="file" class="form-control" id="image1Disabled" name="image1Disabled" value=""/>
-							<span><?php echo substr($genderSelectList['image1Disabled'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['image1Disabled']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image2">Women Active:</label>
 							<input type="file" class="form-control" id="image2" name="image2" value="" 	/>
-							<span><?php echo substr($genderSelectList['image2'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['image2']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image2Disabled">Women Inactive:</label>
 							<input type="file" class="form-control" id="image2Disabled" name="image2Disabled" value=""/>
-							<span><?php echo substr($genderSelectList['image2Disabled'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['image2Disabled']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="thunderImage">Thunder Image:</label>
 							<input type="file" class="form-control" id="thunderImage" name="thunderImage" value="" 	/>
-							<span><?php echo substr($genderSelectList['thunderImage'],10);?></span>
+							<span><img style="background-color:grey;height:20%;width:20%" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['thunderImage']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->
