@@ -91,7 +91,7 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
+                $_FILES['championsProductsImages']['name'][$j] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
                 $_FILES['championsProductsImage']['tmp_name'] = $_FILES['championsProductsImages']['tmp_name'][$j];
@@ -248,7 +248,7 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
+                $_FILES['championsProductsImages']['name'][$j] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
                 $_FILES['championsProductsImage']['tmp_name'] = $_FILES['championsProductsImages']['tmp_name'][$j];
@@ -477,7 +477,7 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
+                $_FILES['championsProductsImages']['name'][$j] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
                 $_FILES['championsProductsImage']['tmp_name'] = $_FILES['championsProductsImages']['tmp_name'][$j];
@@ -552,11 +552,9 @@ class Shirts extends MY_Controller {
             }
         }
         if(!empty($_FILES['vintageVideo']['name'])){
-                $_FILES['vintageVideo']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageVideo']['name'][$i];
-
                 $uploadPath = 'upload/shirts/female/vintage_video';
                 $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'mp4';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
@@ -635,7 +633,7 @@ class Shirts extends MY_Controller {
 				 if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
+                $_FILES['championsProductsImages']['name'][$j] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$j];
 
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
@@ -713,7 +711,6 @@ class Shirts extends MY_Controller {
             }
         }
         if(!empty($_FILES['vintageVideo']['name'])){
-                $_FILES['vintageVideo']['name'] = $this->generateRandomNumber().$_FILES['vintageVideo']['name'];
 
                 $uploadPath = 'upload/shirts/female/vintage_video';
                 $config['upload_path'] = $uploadPath;
