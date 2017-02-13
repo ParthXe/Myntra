@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Shirts extends CI_Controller {
+class Shirts extends MY_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -66,6 +66,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['userFiles']['name'])){
             $filesCount = count($_FILES['userFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
+                $_FILES['userFiles']['name'][$i] = $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['name'] = $_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['userFiles']['type'][$i];
                 $_FILES['userFile']['tmp_name'] = $_FILES['userFiles']['tmp_name'][$i];
@@ -90,7 +91,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-
+                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
                 $_FILES['championsProductsImage']['tmp_name'] = $_FILES['championsProductsImages']['tmp_name'][$j];
@@ -116,7 +117,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['trendsImages']['name'])){
             $filesCount2 = count($_FILES['trendsImages']['name']);
             for($i = 0; $i < $filesCount2; $i++){
-            	
+                $_FILES['trendsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['trendsImages']['name'][$i];
                 $_FILES['trendsImage']['name'] = $_FILES['trendsImages']['name'][$i];
                 $_FILES['trendsImage']['type'] = $_FILES['trendsImages']['type'][$i];
                 $_FILES['trendsImage']['tmp_name'] = $_FILES['trendsImages']['tmp_name'][$i];
@@ -143,6 +144,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['vintageImage']['name'])){
             $filesCount3 = count($_FILES['vintageImage']['name']);
             for($i = 0; $i < $filesCount3; $i++){
+                $_FILES['vintageImage']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['name'] = $_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['type'] = $_FILES['vintageImage']['type'][$i];
                 $_FILES['vintageImages']['tmp_name'] = $_FILES['vintageImage']['tmp_name'][$i];
@@ -165,7 +167,7 @@ class Shirts extends CI_Controller {
         }
         if(!empty($_FILES['vintageVideo']['name'])){
            
-
+                $_FILES['vintageVideo']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageVideo']['name'][$i];
                 $uploadPath = 'upload/shirts/male/vintage_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
@@ -246,7 +248,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-
+                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
                 $_FILES['championsProductsImage']['tmp_name'] = $_FILES['championsProductsImages']['tmp_name'][$j];
@@ -272,6 +274,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['trendsImages']['name'])){
             $filesCount2 = count($_FILES['trendsImages']['name']);
             for($i = 0; $i < $filesCount2; $i++){
+                $_FILES['trendsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['trendsImages']['name'][$i];
             	
                 $_FILES['trendsImage']['name'] = $_FILES['trendsImages']['name'][$i];
                 $_FILES['trendsImage']['type'] = $_FILES['trendsImages']['type'][$i];
@@ -299,6 +302,8 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['vintageImage']['name'])){
             $filesCount3 = count($_FILES['vintageImage']['name']);
             for($i = 0; $i < $filesCount3; $i++){
+
+                $_FILES['vintageImage']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['name'] = $_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['type'] = $_FILES['vintageImage']['type'][$i];
                 $_FILES['vintageImages']['tmp_name'] = $_FILES['vintageImage']['tmp_name'][$i];
@@ -321,6 +326,7 @@ class Shirts extends CI_Controller {
         }
         if(!empty($_FILES['vintageVideo']['name'])){
            
+                $_FILES['vintageVideo']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageVideo']['name'][$i];
 
                 $uploadPath = 'upload/shirts/male/vintage_video';
                 $config['upload_path'] = $uploadPath;
@@ -446,6 +452,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['userFiles']['name'])){
             $filesCount = count($_FILES['userFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
+                $_FILES['userFile']['name'][$i] = $this->generateRandomNumber().$_FILES['userFile']['name'][$i];
                 $_FILES['userFile']['name'] = $_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['userFiles']['type'][$i];
                 $_FILES['userFile']['tmp_name'] = $_FILES['userFiles']['tmp_name'][$i];
@@ -470,7 +477,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
-
+                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
                 $_FILES['championsProductsImage']['tmp_name'] = $_FILES['championsProductsImages']['tmp_name'][$j];
@@ -496,7 +503,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['trendsImages']['name'])){
             $filesCount2 = count($_FILES['trendsImages']['name']);
             for($i = 0; $i < $filesCount2; $i++){
-            	
+                $_FILES['trendsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['trendsImages']['name'][$i];
                 $_FILES['trendsImage']['name'] = $_FILES['trendsImages']['name'][$i];
                 $_FILES['trendsImage']['type'] = $_FILES['trendsImages']['type'][$i];
                 $_FILES['trendsImage']['tmp_name'] = $_FILES['trendsImages']['tmp_name'][$i];
@@ -523,6 +530,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['vintageImage']['name'])){
             $filesCount3 = count($_FILES['vintageImage']['name']);
             for($i = 0; $i < $filesCount3; $i++){
+                $_FILES['vintageImage']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['name'] = $_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['type'] = $_FILES['vintageImage']['type'][$i];
                 $_FILES['vintageImages']['tmp_name'] = $_FILES['vintageImage']['tmp_name'][$i];
@@ -544,7 +552,7 @@ class Shirts extends CI_Controller {
             }
         }
         if(!empty($_FILES['vintageVideo']['name'])){
-           
+                $_FILES['vintageVideo']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageVideo']['name'][$i];
 
                 $uploadPath = 'upload/shirts/female/vintage_video';
                 $config['upload_path'] = $uploadPath;
@@ -627,6 +635,7 @@ class Shirts extends CI_Controller {
 				 if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
+                $_FILES['championsProductsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$i];
 
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
@@ -653,6 +662,7 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['trendsImages']['name'])){
             $filesCount2 = count($_FILES['trendsImages']['name']);
             for($i = 0; $i < $filesCount2; $i++){
+                $_FILES['trendsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['trendsImages']['name'][$i];
             	
                 $_FILES['trendsImage']['name'] = $_FILES['trendsImages']['name'][$i];
                 $_FILES['trendsImage']['type'] = $_FILES['trendsImages']['type'][$i];
@@ -680,6 +690,8 @@ class Shirts extends CI_Controller {
         if(!empty($_FILES['vintageImage']['name'])){
             $filesCount3 = count($_FILES['vintageImage']['name']);
             for($i = 0; $i < $filesCount3; $i++){
+                $_FILES['vintageImage']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageImage']['name'][$i];
+
                 $_FILES['vintageImages']['name'] = $_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['type'] = $_FILES['vintageImage']['type'][$i];
                 $_FILES['vintageImages']['tmp_name'] = $_FILES['vintageImage']['tmp_name'][$i];
@@ -701,7 +713,7 @@ class Shirts extends CI_Controller {
             }
         }
         if(!empty($_FILES['vintageVideo']['name'])){
-           
+                $_FILES['vintageVideo']['name'] = $this->generateRandomNumber().$_FILES['vintageVideo']['name'];
 
                 $uploadPath = 'upload/shirts/female/vintage_video';
                 $config['upload_path'] = $uploadPath;
