@@ -142,12 +142,12 @@ class Style extends MY_Controller {
 							$data['styleList'] = array(
 								'title' => $row->title,
 								'carousel_id' => $row->carousel_id,
+								'imagePath' => $row->imagePath,
 								'style_id' => $row->style_id,
 								'status' => $row->status,
 								'create_date' => $created, 
 							);		
 						}
-						
 						$this->load->view('admin/common/header', $header);
 						$this->load->view('admin/common/left_menu', $menu_details);
 						$this->load->view('admin/style/edit', $data);
