@@ -60,23 +60,32 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($productdesclist as $info) : ?>
                         <tr>
-                           <td><?php echo isset($info->topBarImage) ? substr($info->topBarImage,10) : "NA";?></td>
-                            <td><?php echo isset($info->BackbuttonImage ) ? substr($info->BackbuttonImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->homebuttonImage) ? substr($info->homebuttonImage,10) : "NA";?></td>
-                            <td><?php echo isset($info->myntralogoImage ) ? substr($info->myntralogoImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->getProdBtn ) ? substr($info->getProdBtn,10)  : "NA";?></td>
-							<td><?php echo isset($info->relatedProdHeadingTxt ) ? $info->relatedProdHeadingTxt  : "NA";?></td>
-							<td><?php echo isset($info->descTxtHeading ) ? $info->descTxtHeading  : "NA";?></td>
-							<td><?php echo isset($info->colorSelectionHeading ) ? $info->colorSelectionHeading  : "NA";?></td>
-							<td><?php echo isset($info->sizeSelectionHeading ) ? $info->sizeSelectionHeading  : "NA";?></td>
-							<td><?php echo isset($info->notsureHeading ) ? $info->notsureHeading  : "NA";?></td>
-							<td><?php echo isset($info->closeImageButton ) ? substr($info->closeImageButton,10)  : "NA";?></td>
-							<td><?php echo isset($info->sizePopupHeadingTxt ) ? $info->sizePopupHeadingTxt  : "NA";?></td>
-							<td><?php echo isset($info->sizePopupFirstTabTxt ) ? $info->sizePopupFirstTabTxt  : "NA";?></td>
-							<td><?php echo isset($info->prodUrl ) ? $info->prodUrl  : "NA";?></td>
-							<td><?php echo isset($info->sizeUrl ) ? $info->sizeUrl  : "NA";?></td>
-							<td><?php echo isset($info->nextbuttonImage ) ? substr($info->nextbuttonImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->backbtnImage ) ? substr($info->backbtnImage,10)  : "NA";?></td>
+                            <td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->topBarImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->BackbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->homebuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->myntralogoImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->getProdBtn; ?>" /></td>
+							<?php $str= $info->relatedProdHeadingTxt;$relatedProdHeadingTxt = strip_tags($str,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $relatedProdHeadingTxt;?></td>
+							<?php $str1= $info->descTxtHeading;$descTxtHeading = strip_tags($str1,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $descTxtHeading;?></td>
+							<?php $str2= $info->colorSelectionHeading;$colorSelectionHeading = strip_tags($str2,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $colorSelectionHeading;?></td>
+							<?php $str3= $info->sizeSelectionHeading;$sizeSelectionHeading = strip_tags($str3,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizeSelectionHeading;?></td>
+							<?php $str4= $info->notsureHeading;$notsureHeading = strip_tags($str4,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $notsureHeading;?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->closeImageButton; ?>" /></td>
+							<?php $str5= $info->sizePopupHeadingTxt;$sizePopupHeadingTxt = strip_tags($str5,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizePopupHeadingTxt;?></td>
+							<?php $str6= $info->sizePopupFirstTabTxt;$sizePopupFirstTabTxt = strip_tags($str6,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizePopupFirstTabTxt;?></td>
+							<?php $str7= $info->prodUrl;$prodUrl = strip_tags($str7,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $prodUrl;?></td>
+							<?php $str8= $info->sizeUrl;$sizeUrl = strip_tags($str8,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizeUrl;?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->nextbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->backbtnImage; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/productdesc/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
                         </tr>
                     <?php endforeach; ?>

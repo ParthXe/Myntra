@@ -49,11 +49,15 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($sendSMSList as $info) : ?>
                         <tr>
-							<td><?php echo isset($info->headingTxt) ? $info->headingTxt : "NA";?></td>
-                            <td><?php echo isset($info->closeImageButton ) ? substr($info->closeImageButton,10)  : "NA";?></td>
-							<td><?php echo isset($info->bodyTxt) ? $info->bodyTxt : "NA";?></td>
-                            <td><?php echo isset($info->button1 ) ? $info->button1  : "NA";?></td>
-							<td><?php echo isset($info->button2) ? $info->button2 : "NA";?></td>
+							<?php $str= $info->headingTxt;$headingTxt = strip_tags($str,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $headingTxt;?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."sendSMS/".$info->closeImageButton; ?>" /></td>
+							<?php $str1= $info->bodyTxt;$bodyTxt = strip_tags($str1,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $bodyTxt;?></td>
+							<?php $str2= $info->button1;$button1 = strip_tags($str2,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $button1;?></td>
+							<?php $str3= $info->button2;$button2 = strip_tags($str3,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $button2;?></td>
                             <td><a href="<?php echo base_url("admin/sendSMS/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>
