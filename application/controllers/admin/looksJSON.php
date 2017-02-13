@@ -15,14 +15,14 @@ class LooksJSON extends MY_Controller {
 	}	
 	/* Done */
 	public function index() {
-		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+		//if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Style Images";
 			$page = 1;	
 			$data['type'] = trim($this->uri->segment(3));
 			$data['gender'] = trim($this->uri->segment(4));
 			$json_data = $this->looksJSON_model->getJSON($data);
-			echo "<pre>";
+			//echo "<pre>";
 			for($ii=0;$ii<count($json_data);$ii++)
 			{ 
 				$StyleData = $this->looksJSON_model->getStyles($json_data[$ii]->id);
@@ -41,9 +41,9 @@ class LooksJSON extends MY_Controller {
 			//$this->load->view('admin/common/left_menu', $menu_details);
 			//$this->load->view('admin/style/list', $data);
 			//$this->load->view('admin/common/footer');
-		} else {
+		/* } else {
 			redirect('admin/login');
-		}
+		} */
 	}	
 
 	/* Done */

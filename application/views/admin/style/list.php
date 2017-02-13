@@ -47,7 +47,7 @@
                         <tr>
 							<td><?php echo isset($info->title) ? $info->title : "NA";?></td>
 							<td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."carousel/".$info->imagePath; ?>" /></td>
-							<!--<td><?php echo isset($info->carousel_id ) ? $info->imagePath : "NA";?></td>-->
+							<!--<td><!--?php echo isset($info->carousel_id ) ? $info->imagePath : "NA";?></td>-->
 							<td><?php echo isset($info->style_id) ? $info->style_id : "NA";?></td>
 							<td><?php echo isset($info->status) ? $info->status : "NA";?></td>
                             <td><a href="<?php echo base_url("admin/style/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>

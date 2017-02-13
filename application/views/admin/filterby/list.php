@@ -53,7 +53,8 @@
                     <?php foreach($filterByList as $info) : ?>
                         <tr>
 							<td><?php echo isset($info->headingTxt) ? $info->headingTxt : "NA";?></td>
-                            <td><?php echo isset($info->closeImageButton ) ? substr($info->closeImageButton,10)  : "NA";?></td>
+                            <td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."filterby/".$info->closeImageButton; ?>" /></td>
+							<!--td><!--?php echo isset($info->closeImageButton ) ? substr($info->closeImageButton,10)  : "NA";?></td-->
 							<td><?php echo isset($info->clearButton) ? $info->clearButton : "NA";?></td>
 							<td><?php echo isset($info->applyButton) ? $info->applyButton : "NA";?></td>
 							<td><?php echo isset($info->option1) ? $info->option1 : "NA";?></td>

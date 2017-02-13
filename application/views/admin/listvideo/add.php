@@ -18,6 +18,10 @@ var config = {
 									'FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF',			
 				basicEntities : false,
 				entities : false,
+				coreStyles_bold: {
+                        element: 'b',
+                        overrides: 'strong',
+                    },
 			}
 </script>
     <section class="content-header">
