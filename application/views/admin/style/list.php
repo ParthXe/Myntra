@@ -55,6 +55,7 @@
                         </tr>
                     <?php endforeach; ?>
                   </table>
+				  <p><?php echo $links; ?></p>
                 </div>
                 <!-- /.box-body -->
               </div>

@@ -12,15 +12,26 @@ class Style extends MY_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
 		$this->load->model('style_model');
+		$this->load->library("pagination");
 	}	
 	/* Done */
 	public function index() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Style Images";
-			$page = 1;	
+			//$page = 1;	
 			
-			$styleList = $this->style_model->getStyleList($page);
+			 $config = array();
+			$config["base_url"] = base_url() . "admin/style/index";
+			$config["total_rows"] = $this->style_model->record_count();
+			$config["per_page"] = 8;
+			$config["uri_segment"] = 3;
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+			
+
+			$styleList = $this->style_model->getStyleList($config["per_page"], $page);
+			$data['links'] = $this->pagination->create_links();
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
