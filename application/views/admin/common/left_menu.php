@@ -37,7 +37,7 @@
 	              <li><!-- start message -->
 	                <a href="#">
 	                  <div class="pull-left">
-	                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+	                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 	                  </div>
 	                  <h4>
 	                    Support Team
@@ -50,7 +50,7 @@
 	              <li>
 	                <a href="#">
 	                  <div class="pull-left">
-	                    <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+	                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 	                  </div>
 	                  <h4>
 	                    AdminLTE Design Team
@@ -62,7 +62,7 @@
 	              <li>
 	                <a href="#">
 	                  <div class="pull-left">
-	                    <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+	                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 	                  </div>
 	                  <h4>
 	                    Developers
@@ -74,7 +74,7 @@
 	              <li>
 	                <a href="#">
 	                  <div class="pull-left">
-	                    <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+	                    <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 	                  </div>
 	                  <h4>
 	                    Sales Department
@@ -219,13 +219,13 @@
 	      <!-- User Account: style can be found in dropdown.less -->
 	      <li class="dropdown user user-menu">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+	          <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
 	          <span class="hidden-xs"><?php echo $session['usr_fname']; ?></span>
 	        </a>
 	        <ul class="dropdown-menu">
 	          <!-- User image -->
 	          <li class="user-header">
-	            <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+	            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 	            <p><?php echo $session['usr_fname']; ?></p>
 	          </li>
 	          <!-- Menu Footer-->
@@ -380,7 +380,7 @@
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Style<i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo $this->config->item('base_url_admin')."/style/list"; ?>"><i class="fa fa-circle-o"></i>List</a></li>
+                <li><a href="<?php echo $this->config->item('base_url_admin')."/style"; ?>"><i class="fa fa-circle-o"></i>List</a></li>
                 <!--<li><a href="<?php echo $this->config->item('base_url_admin')."/signature/add_shirt_video"; ?>"><i class="fa fa-circle-o"></i>Add</a></li>-->
               </ul>
             </li>

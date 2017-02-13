@@ -24,10 +24,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://192.168.1.58/myntra';
-$config['base_url'] = 'http://localhost/myntra1';
+
+
 
 //$config['base_url_admin'] = 'http://192.168.1.58/myntra/admin';
-$config['base_url_admin'] = 'http://localhost/myntra1/admin';
+
+
+
+//$config['base_url_admin'] = 'http://192.168.1.58/myntra/admin';
+$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/myntra';
+$config['base_url_admin'] = 'http://'.$_SERVER['HTTP_HOST'].'/myntra/admin';
 
 /*
 |--------------------------------------------------------------------------

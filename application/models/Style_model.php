@@ -16,6 +16,14 @@ class Style_model extends MY_Model {
 		$this->db->order_by("title","ASC");
         $query = $this->db->get('styles_data');
         foreach ($query->result() as $row) {
+			$this->db->select('imagePath');
+			$this->db->from('carousel_data');
+			$this->db->where('id', $row->carousel_id);
+			$query1 = $this->db->get();
+			if(count($query1->result()))
+			{
+				$row->imagePath = $query1->result()[0]->imagePath;
+			}
             $sendStyleList[] = $row;
         }
 		return $sendStyleList;

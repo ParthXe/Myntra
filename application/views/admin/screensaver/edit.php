@@ -4,12 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-         configure screensaver
+        Configure Screensaver
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Screensaver</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -19,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Change configuration of Screensaver </h3>
+                  <h3 class="box-title">Screensaver </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -31,12 +27,15 @@
 						<div class="form-group">
 							<label for="screensaver">Screensaver:</label>
 							<input type="file" class="form-control" id="bgPath" name="bgPath" value="" 	/>
-							<span><?php echo substr($screensaverinfo['bgPath'],10);?></span>
+							<span><video width="320" height="240" controls>
+									<source src="<?php echo ASSET_PATH."screensaver/".$screensaverinfo['bgPath']; ?>" type="video/mp4">
+								</video>
+							</span>
 						</div>
 						<div class="form-group">
 							<label for="explorebutton">Explore Button:</label>
 							<input type="file" class="form-control" id="exploreBtnPath" name="exploreBtnPath" value=""/>
-							<span><?php echo substr($screensaverinfo['exploreBtnPath'],10);?></span>
+							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."screensaver/".$screensaverinfo['exploreBtnPath']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->

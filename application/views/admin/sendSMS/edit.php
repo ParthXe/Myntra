@@ -37,7 +37,7 @@
 						<div class="form-group">
 							<label for="closeImageButton">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><?php echo substr($sendSMSList['closeImageButton'],10);?></span>
+							<span><img style="background-color:grey;height:40px;width:40px" src="<?php echo ASSET_PATH."sendSMS/".$sendSMSList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image2">Body Text:</label>

@@ -21,12 +21,8 @@ var config = {
 </script>
     <section class="content-header">
       <h1>
-         Modify List Video Configuration
+         Configure List Video
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">List Video</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -36,7 +32,7 @@ var config = {
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Change configuration of List Video</h3>
+                  <h3 class="box-title">List Video</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -48,7 +44,7 @@ var config = {
 						<div class="form-group">
 							<label for="topbarimg">Top-Bar Image:</label>
 							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
-							<span><?php echo substr($listvideoinfo['topBarImage'],10);?></span>
+							<span><img style="background-color:grey;height:200px;width:150px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="headtext">Heading Text:</label>
@@ -62,42 +58,42 @@ var config = {
 						<div class="form-group">
 							<label for="backbutton">Back Button Image:</label>
 							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value="" />
-								<span><?php echo substr($listvideoinfo['BackbuttonImage'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
 							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value="" />
-							<span><?php echo substr($listvideoinfo['homebuttonImage'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['homebuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="sortBtnImg">Sort Buttton Image:</label>
 							<input type="file" class="form-control" id="sortBtnImage" name="sortBtnImage" value="" />
-							<span><?php echo substr($listvideoinfo['sortBtnImage'],10);?></span>
+							<span><img style="background-color:grey;height:40px;width:100px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['sortBtnImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="sortRollBtnImg">Sort Roll Button Image:</label>
 							<input type="file" class="form-control" id="sortRollBtnImage" name="sortRollBtnImage" value="" />
-							<span><?php echo substr($listvideoinfo['sortRollBtnImage'],10);?></span>
+							<span><img style="background-color:grey;height:40px;width:100px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['sortRollBtnImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="filterBtnImg">Filter Buttton Image:</label>
 							<input type="file" class="form-control" id="filterBtnImage" name="filterBtnImage" value="" />
-							<span><?php echo substr($listvideoinfo['filterBtnImage'],10);?></span>
+							<span><img style="background-color:grey;height:40px;width:100px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['filterBtnImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="filterrollBtnImg">Filter Roll Button Image:</label>
 							<input type="file" class="form-control" id="filterRollBtnImage" name="filterRollBtnImage" value="" />
-							<span><?php echo substr($listvideoinfo['filterRollBtnImage'],10);?></span>
+							<span><img style="background-color:grey;height:40px;width:100px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['filterRollBtnImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="myntralogoImg">Myntra Logo Image:</label>
 							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" value="" />
-							<span><?php echo substr($listvideoinfo['myntralogoImage'],10);?></span>
+							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['myntralogoImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="blackbgImg">Black Background Image:</label>
 							<input type="file" class="form-control" id="blackbgImage" name="blackbgImage" value="" />
-							<span><?php echo substr($listvideoinfo['blackbgImage'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."listvideo/".$listvideoinfo['blackbgImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="imgGalleryPos">Image Gallery Position:</label>

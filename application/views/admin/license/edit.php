@@ -31,7 +31,7 @@
 						<div class="form-group">
 							<label for="topBarImage">Top Bar Image:</label>
 							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value=""/>
-							<span><?php echo substr($licenseList['topBarImage'],10);?></span>
+							<span><img style="background-color:grey;height:150px;width:100px" src="<?php echo ASSET_PATH."license/".$licenseList['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 						  <!-- button1 button2-->
@@ -41,7 +41,7 @@
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
 							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value=""/>
-							<span><?php echo substr($licenseList['BackbuttonImage'],10);?></span>
+							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."license/".$licenseList['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="thunderImage">Button1 Text:</label>

@@ -6,10 +6,6 @@
       <h1>
          Modify Product Description Configuration
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Product Description</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -30,28 +26,28 @@
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="screensaver">Top-Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" 	/>
-							<span><?php echo substr($productdescinfo['topBarImage'],10);?></span>
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
+							<span><img style="background-color:grey;height:200px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Back Button Image:</label>
 							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value=""/>
-							<span><?php echo substr($productdescinfo['BackbuttonImage'],10);?></span>
+							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
 							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value=""/>
-							<span><?php echo substr($productdescinfo['homebuttonImage'],10);?></span>
+							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['homebuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Myntra Logo Image:</label>
 							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" value=""/>
-							<span><?php echo substr($productdescinfo['myntralogoImage'],10);?></span>
+							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['myntralogoImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Get Product Button Image:</label>
 							<input type="file" class="form-control" id="getProdBtn" name="getProdBtn" value=""/>
-							<span><?php echo substr($productdescinfo['getProdBtn'],10);?></span>
+							<span><img style="background-color:grey;height:60px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['getProdBtn']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="screentext">Related Product Heading Text:</label>
@@ -76,7 +72,7 @@
 						<div class="form-group">
 							<label for="buttonimg">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><?php echo substr($productdescinfo['closeImageButton'],10);?></span>
+							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="screentext">Size Popup Heading Text:</label>
@@ -97,12 +93,12 @@
 						<div class="form-group">
 							<label for="clsbutton">Next Button Image:</label>
 							<input type="file" class="form-control" id="nextbuttonImage" name="nextbuttonImage" value=""/>
-							<span><?php echo substr($productdescinfo['nextbuttonImage'],10);?></span>
+							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['nextbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="clsbutton">Previous Button Image:</label>
 							<input type="file" class="form-control" id="backbtnImage" name="backbtnImage" value=""/>
-							<span><?php echo substr($productdescinfo['backbtnImage'],10);?></span>
+							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['backbtnImage']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->
