@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        List Video<small><a href="<?php echo base_url("admin/listvideo/add"); ?>">collectionvideo</a></small>
+        List Video<small><a href="<?php echo base_url("admin/listvideo/add"); ?>">listvideo</a></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -51,21 +51,22 @@
                       <th>Black Background Image</th>
                       <th>Image Gallery Position</th>
                     </tr>
-                   <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($listvideolist as $info) : ?>
                         <tr>
-                            <td><?php echo isset($info->topBarImage) ? substr($info->topBarImage,10) : "NA";?></td>
-							<td><?php echo isset($info->headingTxt ) ? $info->headingTxt  : "NA";?></td>
-							<td><?php echo isset($info->BackbuttonImage) ? substr($info->BackbuttonImage,10) : "NA";?></td>
-                            <td><?php echo isset($info->homebuttonImage ) ? substr($info->homebuttonImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->sortBtnImage ) ? substr($info->sortBtnImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->sortRollBtnImage ) ? substr($info->sortRollBtnImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->filterBtnImage ) ? substr($info->filterBtnImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->filterRollBtnImage ) ? substr($info->filterRollBtnImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->myntralogoImage ) ? substr($info->myntralogoImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->blackbgImage ) ? substr($info->blackbgImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->imageGalleryPos ) ? $info->imageGalleryPos  : "NA";?></td>
-                            <td><a href="<?php echo base_url("admin/listvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->topBarImage; ?>" /></td>
+							<?php $str= $info->headingTxt;$headingTxt = strip_tags($str,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $headingTxt;?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->BackbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->homebuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->sortBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->sortRollBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->filterBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->filterRollBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->myntralogoImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->blackbgImage; ?>" /></td>
+							<?php $str1= $info->imageGalleryPos;$imageGalleryPos = strip_tags($str1,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $imageGalleryPos;?></td>
+							<td><a href="<?php echo base_url("admin/listvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
                         </tr>
                     <?php endforeach; ?>
                   </table>

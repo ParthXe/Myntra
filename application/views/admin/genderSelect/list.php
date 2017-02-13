@@ -45,11 +45,11 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($genderSelectList as $info) : ?>
                         <tr>
-							<td><?php echo isset($info->image1) ? substr($info->image1,10) : "NA";?></td>
-                            <td><?php echo isset($info->image2 ) ? substr($info->image2,10)  : "NA";?></td>
-							<td><?php echo isset($info->image1Disabled) ? substr($info->image1Disabled,10) : "NA";?></td>
-                            <td><?php echo isset($info->image2Disabled ) ? substr($info->image2Disabled,10)  : "NA";?></td>
-							<td><?php echo isset($info->thunderImage) ? substr($info->thunderImage,10) : "NA";?></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image1; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image2; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image1Disabled; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image2Disabled; ?>" /></td>
+						    <td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->thunderImage; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/genderSelection/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>

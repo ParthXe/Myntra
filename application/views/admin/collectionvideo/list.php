@@ -51,14 +51,22 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($collectionvideolist as $info) : ?>
                         <tr>
-                           <td><?php echo isset($info->bgPath) ? substr($info->bgPath,10) : "NA";?></td>
-                            <td><?php echo isset($info->homebuttonImage ) ? substr($info->homebuttonImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->scrtext ) ? $info->scrtext  : "NA";?></td>
-							<td><?php echo isset($info->insttext ) ? $info->insttext  : "NA";?></td>
-							<td><?php echo isset($info->motoGpvideo ) ? substr($info->motoGpvideo,10)  : "NA";?></td>	
-							<td><?php echo isset($info->outLandervideo ) ? substr($info->outLandervideo,10)  : "NA";?></td>
-							<td><?php echo isset($info->buttonImage ) ? substr($info->buttonImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->closeImageButton ) ? substr($info->closeImageButton,10)  : "NA";?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->bgPath; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->homebuttonImage; ?>" /></td>
+							<?php $str= $info->scrtext;$scrtext = strip_tags($str,0);?>
+							<td><?php echo $scrtext;?></td> 
+							<?php $str1= $info->insttext;$insttext = strip_tags($str1,0);?>
+							<td><?php echo $insttext;?></td> 
+							<td><video width="125" controls>
+								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->motoGpvideo; ?>" type="video/mp4">
+								Your browser does not support the video tag.
+							</video></td>
+							<td><video width="125" controls>
+								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->outLandervideo; ?>" type="video/mp4">
+								Your browser does not support the video tag.
+							</video></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->buttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->closeImageButton; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/collectionvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
                         </tr>
                     <?php endforeach; ?>

@@ -41,8 +41,13 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($screensaverlist as $info) : ?>
                         <tr>
-                           <td><?php echo isset($info->bgPath) ? substr($info->bgPath,10) : "NA";?></td>
-                            <td><?php echo isset($info->exploreBtnPath ) ? substr($info->exploreBtnPath,10)  : "NA";?></td>
+							<td>
+								<video width="300px" controls>
+									  <source src="<?php echo ASSET_PATH."screensaver/".$info->bgPath; ?>" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</td>
+							<td><img style="background-color:grey;width:225px;" src="<?php echo ASSET_PATH."screensaver/".$info->exploreBtnPath; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/screensaver/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>

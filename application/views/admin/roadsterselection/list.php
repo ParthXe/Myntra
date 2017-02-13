@@ -56,18 +56,22 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($roadsterSelectionList as $info) : ?>
                         <tr>
-							<td><?php echo isset($info->topBarImage ) ? substr($info->topBarImage,10) : "NA";?></td>
-                            <td><?php echo isset($info->BackbuttonImage ) ? substr($info->BackbuttonImage,10)  : "NA";?></td>
-							<td><?php echo isset($info->collectionMenImage ) ? substr($info->collectionMenImage,10) : "NA";?></td>
-                            <td><?php echo isset($info->catalogueMenImage ) ? substr($info->catalogueMenImage,10) : "NA";?></td>
-							<td><?php echo isset($info->collectionWomenImage ) ? substr($info->collectionWomenImage,10) : "NA";?></td>
-							<td><?php echo isset($info->catalogueWomenImage ) ? substr($info->catalogueWomenImage,10) : "NA";?></td>
-							<td><?php echo isset($info->collectionHeadingTxt) ? $info->collectionHeadingTxt : "NA";?></td>
-							<td><?php echo isset($info->collectionTxt) ? $info->collectionTxt : "NA";?></td>
-                            <td><?php echo isset($info->collectionBtnImage ) ? substr($info->collectionBtnImage,10)  : "NA";?></td>
-                            <td><?php echo isset($info->catalogueHeadingTxt ) ? $info->catalogueHeadingTxt  : "NA";?></td>
-							<td><?php echo isset($info->catalogueTxt) ? $info->catalogueTxt : "NA";?></td>
-							<td><?php echo isset($info->catalogueBtnImage ) ? substr($info->catalogueBtnImage,10)  : "NA";?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->topBarImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->BackbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->collectionMenImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->catalogueMenImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->collectionWomenImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->catalogueWomenImage; ?>" /></td>
+							<?php $str= $info->collectionHeadingTxt;$collectionHeadingTxt = strip_tags($str,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $collectionHeadingTxt;?></td>
+							<?php $str1= $info->collectionTxt;$collectionTxt = strip_tags($str1,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $collectionTxt;?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->collectionBtnImage; ?>" /></td>
+							<?php $str2= $info->catalogueHeadingTxt;$catalogueHeadingTxt = strip_tags($str2,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $catalogueHeadingTxt;?></td>
+							<?php $str3= $info->catalogueTxt;$catalogueTxt = strip_tags($str3,0);?>
+							<td style="font-color:#000;margin-top: 15px;"><?php echo $catalogueTxt;?></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."roadsterselection/".$info->catalogueBtnImage; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/roadsterSelection/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>

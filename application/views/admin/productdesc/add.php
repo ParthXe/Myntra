@@ -1,4 +1,27 @@
 <!-- Content Wrapper. Contains page content -->
+<script type="text/javascript" src="../assets/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+var config = {
+				width:720,
+				height:200,
+				resize_enabled : false,
+				//toolbar:'full',
+				toolbar:[['Source', '-', 'Bold', 'Italic', 'Underline', '-','Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo','-','Font','FontSize','Format','Styles','-','TextColor','BGColor','-']],
+				enterMode:CKEDITOR.ENTER_BR,
+				extraPlugins:'colorbutton,font',
+				colorButton_colors : '000,800000,8B4513,2F4F4F,008080,000080,4B0082,696969,' +
+									'B22222,A52A2A,DAA520,006400,40E0D0,0000CD,800080,808080,' +
+									'F00,FF8C00,FFD700,008000,0FF,00F,EE82EE,A9A9A9,' +
+									'FFA07A,FFA500,FFFF00,00FF00,AFEEEE,ADD8E6,DDA0DD,D3D3D3,' +
+									'FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF',			
+				basicEntities : false,
+				entities : false,
+				coreStyles_bold: {
+                        element: 'b',
+                        overrides: 'strong',
+                    },
+			}
+</script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -55,23 +78,43 @@
 						</div>
 						<div class="form-group">
 							<label for="relatedprodtext">Related Product Heading Text:</label>
-							<input type="text" class="form-control" id="relatedProdHeadingTxt" name="relatedProdHeadingTxt" value="" required />
+							<textarea cols="80" class="relatedProdHeadingTxt" id="relatedProdHeadingTxt" name="relatedProdHeadingTxt" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('relatedProdHeadingTxt',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="descripheadtext">Description Heading Text:</label>
-							<input type="text" class="form-control" id="descTxtHeading" name="descTxtHeading" value="" required />
+							<textarea cols="80" class="descTxtHeading" id="descTxtHeading" name="descTxtHeading" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('descTxtHeading',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="colorselectiontext">Color Selection Heading Text:</label>
-							<input type="text" class="form-control" id="colorSelectionHeading" name="colorSelectionHeading" value="" required />
+							<textarea cols="80" class="colorSelectionHeading" id="colorSelectionHeading" name="colorSelectionHeading" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('colorSelectionHeading',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="sizeselectiontext">Size Selection Heading Text:</label>
-							<input type="text" class="form-control" id="sizeSelectionHeading" name="sizeSelectionHeading" value="" required />
+							<textarea cols="80" class="sizeSelectionHeading" id="sizeSelectionHeading" name="sizeSelectionHeading" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('sizeSelectionHeading',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="notsuretext">Not Sure Heading Text:</label>
-							<input type="text" class="form-control" id="notsureHeading" name="notsureHeading" value="" required />
+							<textarea cols="80" class="notsureHeading" id="notsureHeading" name="notsureHeading" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('notsureHeading',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="clsbuttonimg">Close Button Image:</label>
@@ -79,11 +122,19 @@
 						</div>
 						<div class="form-group">
 							<label for="sizepopuptext">Size Popup Heading Text:</label>
-							<input type="text" class="form-control" id="sizePopupHeadingTxt" name="sizePopupHeadingTxt" value="" required />
+							<textarea cols="80" class="sizePopupHeadingTxt" id="sizePopupHeadingTxt" name="sizePopupHeadingTxt" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('sizePopupHeadingTxt',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="sizepopupfirsttext">Size Popup First Tab Text:</label>
-							<input type="text" class="form-control" id="sizePopupFirstTabTxt" name="sizePopupFirstTabTxt" value="" required />
+							<textarea cols="80" class="sizePopupFirstTabTxt" id="sizePopupFirstTabTxt" name="sizePopupFirstTabTxt" rows="10" required>
+                            </textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('sizePopupFirstTabTxt',config);
+							</script>
 						</div>
 						<div class="form-group">
 							<label for="produrl">Product URL:</label>

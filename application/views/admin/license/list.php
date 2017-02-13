@@ -50,9 +50,9 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($licenseList as $info) : ?>
                         <tr><!-- topBarImage headingTxt BackbuttonImage tab1 tab2 tab3 tab4 tab5 -->
-							<td><?php echo isset($info->topBarImage ) ? substr($info->topBarImage,10)  : "NA";?></td>
+							<td><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."license/".$info->topBarImage; ?>" /></td>
 							<td><?php echo isset($info->headingTxt) ? $info->headingTxt : "NA";?></td>
-                            <td><?php echo isset($info->BackbuttonImage ) ? substr($info->BackbuttonImage,10)  : "NA";?></td>
+							<td><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."license/".$info->BackbuttonImage; ?>" /></td>
 							<td><?php echo isset($info->tab1) ? $info->tab1 : "NA";?></td>
                             <td><?php echo isset($info->tab2 ) ? $info->tab2  : "NA";?></td>
 							<td><?php echo isset($info->tab3) ? $info->tab3 : "NA";?></td>
