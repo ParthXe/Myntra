@@ -13,6 +13,12 @@
     </section>
 
     <!-- Main content -->
+	<ul class="nav nav-tabs">
+		<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+		<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+		<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+		<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+	</ul>
     <section class="content">
         <!-- /.row -->
         <div class="row">
@@ -27,7 +33,7 @@
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('admin/filterBy/add', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
+					<?php echo form_open("admin/filterBy/add/$type", 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="headingTxt">Heading Text:</label>
 							<input type="text" class="form-control" id="headingTxt" name="headingTxt" value="" required/>

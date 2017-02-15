@@ -10,14 +10,14 @@ class FilterBy_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getFilterByList($page) {
-        $sendSMSList = [];
+    public function getFilterByList($data) {
+        $filterByList = [];
+		$this->db->where('type',$data['type']);
         $query = $this->db->get('filter_by');
-        // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
-            $sendSMSList[] = $row;
+            $filterByList[] = $row;
         }
-		return $sendSMSList;
+		return $filterByList;
     } 
 	
     public function checkFilterByInfo($did) {
