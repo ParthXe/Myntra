@@ -19,24 +19,25 @@ class collectionvideo extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Configure Collection Video";
-			$page = 1;		
-
-			$collectionvideolist = $this->collectionvideo_model->getcollectionvideolist($page);
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;		
+		
+			$collectionvideolist = $this->collectionvideo_model->getcollectionvideolist($data);
 			
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
-
+			$data['tab'] = $type;
 			$data['collectionvideolist'] = $collectionvideolist;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
 			if(count($collectionvideolist)>0)
 			{ 
-				$this->load->view('admin/collectionVideo/list', $data);	
+				$this->load->view("admin/collectionVideo/list", $data);	
 			}
 			else
 			{
-				$this->load->view('admin/collectionVideo/add');
+				$this->load->view("admin/collectionVideo/add",$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -55,11 +56,12 @@ class collectionvideo extends MY_Controller {
 		$time=time();
 		$created = date ("Y-m-d H:i:s", $time);					
 		$flag=0;
-		$uploadPath = 'upload/collectionvideo/';
+		$type = trim($this->uri->segment(4));
+		$uploadPath = "upload/collectionvideo/$type";
 		
 			if(!empty($_FILES['bgPath']['name']))
 				{
-					$_FILES['bgPath']['name']=$this->$this->generateRandomNumber().$_FILES['bgPath']['name'];
+					$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
 					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
@@ -150,7 +152,8 @@ class collectionvideo extends MY_Controller {
 					$flag=1;
 				}
 			if($flag == 1) {
-				$data ['id'] = 1;
+				//$data ['id'] = 1;
+				$data['type']=$type;	
 				if(!empty($_FILES['bgPath']['name']))
 				{
 					$data ['bgPath'] = $_FILES['bgPath']['name'];
@@ -183,7 +186,7 @@ class collectionvideo extends MY_Controller {
 						$this->session->set_flashdata('message', 'Settings saved successfully..');
 				} 
 				
-					redirect('admin/collectionvideo');				
+					redirect("admin/collectionvideo/$type");				
 				
 	} 
 	else 
@@ -199,9 +202,9 @@ class collectionvideo extends MY_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);				
 			$flag=0;
-			$uploadPath = 'upload/collectionvideo/';
 			$checkcollectionvideo = $this->collectionvideo_model->checkcollectionvideoinfo($did);
-		
+			$type=$checkcollectionvideo->result()['0']->type;
+		    $uploadPath = "upload/collectionvideo/$type/";
 			 	
 				if(!empty($_FILES['bgPath']['name']))
 				{
@@ -347,7 +350,7 @@ class collectionvideo extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/collectionvideo');
+				redirect("admin/collectionvideo/$type");
 			} 
 			else {
 				if(is_numeric($did)) {
@@ -368,6 +371,7 @@ class collectionvideo extends MY_Controller {
 								'outLandervideo' => $row->outLandervideo,
 								'buttonImage' => $row->buttonImage,
 								'closeImageButton' => $row->closeImageButton,
+								'type'=>$row->type,
 							);		
 						}
 						$this->load->view('admin/common/header', $header);

@@ -36,6 +36,12 @@ var config = {
 
     <!-- Main content -->
     <section class="content">
+	<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
@@ -55,7 +61,7 @@ var config = {
 						</div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('admin/collectionvideo/add', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
+					<?php echo form_open("admin/collectionvideo/add/$tab", 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						
 						<div class="form-group">
 							<label for="screensaver">Screensaver:</label>

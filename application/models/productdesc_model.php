@@ -10,8 +10,9 @@ class productdesc_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getproductdesclist($page) {
+    public function getproductdesclist($data) {
         $productdesclist = [];
+		$this->db->where('type', $data['type']);
         $query = $this->db->get('productdesc');
         // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {

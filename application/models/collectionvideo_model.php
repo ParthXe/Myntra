@@ -10,8 +10,9 @@ class collectionvideo_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getcollectionvideolist($page) {
+    public function getcollectionvideolist($data) {
         $collectionvideolist = [];
+		$this->db->where('type', $data['type']);
         $query = $this->db->get('collectionvideo');
         // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {

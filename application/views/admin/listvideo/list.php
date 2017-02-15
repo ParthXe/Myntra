@@ -3,16 +3,18 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        List Video<small><a href="<?php echo base_url("admin/listvideo/add"); ?>">listvideo</a></small>
+        List Video
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">List Video</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+	<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
@@ -53,17 +55,17 @@
                     </tr>
                     <?php foreach($listvideolist as $info) : ?>
                         <tr>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->topBarImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->topBarImage; ?>" /></td>
 							<?php $str= $info->headingTxt;$headingTxt = strip_tags($str,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $headingTxt;?></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->BackbuttonImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->homebuttonImage; ?>" /></td>
-							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->sortBtnImage; ?>" /></td>
-							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->sortRollBtnImage; ?>" /></td>
-							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->filterBtnImage; ?>" /></td>
-							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->filterRollBtnImage; ?>" /></td>
-							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->myntralogoImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->blackbgImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->BackbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->homebuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->sortBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->sortRollBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->filterBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->filterRollBtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:135px;height:35px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->myntralogoImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->blackbgImage; ?>" /></td>
 							<?php $str1= $info->imageGalleryPos;$imageGalleryPos = strip_tags($str1,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $imageGalleryPos;?></td>
 							<td><a href="<?php echo base_url("admin/listvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
