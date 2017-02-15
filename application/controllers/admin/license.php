@@ -18,10 +18,9 @@ class License extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Configure License";
-			$page = 1;		
-
-			//$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-			$licenseList = $this->license_model->getLicenseList($page);
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
+			$licenseList = $this->license_model->getLicenseList($data);
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
@@ -35,7 +34,7 @@ class License extends MY_Controller {
 			}
 			else
 			{
-				$this->load->view('admin/license/add');
+				$this->load->view('admin/license/add',$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -47,7 +46,8 @@ class License extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
 			$time=time();
-			$created = date ("Y-m-d H:i:s", $time);					
+			$created = date ("Y-m-d H:i:s", $time);	
+			$type = trim($this->uri->segment(4));	
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$_FILES['topBarImage']['name'] = $this->generateRandomNumber().$_FILES['topBarImage']['name'];
@@ -77,13 +77,13 @@ class License extends MY_Controller {
 				if(!empty($_FILES['BackbuttonImage']['name']) && !empty($_FILES['topBarImage']['name'])) 
 				{
 						$addData = array(
-							'id' => 1,
 							'headingTxt' => $this->input->post('headingTxt'),
 							'BackbuttonImage' => $_FILES['BackbuttonImage']['name'],
 							'topBarImage' => $_FILES['topBarImage']['name'],
 							'tab1' => $this->input->post('tab1'),
 							'tab2' => $this->input->post('tab2'),
 							'tab3' => $this->input->post('tab3'),
+							'type' => $type,
 							'create_date' => $created
 						);
 						$id = $this->license_model->addLicenseInfo($addData);
@@ -94,7 +94,7 @@ class License extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/license');				
+					redirect("admin/license/$type");				
 				
 	} 
 	else 
@@ -110,12 +110,12 @@ class License extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
 			$checkLicense = $this->license_model->checkLicenseInfo($did);
-			$uploadPath = 'upload/license/';
+			$type = $checkLicense->result()['0']->type;
+			$uploadPath = "upload/license/$type";
 			 
 			if(!empty($_FILES['topBarImage']['name']))
 			{	
 				$_FILES['topBarImage']['name'] = $this->generateRandomNumber().$_FILES['topBarImage']['name'];
-                $uploadPath = 'upload/license/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -131,7 +131,6 @@ class License extends MY_Controller {
 			if(!empty($_FILES['BackbuttonImage']['name']))
 			{	
 				$_FILES['BackbuttonImage']['name'] = $this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-                $uploadPath = 'upload/license/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -168,7 +167,7 @@ class License extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/license');
+				redirect("admin/license/$type");
 				
 			} 
 			else {
@@ -189,6 +188,7 @@ class License extends MY_Controller {
 								'tab1' => $row->tab1,
 								'tab2' => $row->tab2,
 								'tab3' => $row->tab3,
+								'type' => $row->type,
 								'create_date'=>$created, 
 							);		
 						}
