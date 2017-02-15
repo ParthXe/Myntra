@@ -55,7 +55,7 @@ class screensaver extends MY_Controller {
 				if(!empty($_FILES['bgPath']['name']))
 				{
 					$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
-					$uploadPath = 'upload/screensaver/';
+					$uploadPath = "upload/screensaver/$type";
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					$this->load->library('upload', $config);
@@ -113,7 +113,7 @@ class screensaver extends MY_Controller {
 			$flag=0;
 			$checkscreensaver = $this->screensaver_model->checkscreensaverinfo($did);
 			$type=$checkscreensaver->result()['0']->type;
-		    $uploadPath = 'upload/screensaver/';
+		    $uploadPath = "upload/screensaver/$type";
 
 			  if(!empty($_FILES['bgPath']['name'])){
 				$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
