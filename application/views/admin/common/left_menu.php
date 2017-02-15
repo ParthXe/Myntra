@@ -394,7 +394,7 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/screensaver"; ?>"><i class="fa fa-circle-o"></i>ScreenSaver</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/screensaver/catalouge"; ?>"><i class="fa fa-circle-o"></i>ScreenSaver</a>
             </li>          	
             <li>
               <a href="<?php echo $this->config->item('base_url_admin')."/collectionvideo"; ?>" ><i class="fa fa-circle-o"></i>Collection Video</a>
