@@ -397,31 +397,31 @@
               <a href="<?php echo $this->config->item('base_url_admin')."/screensaver/catalouge"; ?>"><i class="fa fa-circle-o"></i>ScreenSaver</a>
             </li>          	
             <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/collectionvideo"; ?>" ><i class="fa fa-circle-o"></i>Collection Video</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/collectionvideo/catalouge"; ?>" ><i class="fa fa-circle-o"></i>Collection Video</a>
             </li>
             <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/genderSelection"; ?>" ><i class="fa fa-circle-o"></i>Gender Selection</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/genderSelection/catalouge"; ?>" ><i class="fa fa-circle-o"></i>Gender Selection</a>
             </li> 
 			 <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/roadsterSelection"; ?>" ><i class="fa fa-circle-o"></i>Roadster Selection</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/roadsterSelection/catalouge"; ?>" ><i class="fa fa-circle-o"></i>Roadster Selection</a>
             </li> 
 			 <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/listvideo"; ?>"><i class="fa fa-circle-o"></i>List Video</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/listvideo/catalouge"; ?>"><i class="fa fa-circle-o"></i>List Video</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/sortBy"; ?>" ><i class="fa fa-circle-o"></i>Sort BY</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/sortBy/catalouge"; ?>" ><i class="fa fa-circle-o"></i>Sort BY</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/filterBy"; ?>" ><i class="fa fa-circle-o"></i>Filter By</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/filterBy/catalouge"; ?>" ><i class="fa fa-circle-o"></i>Filter By</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/productdesc"; ?>""><i class="fa fa-circle-o"></i>Product Description</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/productdesc/catalouge"; ?>""><i class="fa fa-circle-o"></i>Product Description</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/license"; ?>" ><i class="fa fa-circle-o"></i>License</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/license/catalouge"; ?>" ><i class="fa fa-circle-o"></i>License</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/sendSMS"; ?>" ><i class="fa fa-circle-o"></i>Send SMS</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/sendSMS/catalouge"; ?>" ><i class="fa fa-circle-o"></i>Send SMS</a>
             </li> 
           </ul>
         </li> 
