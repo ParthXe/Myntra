@@ -14,6 +14,12 @@
 
     <!-- Main content -->
     <section class="content">
+		<ul class="nav nav-tabs">
+			<li class="<?php echo ($tab == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($tab == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($tab == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($tab == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">

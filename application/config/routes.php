@@ -82,3 +82,4 @@ $route['user/orders']				= 'frontend/user/myorders';
 $route['user/update_details'] 		= 'frontend/user/update_details';
 
 $route['admin/looksJSON/(:any)/(:any)']= 'admin/looksJSON/index/$1/$2';
+$route['admin/screensaver/(:any)']= 'admin/screensaver/index/$1';

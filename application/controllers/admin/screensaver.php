@@ -19,12 +19,12 @@ class screensaver extends MY_Controller {
 			// Set Page Title
 			$header['page_title'] = "Screensaver Configuration";
 			$page = 1;		
-
+			$type = trim($this->uri->segment(3));
 			$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-
+			
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
-
+			$data['tab'] = $type;
 			$data['screensaverlist'] = $screensaverlist;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
@@ -35,7 +35,7 @@ class screensaver extends MY_Controller {
 			}
 			else
 			{
-				$this->load->view('admin/screensaver/add');
+				$this->load->view('admin/screensaver/add',$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
