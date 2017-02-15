@@ -41,11 +41,11 @@
                         <tr>
 							<td>
 								<video width="300px" controls>
-									  <source src="<?php echo ASSET_PATH."screensaver/".$info->bgPath; ?>" type="video/mp4">
+									  <source src="<?php echo ASSET_PATH."screensaver/".$info->type."/".$info->bgPath; ?>" type="video/mp4">
 									Your browser does not support the video tag.
 								</video>
 							</td>
-							<td><img style="background-color:grey;width:225px;" src="<?php echo ASSET_PATH."screensaver/".$info->exploreBtnPath; ?>" /></td>
+							<td><img style="background-color:grey;width:225px;" src="<?php echo ASSET_PATH."screensaver/".$info->type."/".$info->exploreBtnPath; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/screensaver/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>
