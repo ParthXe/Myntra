@@ -17,25 +17,22 @@ class SortBy extends MY_Controller {
 	public function index() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Configure License";
-			$page = 1;		
-
-			//$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-			$sortByList = $this->sortBy_model->getSortByList($page);
-			// Create the data array to pass to view
+			$header['page_title'] = "Configure Sort By";
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
+			$sortByList = $this->sortBy_model->getSortByList($data);
 			$menu_details['session'] = $this->session->userdata;
-
 			$data['sortByList'] = $sortByList;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
 			if(count($sortByList)>0)
 			{
-				$this->load->view('admin/sortBy/list', $data);	
+				$this->load->view('admin/sortBy/list',$data);	
 			}
 			else
 			{
-				$this->load->view('admin/sortBy/add');
+				$this->load->view('admin/sortBy/add',$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -47,11 +44,12 @@ class SortBy extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
 			$time=time();
-			$created = date ("Y-m-d H:i:s", $time);					
+			$created = date ("Y-m-d H:i:s", $time);
+			$type = trim($this->uri->segment(4));
+			$uploadPath = "upload/sortBy/$type";	
 				if(!empty($_FILES['closeImageButton']['name']))
 				{
-					$_FILES['closeImageButton']['name'] = $this->$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/sortBy/';
+					$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -64,13 +62,13 @@ class SortBy extends MY_Controller {
 				if(!empty($_FILES['closeImageButton']['name'])) 
 				{
 						$addData = array(
-							'id' => 1,
 							'headingTxt' => $this->input->post('headingTxt'),
 							'closeImageButton' => $_FILES['closeImageButton']['name'],
 							'option1' => $this->input->post('option1'),
 							'option2' => $this->input->post('option2'),
 							'option3' => $this->input->post('option3'),
 							'option4' => $this->input->post('option4'),
+							'type' => $type,
 							'create_date' => $created
 						);
 						$id = $this->sortBy_model->addSortByInfo($addData);
@@ -81,7 +79,7 @@ class SortBy extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/sortBy');				
+					redirect("admin/sortBy/$type");				
 				
 	} 
 	else 
@@ -97,12 +95,13 @@ class SortBy extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
 			$checkSortBy = $this->sortBy_model->checkSortByInfo($did);
-			 $uploadPath = 'upload/sortBy/';
+			$type = $checkSortBy->result()['0']->type;
+			
+			$uploadPath = "upload/sortBy/$type/";
 			
 			if(!empty($_FILES['closeImageButton']['name']))
 			{	
 				$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-               
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -137,7 +136,7 @@ class SortBy extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/sortBy');
+				redirect("admin/sortBy/$type");
 				
 			} 
 			else {
@@ -158,6 +157,7 @@ class SortBy extends MY_Controller {
 								'option2' => $row->option2,
 								'option3' => $row->option3,
 								'option4' => $row->option4,
+								'type' => $row->type,
 								'create_date'=>$created, 
 							);		
 						}

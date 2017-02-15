@@ -27,32 +27,32 @@
 						<div class="form-group">
 							<label for="topBarImage">Top Bar Image:</label>
 							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['topBarImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
 							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value="" />
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['BackbuttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="collectionMenImage">Collection Men Image:</label>
 							<input type="file" class="form-control" id="collectionMenImage" name="collectionMenImage" value="" />
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['collectionMenImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['collectionMenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="catalogueMenImage">Catalogue Men Image:</label>
 							<input type="file" class="form-control" id="catalogueMenImage" name="catalogueMenImage" value="" />
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['catalogueMenImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['catalogueMenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="collectionWomenImage">Collection Women Image:</label>
 							<input type="file" class="form-control" id="collectionWomenImage" name="collectionWomenImage" value="" />
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['collectionWomenImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['collectionWomenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="catalogueWomenImage">Catalogue Women Image:</label>
 							<input type="file" class="form-control" id="catalogueWomenImage" name="catalogueWomenImage" value="" />
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['catalogueWomenImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['catalogueWomenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="collectionHeadingTxt">Collection Heading Text:</label>
@@ -65,7 +65,7 @@
 						<div class="form-group">
 							<label for="collectionBtnImage">Collection Button Image:</label>
 							<input type="file" class="form-control" id="collectionBtnImage" name="collectionBtnImage" value="" />
-							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['collectionBtnImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['collectionBtnImage']; ?>" /></span>
 						</div>
 						
 						<div class="form-group">
@@ -79,7 +79,7 @@
 						<div class="form-group">
 							<label for="catalogueBtnImage">Catalogue Button Image:</label>
 							<input type="file" class="form-control" id="catalogueBtnImage" name="catalogueBtnImage" value="" />
-							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['catalogueBtnImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['catalogueBtnImage']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->
