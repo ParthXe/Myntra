@@ -10,14 +10,14 @@ class SortBy_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getSortByList($page) {
-        $sendSMSList = [];
+    public function getSortByList($data) {
+        $sendSortByList = [];
+		$this->db->where('type',$data['type']);
         $query = $this->db->get('sort_by');
-        // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
-            $sendSMSList[] = $row;
+            $sendSortByList[] = $row;
         }
-		return $sendSMSList;
+		return $sendSortByList;
     } 
 	
     public function checkSortByInfo($did) {

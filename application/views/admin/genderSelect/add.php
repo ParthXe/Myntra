@@ -13,6 +13,12 @@
     </section>
 
     <!-- Main content -->
+	<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
     <section class="content">
         <!-- /.row -->
         <div class="row">
@@ -27,22 +33,21 @@
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('admin/genderSelection/add', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
-					<!--<form action="http://localhost/myntra/admin/screensaver/add" class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data" -->
+					<?php echo form_open("admin/genderSelection/add/$type", 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
-							<label for="image1">Image1:</label>
+							<label for="image1">Men Active Image:</label>
 							<input type="file" class="form-control" id="image1" name="image1" value="" required/>
 						</div>
 						<div class="form-group">
-							<label for="image1Disabled">Image1 Disabled:</label>
+							<label for="image1Disabled">Men Inactive Image:</label>
 							<input type="file" class="form-control" id="image1Disabled" name="image1Disabled" value="" required/>
 						</div>
 						<div class="form-group">
-							<label for="image2">Image2:</label>
+							<label for="image2">Women Active Image:</label>
 							<input type="file" class="form-control" id="image2" name="image2" value="" required/>
 						</div>
 						<div class="form-group">
-							<label for="image2Disabled">Image2 Disabled:</label>
+							<label for="image2Disabled">Women Inactive Image:</label>
 							<input type="file" class="form-control" id="image2Disabled" name="image2Disabled" value="" required/>
 						</div>
 						<div class="form-group">

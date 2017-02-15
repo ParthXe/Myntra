@@ -7,9 +7,15 @@
 		<!--<small><a href="<?php echo base_url("admin/genderSelection/add"); ?>">Gender Selection</a></small>-->
       </h1>
     </section>
-
+	
     <!-- Main content -->
-    <section class="content">
+    <ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+	</ul>
+	<section class="content">
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
@@ -45,11 +51,11 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($genderSelectList as $info) : ?>
                         <tr>
-							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image1; ?>" /></td>
-							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image2; ?>" /></td>
-							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image1Disabled; ?>" /></td>
-							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->image2Disabled; ?>" /></td>
-						    <td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->thunderImage; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->type."/".$info->image1; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->type."/".$info->image2; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->type."/".$info->image1Disabled; ?>" /></td>
+							<td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->type."/".$info->image2Disabled; ?>" /></td>
+						    <td><img style="background-color:grey;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$info->type."/".$info->thunderImage; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/genderSelection/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>

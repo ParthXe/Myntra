@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="BackbuttonImage">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><img style="background-color:grey;height:40px;width:40px" src="<?php echo ASSET_PATH."sortBy/".$sortByList['closeImageButton']; ?>" /></span>
+							<span><img style="background-color:grey;height:40px;width:40px" src="<?php echo ASSET_PATH."sortBy/".$sortByList['type']."/".$sortByList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="option1">Option1 Text:</label>
