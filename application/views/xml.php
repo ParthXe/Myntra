@@ -17,10 +17,10 @@ if($type == "outlander")
 	$xml_output .= "<collectionVideo>\n";
 	$xml_output .= "\t\t<bgPath posX='0' posY='0' transparency='.9'><![CDATA[".$asset_path."collectionvideo/".$type."/".$collectionvideoinfo['bgPath']."]]></bgPath>\n";
 	$xml_output .= "\t\t<homebuttonImage posX='940' posY='10'><![CDATA[".$asset_path."collectionvideo/".$type."/".$collectionvideoinfo['homebuttonImage']."]]></homebuttonImage>\n";
-	$xml_output .= "\t\t<scrtext posX='300' posY='200' width='550' height='600'><![CDATA[".$type."/".$collectionvideoinfo['scrtext']."]]></scrtext>\n";
-	$xml_output .= "\t\t<insttext posX='300' posY='1400' width='650' height='400'><![CDATA[".$type."/".$collectionvideoinfo['insttext']."]]></insttext>\n";
-	$xml_output .= "\t\t<motoGpvideo posX='150' posY='750' width='800' height='600'><![CDATA[".$type."/".$asset_path."collectionvideo/".$collectionvideoinfo['motoGpvideo']."]]></motoGpvideo>\n";
-	$xml_output .= "\t\t<outLandervideo posX='150' posY='750' width='800' height='600'><![CDATA[".$type."/".$asset_path."collectionvideo/".$collectionvideoinfo['outLandervideo']."]]></outLandervideo>\n";
+	$xml_output .= "\t\t<scrtext posX='300' posY='200' width='550' height='600'><![CDATA[".$collectionvideoinfo['scrtext']."]]></scrtext>\n";
+	$xml_output .= "\t\t<insttext posX='300' posY='1400' width='650' height='400'><![CDATA[".$collectionvideoinfo['insttext']."]]></insttext>\n";
+	$xml_output .= "\t\t<motoGpvideo posX='150' posY='750' width='800' height='600'><![CDATA[".$asset_path."collectionvideo/".$type."/".$collectionvideoinfo['motoGpvideo']."]]></motoGpvideo>\n";
+	$xml_output .= "\t\t<outLandervideo posX='150' posY='750' width='800' height='600'><![CDATA[".$asset_path."collectionvideo/".$type."/".$collectionvideoinfo['outLandervideo']."]]></outLandervideo>\n";
 	$xml_output .= "\t\t<buttonImage posX='270' posY='1600'><![CDATA[".$asset_path."collectionvideo/".$type."/".$collectionvideoinfo['buttonImage']."]]></buttonImage>\n";
 	$xml_output .= "\t\t<closeImageButton posX='950' posY='100'><![CDATA[".$asset_path."collectionvideo/".$type."/".$collectionvideoinfo['closeImageButton']."]]></closeImageButton>\n";
 	$xml_output .= "</collectionVideo>\n";
@@ -47,7 +47,7 @@ if($type == "outlander")
 	$xml_output .= "</roadSterSlection>\n";
 	$xml_output .= "<listVidew>\n";
 	$xml_output .= "\t\t<topBarImage posX='0' posY='0'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['topBarImage']."]]></topBarImage>\n";
-	$xml_output .= "\t\t<headingTxt posX='150' posY='20'>".$listvideoinfo['headingTxt']."></headingTxt>\n";
+	$xml_output .= "\t\t<headingTxt posX='150' posY='-53'>".$listvideoinfo['headingTxt']."</headingTxt>\n";
 	$xml_output .= "\t\t<BackbuttonImage posX='40' posY='20'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['BackbuttonImage']."]]></BackbuttonImage>\n";
 	$xml_output .= "\t\t<homebuttonImage posX='940' posY='10'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['homebuttonImage']."]]></homebuttonImage>\n";
 	$xml_output .= "\t\t<sortBtnImage posX='0' posY='109'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['sortBtnImage']."]]></sortBtnImage>\n";
@@ -164,7 +164,7 @@ else if($type == "motogp")
 	$xml_output .= "</roadSterSlection>\n";
 	$xml_output .= "<listVidew>\n";
 	$xml_output .= "\t\t<topBarImage posX='0' posY='0'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['topBarImage']."]]></topBarImage>\n";
-	$xml_output .= "\t\t<headingTxt posX='150' posY='20'>".$listvideoinfo['headingTxt']."></headingTxt>\n";
+	$xml_output .= "\t\t<headingTxt posX='150' posY='-53'>".$listvideoinfo['headingTxt']."</headingTxt>\n";
 	$xml_output .= "\t\t<BackbuttonImage posX='40' posY='20'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['BackbuttonImage']."]]></BackbuttonImage>\n";
 	$xml_output .= "\t\t<homebuttonImage posX='940' posY='10'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['homebuttonImage']."]]></homebuttonImage>\n";
 	$xml_output .= "\t\t<sortBtnImage posX='0' posY='109'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['sortBtnImage']."]]></sortBtnImage>\n";
@@ -281,7 +281,7 @@ else if($type == "catalogue")
 	$xml_output .= "</roadSterSlection>\n";
 	$xml_output .= "<listVidew>\n";
 	$xml_output .= "\t\t<topBarImage posX='0' posY='0'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['topBarImage']."]]></topBarImage>\n";
-	$xml_output .= "\t\t<headingTxt posX='150' posY='20'>".$listvideoinfo['headingTxt']."></headingTxt>\n";
+	$xml_output .= "\t\t<headingTxt posX='150' posY='-53'>".$listvideoinfo['headingTxt']."</headingTxt>\n";
 	$xml_output .= "\t\t<BackbuttonImage posX='40' posY='20'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['BackbuttonImage']."]]></BackbuttonImage>\n";
 	$xml_output .= "\t\t<homebuttonImage posX='940' posY='10'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['homebuttonImage']."]]></homebuttonImage>\n";
 	$xml_output .= "\t\t<sortBtnImage posX='0' posY='109'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['sortBtnImage']."]]></sortBtnImage>\n";
@@ -398,7 +398,7 @@ else if($type == "roadster")
 	$xml_output .= "</roadSterSlection>\n";
 	$xml_output .= "<listVidew>\n";
 	$xml_output .= "\t\t<topBarImage posX='0' posY='0'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['topBarImage']."]]></topBarImage>\n";
-	$xml_output .= "\t\t<headingTxt posX='150' posY='20'>".$listvideoinfo['headingTxt']."></headingTxt>\n";
+	$xml_output .= "\t\t<headingTxt posX='150' posY='-53'>".$listvideoinfo['headingTxt']."</headingTxt>\n";
 	$xml_output .= "\t\t<BackbuttonImage posX='40' posY='20'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['BackbuttonImage']."]]></BackbuttonImage>\n";
 	$xml_output .= "\t\t<homebuttonImage posX='940' posY='10'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['homebuttonImage']."]]></homebuttonImage>\n";
 	$xml_output .= "\t\t<sortBtnImage posX='0' posY='109'><![CDATA[".$asset_path."listvideo/".$type."/".$listvideoinfo['sortBtnImage']."]]></sortBtnImage>\n";
