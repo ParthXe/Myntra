@@ -6,13 +6,15 @@
       <h1>
          Set Configuration of SMS
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Tshirt</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
+	<ul class="nav nav-tabs">
+		<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+		<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+		<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+		<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+	</ul>
     <section class="content">
         <!-- /.row -->
         <div class="row">
@@ -27,8 +29,7 @@
 					  <div class="alert alert-danger"><?php echo $this->lang->line($error) ; ?></div>
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('admin/sendSMS/add', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
-					<!--<form action="http://localhost/myntra/admin/screensaver/add" class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data" -->
+					<?php echo form_open("admin/sendSMS/add/$type", 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="headingTxt">Heading Text:</label>
 							<input type="text" class="form-control" id="headingTxt" name="headingTxt" value="" required/>

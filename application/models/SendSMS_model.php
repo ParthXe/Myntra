@@ -10,10 +10,10 @@ class sendSMS_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getSendSMSList($page) {
+    public function getSendSMSList($data) {
         $sendSMSList = [];
+		$this->db->where('type',$data['type']);
         $query = $this->db->get('send_sms');
-        // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
             $sendSMSList[] = $row;
         }

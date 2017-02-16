@@ -47,11 +47,11 @@ class License extends MY_Controller {
 		{
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
-			$type = trim($this->uri->segment(4));	
+			$type = trim($this->uri->segment(4));
+			$uploadPath = "upload/license/$type";
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$_FILES['topBarImage']['name'] = $this->generateRandomNumber().$_FILES['topBarImage']['name'];
-					$uploadPath = 'upload/license/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -64,7 +64,6 @@ class License extends MY_Controller {
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{
 					$_FILES['BackbuttonImage']['name'] = $this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-					$uploadPath = 'upload/license/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -111,7 +110,7 @@ class License extends MY_Controller {
 			$flag = 0;
 			$checkLicense = $this->license_model->checkLicenseInfo($did);
 			$type = $checkLicense->result()['0']->type;
-			$uploadPath = "upload/license/$type";
+			$uploadPath = "upload/license/$type/";
 			 
 			if(!empty($_FILES['topBarImage']['name']))
 			{	
