@@ -10,10 +10,10 @@ class License_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getLicenseList($page) {
+    public function getLicenseList($data) {
         $sendSMSList = [];
+		$this->db->where('type',$data['type']);
         $query = $this->db->get('license');
-        // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
             $sendSMSList[] = $row;
         }

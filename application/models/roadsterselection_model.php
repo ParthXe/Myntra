@@ -10,10 +10,10 @@ class roadsterSelection_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getRoadsterSelectionList($page) {
-        $genderSelectList = [];
+    public function getRoadsterSelectionList($data) {
+        $roadsterSelectList = [];
+		$this->db->where('type',$data['type']);
         $query = $this->db->get('roadster_selection');
-        // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
             $roadsterSelectList[] = $row;
         }

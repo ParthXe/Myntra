@@ -18,24 +18,25 @@ class screensaver extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Screensaver Configuration";
-			$page = 1;		
-
-			$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;	
+			
+			$screensaverlist = $this->screensaver_model->getscreensaverlist($data);
+			
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
-
+			$data['tab'] = $type;
 			$data['screensaverlist'] = $screensaverlist;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
 			if(count($screensaverlist)>0)
 			{
-				$this->load->view('admin/screensaver/list', $data);	
+				$this->load->view("admin/screensaver/list", $data);	
 			}
 			else
 			{
-				$this->load->view('admin/screensaver/add');
+				$this->load->view("admin/screensaver/add",$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -49,11 +50,13 @@ class screensaver extends MY_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
 			$flag=0;
-		
+			$type = trim($this->uri->segment(4));
+			
+			
 				if(!empty($_FILES['bgPath']['name']))
 				{
 					$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
-					$uploadPath = 'upload/screensaver/';
+					$uploadPath = "upload/screensaver/$type";
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					$this->load->library('upload', $config);
@@ -67,7 +70,7 @@ class screensaver extends MY_Controller {
 				if(!empty($_FILES['exploreBtnPath']['name']))
 				{    
 					$_FILES['exploreBtnPath']['name']=$this->generateRandomNumber().$_FILES['exploreBtnPath']['name'];			
-					$uploadPath = 'upload/screensaver/';
+					$uploadPath = 'upload/screensaver/$type';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -80,7 +83,8 @@ class screensaver extends MY_Controller {
 					$flag=1;
 				}
 				if($flag == 1) {
-				$data ['id'] = 1;
+				$data['type']=$type;	
+				//$data ['id'] = 1;
 				if(!empty($_FILES['bgPath']['name'])){
 					$data ['bgPath'] = $_FILES['bgPath']['name'];
 				}
@@ -88,12 +92,11 @@ class screensaver extends MY_Controller {
 					$data ['exploreBtnPath'] = $_FILES['exploreBtnPath']['name'];
 				}
 				$data ['create_date'] = $created;
-						
+				//print_r($data);		
 				$id = $this->screensaver_model->addscreensaverinfo($data);
-
 				$this->session->set_flashdata('message', 'Settings saved successfully..');
 			} 
-				redirect('admin/screensaver');				
+				redirect("admin/screensaver/$type");				
 				
 	} 
 	else 
@@ -110,7 +113,8 @@ class screensaver extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);				
 			$flag=0;
 			$checkscreensaver = $this->screensaver_model->checkscreensaverinfo($did);
-		    $uploadPath = 'upload/screensaver/';
+			$type=$checkscreensaver->result()['0']->type;
+		    $uploadPath = "upload/screensaver/$type/";
 
 			  if(!empty($_FILES['bgPath']['name'])){
 				$_FILES['bgPath']['name']=$this->generateRandomNumber().$_FILES['bgPath']['name'];
@@ -169,12 +173,11 @@ class screensaver extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/screensaver');
+				redirect("admin/screensaver/$type");
 
 			} 
 			else {
 				if(is_numeric($did)) {
-			
 					if($checkscreensaver->num_rows() == 1) {
 						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
@@ -187,11 +190,12 @@ class screensaver extends MY_Controller {
 								'bgPath' => $row->bgPath,
 								'exploreBtnPath' => $row->exploreBtnPath,
 								'create_date'=>$created,
+								'type'=>$row->type,
 							);		
 						}
 						$this->load->view('admin/common/header', $header);
 						$this->load->view('admin/common/left_menu', $menu_details);
-						$this->load->view('admin/screensaver/edit', $data);
+						$this->load->view("admin/screensaver/edit", $data);
 						$this->load->view('admin/common/footer');
 					} else {
 						$this->session->set_flashdata('message', 'User not found');

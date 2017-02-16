@@ -10,10 +10,10 @@ class genderSelection_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getGenderSelectList($page) {
+    public function getGenderSelectList($data) {
         $genderSelectList = [];
+		$this->db->where('type',$data['type']);
         $query = $this->db->get('gender_selection');
-        // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
             $genderSelectList[] = $row;
         }

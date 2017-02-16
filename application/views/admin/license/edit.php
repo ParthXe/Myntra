@@ -31,7 +31,7 @@
 						<div class="form-group">
 							<label for="topBarImage">Top Bar Image:</label>
 							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value=""/>
-							<span><img style="background-color:grey;height:150px;width:100px" src="<?php echo ASSET_PATH."license/".$licenseList['topBarImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:100px" src="<?php echo ASSET_PATH."license/".$licenseList['type']."/".$licenseList['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 						  <!-- button1 button2-->

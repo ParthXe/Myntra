@@ -9,21 +9,19 @@
 
     <!-- Main content -->
     <section class="content">
+		<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
                   <!--<h3 class="box-title">Configure Screensaver</h3>-->
-                  <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                      <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                  </div>
+            
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
@@ -43,11 +41,11 @@
                         <tr>
 							<td>
 								<video width="300px" controls>
-									  <source src="<?php echo ASSET_PATH."screensaver/".$info->bgPath; ?>" type="video/mp4">
+									  <source src="<?php echo ASSET_PATH."screensaver/".$info->type."/".$info->bgPath; ?>" type="video/mp4">
 									Your browser does not support the video tag.
 								</video>
 							</td>
-							<td><img style="background-color:grey;width:225px;" src="<?php echo ASSET_PATH."screensaver/".$info->exploreBtnPath; ?>" /></td>
+							<td><img style="background-color:grey;width:225px;" src="<?php echo ASSET_PATH."screensaver/".$info->type."/".$info->exploreBtnPath; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/screensaver/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>

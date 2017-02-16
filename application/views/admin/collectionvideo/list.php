@@ -3,16 +3,18 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Collection Video<small><a href="<?php echo base_url("admin/collectionvideo/add"); ?>">collectionvideo</a></small>
+        Collection Video
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Collection Video</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+		<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
@@ -51,22 +53,22 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($collectionvideolist as $info) : ?>
                         <tr>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->bgPath; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->homebuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->bgPath; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->homebuttonImage; ?>" /></td>
 							<?php $str= $info->scrtext;$scrtext = strip_tags($str,0);?>
 							<td><?php echo $scrtext;?></td> 
 							<?php $str1= $info->insttext;$insttext = strip_tags($str1,0);?>
 							<td><?php echo $insttext;?></td> 
 							<td><video width="125" controls>
-								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->motoGpvideo; ?>" type="video/mp4">
+								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->motoGpvideo; ?>" type="video/mp4">
 								Your browser does not support the video tag.
 							</video></td>
 							<td><video width="125" controls>
-								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->outLandervideo; ?>" type="video/mp4">
+								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->outLandervideo; ?>" type="video/mp4">
 								Your browser does not support the video tag.
 							</video></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->buttonImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->closeImageButton; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->buttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->closeImageButton; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/collectionvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
                         </tr>
                     <?php endforeach; ?>

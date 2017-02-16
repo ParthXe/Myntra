@@ -82,3 +82,13 @@ $route['user/orders']				= 'frontend/user/myorders';
 $route['user/update_details'] 		= 'frontend/user/update_details';
 
 $route['admin/looksJSON/(:any)/(:any)']= 'admin/looksJSON/index/$1/$2';
+$route['admin/screensaver/(:any)']= 'admin/screensaver/index/$1';
+$route['admin/collectionvideo/(:any)']= 'admin/collectionvideo/index/$1';
+$route['admin/genderSelection/(:any)']= 'admin/genderSelection/index/$1';
+$route['admin/roadsterSelection/(:any)']= 'admin/roadsterSelection/index/$1';
+$route['admin/listvideo/(:any)']= 'admin/listvideo/index/$1';
+$route['admin/sortBy/(:any)']= 'admin/sortBy/index/$1';
+$route['admin/filterBy/(:any)']= 'admin/filterBy/index/$1';
+$route['admin/productdesc/(:any)']= 'admin/productdesc/index/$1';
+$route['admin/license/(:any)']= 'admin/license/index/$1';
+$route['admin/sendSMS/(:any)']= 'admin/sendSMS/index/$1';

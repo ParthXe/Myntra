@@ -18,13 +18,14 @@ class productdesc extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Configure Product Description";
-			$page = 1;		
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
 
-			$productdesclist = $this->productdesc_model->getproductdesclist($page);
+			$productdesclist = $this->productdesc_model->getproductdesclist($data);
 			
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
-
+			$data['tab'] = $type;
 			$data['productdesclist'] = $productdesclist;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
@@ -35,7 +36,7 @@ class productdesc extends MY_Controller {
 			}
 			else
 			{
-				$this->load->view('admin/productdesc/add');
+				$this->load->view('admin/productdesc/add', $data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -46,19 +47,17 @@ class productdesc extends MY_Controller {
 	public function add() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
-			// Set validation rules for view filters
-			//$this->form_validation->set_rules('destination_name', "Name field is required", 'required');
-			///$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
-
-			//$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
+			
 		$time=time();
 		$created = date ("Y-m-d H:i:s", $time);	
 		$flag=0;	
-				
+		$type = trim($this->uri->segment(4));
+		$uploadPath = "upload/productdesc/$type";
+		
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+				
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -72,7 +71,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{    
 					$_FILES['BackbuttonImage']['name']=$this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+				
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -87,7 +86,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{    
 					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];			
-					$uploadPath = 'upload/productdesc/';
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -102,7 +101,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['myntralogoImage']['name']))
 				{       
 					$_FILES['myntralogoImage']['name']=$this->generateRandomNumber().$_FILES['myntralogoImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -117,7 +116,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['getProdBtn']['name']))
 				{   
 					$_FILES['getProdBtn']['name']=$this->generateRandomNumber().$_FILES['getProdBtn']['name'];
-					$uploadPath = 'upload/productdesc/';
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -132,7 +131,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['closeImageButton']['name']))
 				{   
 					$_FILES['closeImageButton']['name']=$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/productdesc/';
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -147,7 +146,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['nextbuttonImage']['name']))
 				{    
 					$_FILES['nextbuttonImage']['name']=$this->generateRandomNumber().$_FILES['nextbuttonImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -162,7 +161,7 @@ class productdesc extends MY_Controller {
 				if(!empty($_FILES['backbtnImage']['name']))
 				{        
 					$_FILES['backbtnImage']['name']=$this->generateRandomNumber().$_FILES['backbtnImage']['name'];
-					$uploadPath = 'upload/productdesc/';
+					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -180,7 +179,8 @@ class productdesc extends MY_Controller {
 			}
 			
 			if($flag == 1) {
-				$data ['id'] = 1;
+				//$data ['id'] = 1;
+				$data['type']=$type;	
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$data ['topBarImage'] = $_FILES['topBarImage']['name'];
@@ -222,14 +222,14 @@ class productdesc extends MY_Controller {
 				$data ['sizePopupFirstTabTxt'] = $_REQUEST['sizePopupFirstTabTxt'];
 				$data ['prodUrl'] = $_REQUEST['prodUrl'];
 				$data ['sizeUrl'] = $_REQUEST['sizeUrl'];
-				
+				$data['type']=$type;
 				$data ['create_date'] = $created;
 					
 						$id = $this->productdesc_model->addproductdescinfo($data);
 
 						$this->session->set_flashdata('message', 'Settings saved successfully..');
 				} 
-					redirect('admin/productdesc');				
+					redirect('admin/productdesc/$type');				
 				
 	} 
 	else 
@@ -244,9 +244,12 @@ class productdesc extends MY_Controller {
 			$did = trim($this->uri->segment(4));
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
-			$flag=0;		
+			$flag=0;	
+			$type=$checkscreensaver->result()['0']->type;	
+			$uploadPath = "upload/productdesc/$type/";
+			
 			$checkproductdesc = $this->productdesc_model->checkproductdescinfo($did);
-			$uploadPath = 'upload/productdesc/';
+			
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
@@ -475,6 +478,7 @@ class productdesc extends MY_Controller {
 								'sizeUrl' => $row->sizeUrl,
 								'nextbuttonImage' => $row->nextbuttonImage,
 								'backbtnImage' => $row->backbtnImage,
+								'type'=>$row->type,
 							);		
 						}
 						$this->load->view('admin/common/header', $header);

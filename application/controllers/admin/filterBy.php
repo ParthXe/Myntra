@@ -18,10 +18,9 @@ class FilterBy extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Configure Filters";
-			$page = 1;		
-
-			//$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-			$filterByList = $this->filterBy_model->getFilterByList($page);
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
+			$filterByList = $this->filterBy_model->getFilterByList($data);
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
@@ -31,11 +30,11 @@ class FilterBy extends MY_Controller {
 			$this->load->view('admin/common/left_menu', $menu_details);
 			if(count($filterByList)>0)
 			{
-				$this->load->view('admin/filterBy/list', $data);	
+				$this->load->view('admin/filterBy/list',$data);	
 			}
 			else
 			{
-				$this->load->view('admin/filterBy/add');
+				$this->load->view('admin/filterBy/add',$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -47,11 +46,12 @@ class FilterBy extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
 			$time=time();
-			$created = date ("Y-m-d H:i:s", $time);					
+			$created = date ("Y-m-d H:i:s", $time);
+			$type = trim($this->uri->segment(4));
+			$uploadPath = "upload/filterBy/$type";	
 				if(!empty($_FILES['closeImageButton']['name']))
 				{
 					$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/filterBy/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -73,6 +73,7 @@ class FilterBy extends MY_Controller {
 							'option2' => $this->input->post('option2'),
 							'option3' => $this->input->post('option3'),
 							'option4' => $this->input->post('option4'),
+							'type' => $type,
 							'create_date' => $created
 						);
 						$id = $this->filterBy_model->addFilterByInfo($addData);
@@ -83,7 +84,7 @@ class FilterBy extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/filterBy');				
+					redirect("admin/filterBy/$type");				
 				
 	} 
 	else 
@@ -99,12 +100,12 @@ class FilterBy extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
 			$checkFilterBy = $this->filterBy_model->checkFilterByInfo($did);
-			$uploadPath = 'upload/filterBy/';
+			$type = $checkFilterBy->result()['0']->type;
+			$uploadPath = "upload/filterBy/$type/";
 			
 			if(!empty($_FILES['closeImageButton']['name']))
 			{	
 				$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-                $uploadPath = 'upload/filterBy/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -140,7 +141,7 @@ class FilterBy extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/filterBy');
+				redirect("admin/filterBy/$type");
 				
 			} 
 			else {
@@ -163,6 +164,7 @@ class FilterBy extends MY_Controller {
 								'option2' => $row->option2,
 								'option3' => $row->option3,
 								'option4' => $row->option4,
+								'type' => $row->type,
 								'create_date'=>$created, 
 							);		
 						}

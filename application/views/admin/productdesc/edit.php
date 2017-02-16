@@ -49,27 +49,27 @@ var config = {
 						<div class="form-group">
 							<label for="screensaver">Top-Bar Image:</label>
 							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
-							<span><img style="background-color:grey;height:200px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['topBarImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:200px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Back Button Image:</label>
 							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value=""/>
-							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['BackbuttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
 							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value=""/>
-							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['homebuttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['homebuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Myntra Logo Image:</label>
 							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" value=""/>
-							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['myntralogoImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['myntralogoImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Get Product Button Image:</label>
 							<input type="file" class="form-control" id="getProdBtn" name="getProdBtn" value=""/>
-							<span><img style="background-color:grey;height:60px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['getProdBtn']; ?>" /></span>
+							<span><img style="background-color:grey;height:60px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['getProdBtn']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="screentext">Related Product Heading Text:</label>
@@ -119,7 +119,7 @@ var config = {
 						<div class="form-group">
 							<label for="buttonimg">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['closeImageButton']; ?>" /></span>
+							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="screentext">Size Popup Heading Text:</label>
@@ -150,12 +150,12 @@ var config = {
 						<div class="form-group">
 							<label for="clsbutton">Next Button Image:</label>
 							<input type="file" class="form-control" id="nextbuttonImage" name="nextbuttonImage" value=""/>
-							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['nextbuttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['nextbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="clsbutton">Previous Button Image:</label>
 							<input type="file" class="form-control" id="backbtnImage" name="backbtnImage" value=""/>
-							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['backbtnImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['backbtnImage']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->

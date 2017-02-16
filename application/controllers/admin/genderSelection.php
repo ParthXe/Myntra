@@ -19,9 +19,9 @@ class genderSelection extends MY_Controller {
 			// Set Page Title
 			$header['page_title'] = "Configure Gender Selection";
 			$page = 1;		
-
-			//$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-			$genderSelectList = $this->genderSelection_model->getGenderSelectList($page);
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
+			$genderSelectList = $this->genderSelection_model->getGenderSelectList($data);
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
@@ -31,11 +31,11 @@ class genderSelection extends MY_Controller {
 			$this->load->view('admin/common/left_menu', $menu_details);
 			if(count($genderSelectList)>0)
 			{
-				$this->load->view('admin/genderSelect/list', $data);	
+				$this->load->view("admin/genderSelect/list",$data);	
 			}
 			else
 			{
-				$this->load->view('admin/genderSelect/add');
+				$this->load->view("admin/genderSelect/add",$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -46,17 +46,15 @@ class genderSelection extends MY_Controller {
 	public function add() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
-			// Set validation rules for view filters
-			//$this->form_validation->set_rules('destination_name', "Name field is required", 'required');
-			///$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
-
-			//$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
-		$time=time();
-		$created = date ("Y-m-d H:i:s", $time);					
+		
+			$time=time();
+			$created = date ("Y-m-d H:i:s", $time);
+			$type = trim($this->uri->segment(4));	
+			$uploadPath = "upload/genderSelection/$type";
+		
 				if(!empty($_FILES['image1']['name']))
 				{
 					$_FILES['image1']['name'] = $this->generateRandomNumber().$_FILES['image1']['name'];
-					$uploadPath = 'upload/genderSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -69,10 +67,8 @@ class genderSelection extends MY_Controller {
 				if(!empty($_FILES['image2']['name']))
 				{
 					$_FILES['image2']['name'] = $this->generateRandomNumber().$_FILES['image2']['name'];
-					$uploadPath = 'upload/genderSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
-					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
 					if($this->upload->do_upload('image2'))
@@ -83,10 +79,8 @@ class genderSelection extends MY_Controller {
 				if(!empty($_FILES['image1Disabled']['name']))
 				{   
 					$_FILES['image1Disabled']['name'] = $this->generateRandomNumber().$_FILES['image1Disabled']['name'];
-					$uploadPath = 'upload/genderSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
-					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
 					if($this->upload->do_upload('image1Disabled'))
@@ -96,8 +90,7 @@ class genderSelection extends MY_Controller {
 				}
 				if(!empty($_FILES['image2Disabled']['name']))
 				{   
-					$_FILES['image2Disabled']['name'] = $this->generateRandomNumber().$_FILES['image2Disabled']['name'];	
-					$uploadPath = 'upload/genderSelection/';
+					$_FILES['image2Disabled']['name'] = $this->generateRandomNumber().$_FILES['image2Disabled']['name'];
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -110,10 +103,8 @@ class genderSelection extends MY_Controller {
 				if(!empty($_FILES['thunderImage']['name']))
 				{       
 					$_FILES['thunderImage']['name'] = $this->generateRandomNumber().$_FILES['thunderImage']['name'];
-					$uploadPath = 'upload/genderSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
-					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
 					if($this->upload->do_upload('thunderImage'))
@@ -125,12 +116,12 @@ class genderSelection extends MY_Controller {
 					&& !empty($_FILES['image2Disabled']['name']) && !empty($_FILES['thunderImage']['name'])) 
 				{
 						$addData = array(
-							'id' => 1,
 							'image1' => $_FILES['image1']['name'],
 							'image2' => $_FILES['image2']['name'],
 							'image1Disabled' => $_FILES['image1Disabled']['name'],
 							'image2Disabled' => $_FILES['image2Disabled']['name'],
 							'thunderImage' => $_FILES['thunderImage']['name'],
+							'type' => $type,
 							'create_date' => $created
 						);
 						$id = $this->genderSelection_model->addGenderSelectInfo($addData);
@@ -141,7 +132,7 @@ class genderSelection extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/genderSelection');				
+					redirect("admin/genderSelection/$type");				
 				
 	} 
 	else 
@@ -158,12 +149,11 @@ class genderSelection extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
 			$checkGenderSelect = $this->genderSelection_model->checkGenderSelectInfo($did);
-			$uploadPath = 'upload/genderSelection/';
-			
+			$type=$checkGenderSelect->result()['0']->type;
+		    $uploadPath = "upload/genderSelection/$type/";
 			if(!empty($_FILES['image1']['name'])){
 				
 				$_FILES['image1']['name'] = $this->generateRandomNumber().$_FILES['image1']['name'];
-                $uploadPath = 'upload/genderSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -180,7 +170,6 @@ class genderSelection extends MY_Controller {
 			if(!empty($_FILES['image2']['name'])){
 				
 				$_FILES['image2']['name'] = $this->generateRandomNumber().$_FILES['image2']['name'];
-                $uploadPath = 'upload/genderSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -197,7 +186,6 @@ class genderSelection extends MY_Controller {
 			if(!empty($_FILES['image1Disabled']['name'])){
 				
 				$_FILES['image1Disabled']['name'] = $this->generateRandomNumber().$_FILES['image1Disabled']['name'];
-                $uploadPath = 'upload/genderSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -214,7 +202,6 @@ class genderSelection extends MY_Controller {
 			if(!empty($_FILES['image2Disabled']['name'])){
 				
 				$_FILES['image2Disabled']['name'] = $this->generateRandomNumber().$_FILES['image2Disabled']['name'];
-                $uploadPath = 'upload/genderSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -231,13 +218,12 @@ class genderSelection extends MY_Controller {
 			if(!empty($_FILES['thunderImage']['name'])){
 				
 				$_FILES['thunderImage']['name'] = $this->generateRandomNumber().$_FILES['thunderImage']['name'];
-                $uploadPath = 'upload/genderSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
-                if($this->upload->do_upload('thunderImage')){
+				if($this->upload->do_upload('thunderImage')){
                    		$fileData = $this->upload->data();
 						$old_thunderImage=$checkGenderSelect->result()['0']->thunderImage;
 						$old_thunderImage_path=$uploadPath.$old_thunderImage;
@@ -276,7 +262,7 @@ class genderSelection extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/genderSelection');
+				redirect("admin/genderSelection/$type");
 				
 			} 
 			else {
@@ -295,6 +281,7 @@ class genderSelection extends MY_Controller {
 								'image1Disabled' => $row->image1Disabled,
 								'image2Disabled' => $row->image2Disabled,
 								'thunderImage' => $row->thunderImage,
+								'type' => $row->type,
 								'create_date'=>$created,
 							);		
 						}

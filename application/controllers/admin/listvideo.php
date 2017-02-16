@@ -18,13 +18,14 @@ class listvideo extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
 			$header['page_title'] = "Configure Product Description";
-			$page = 1;		
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;		
 
-			$listvideolist = $this->listvideo_model->getlistvideolist($page);
+			$listvideolist = $this->listvideo_model->getlistvideolist($data);
 			
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
-
+			$data['tab'] = $type;
 			$data['listvideolist'] = $listvideolist;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
@@ -35,7 +36,7 @@ class listvideo extends MY_Controller {
 			}
 			else
 			{
-				$this->load->view('admin/listvideo/add');
+				$this->load->view('admin/listvideo/add', $data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -46,19 +47,15 @@ class listvideo extends MY_Controller {
 	public function add() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
-			// Set validation rules for view filters
-			//$this->form_validation->set_rules('destination_name', "Name field is required", 'required');
-			///$this->form_validation->set_rules('destination_state', $this->lang->line('signin_email'), 'required');
-
-			//$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
 		$time=time();
 		$created = date ("Y-m-d H:i:s", $time);	
 		$flag=0;	
-				
+		$type = trim($this->uri->segment(4));
+		$uploadPath = "upload/listvideo/$type";
+		
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$_FILES['topBarImage']['name']=$this->generateRandomNumber().$_FILES['topBarImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -72,7 +69,6 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{    
 					$_FILES['BackbuttonImage']['name']=$this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -86,8 +82,7 @@ class listvideo extends MY_Controller {
 				}
 				if(!empty($_FILES['homebuttonImage']['name']))
 				{    
-					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];			
-					$uploadPath = 'upload/listvideo/';
+					$_FILES['homebuttonImage']['name']=$this->generateRandomNumber().$_FILES['homebuttonImage']['name'];		
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -102,7 +97,7 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['myntralogoImage']['name']))
 				{       
 					$_FILES['myntralogoImage']['name']=$this->generateRandomNumber().$_FILES['myntralogoImage']['name'];
-					$uploadPath = 'upload/listvideo/';
+		
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -117,7 +112,6 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['sortBtnImage']['name']))
 				{   
 					$_FILES['sortBtnImage']['name']=$this->generateRandomNumber().$_FILES['sortBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -132,7 +126,6 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['sortRollBtnImage']['name']))
 				{   
 					$_FILES['sortRollBtnImage']['name']=$this->generateRandomNumber().$_FILES['sortRollBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -147,7 +140,6 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['filterBtnImage']['name']))
 				{   
 					$_FILES['filterBtnImage']['name']=$this->generateRandomNumber().$_FILES['filterBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -162,7 +154,6 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['filterRollBtnImage']['name']))
 				{   
 					$_FILES['filterRollBtnImage']['name']=$this->generateRandomNumber().$_FILES['filterRollBtnImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -177,7 +168,6 @@ class listvideo extends MY_Controller {
 				if(!empty($_FILES['blackbgImage']['name']))
 				{   
 					$_FILES['blackbgImage']['name']=$this->generateRandomNumber().$_FILES['blackbgImage']['name'];
-					$uploadPath = 'upload/listvideo/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
@@ -195,7 +185,8 @@ class listvideo extends MY_Controller {
 			}
 			
 			if($flag == 1) {
-				$data ['id'] = 1;
+				//$data ['id'] = 1;
+				$data['type']=$type;
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$data ['topBarImage'] = $_FILES['topBarImage']['name'];
@@ -241,7 +232,7 @@ class listvideo extends MY_Controller {
 
 						$this->session->set_flashdata('message', 'Settings saved successfully..');
 				} 
-					redirect('admin/listvideo');				
+					redirect("admin/listvideo/$type");				
 				
 	} 
 	else 
@@ -258,7 +249,9 @@ class listvideo extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);	
 			$flag=0;		
 			$checklistvideo = $this->listvideo_model->checklistvideoinfo($did);
-			$uploadPath = 'upload/listvideo/';
+			$type=$checklistvideo->result()['0']->type;
+		    $uploadPath = "upload/listvideo/$type/";
+
 
 				if(!empty($_FILES['topBarImage']['name']))
 				{
@@ -472,7 +465,7 @@ class listvideo extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Settings saved successfully..');
 				
-				redirect('admin/listvideo');				
+				redirect("admin/listvideo/$type");				
 			} 
 			else {
 				if(is_numeric($did)) {
@@ -495,7 +488,9 @@ class listvideo extends MY_Controller {
 								'filterRollBtnImage' => $row->filterRollBtnImage,
 								'myntralogoImage' =>$row->myntralogoImage,
 								'blackbgImage' => $row->blackbgImage,
-								'imageGalleryPos' => $row->imageGalleryPos,);
+								'imageGalleryPos' => $row->imageGalleryPos,
+								'type'=>$row->type,
+								);
 						}
 						$this->load->view('admin/common/header', $header);
 						$this->load->view('admin/common/left_menu', $menu_details);

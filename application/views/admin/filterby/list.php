@@ -13,6 +13,12 @@
     </section>
 
     <!-- Main content -->
+	<ul class="nav nav-tabs">
+		<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+		<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+		<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+		<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+	</ul>
     <section class="content">
         <!-- /.row -->
         <div class="row">
@@ -53,7 +59,7 @@
                     <?php foreach($filterByList as $info) : ?>
                         <tr>
 							<td><?php echo isset($info->headingTxt) ? $info->headingTxt : "NA";?></td>
-                            <td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."filterby/".$info->closeImageButton; ?>" /></td>
+                            <td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."filterby/".$info->type."/".$info->closeImageButton; ?>" /></td>
 							<!--td><!--?php echo isset($info->closeImageButton ) ? substr($info->closeImageButton,10)  : "NA";?></td-->
 							<td><?php echo isset($info->clearButton) ? $info->clearButton : "NA";?></td>
 							<td><?php echo isset($info->applyButton) ? $info->applyButton : "NA";?></td>

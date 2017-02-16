@@ -6,12 +6,13 @@ class screensaver_model extends MY_Model {
     } 
 
 	public function addscreensaverinfo($data) {
-        $this->db->insert('screensaver',$data);
+        $user_id = $this->db->insert('screensaver',$data);
         return $user_id;
     }
 	
-    public function getscreensaverlist($page) {
+    public function getscreensaverlist($data) {
         $screensaverinfo = [];
+		$this->db->where('type', $data['type']);
         $query = $this->db->get('screensaver');
         // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {
@@ -21,7 +22,7 @@ class screensaver_model extends MY_Model {
     } 
 
     public function checkscreensaverinfo($did) {
-        $this->db->where('id', $did);
+        $this->db->where('id', $did); 
         $query = $this->db->get('screensaver');
         return $query;        
     }

@@ -17,11 +17,10 @@ class RoadsterSelection extends MY_Controller {
 	public function index() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Configure License";
-			$page = 1;		
-
-			//$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-			$roadsterSelectionList = $this->roadsterSelection_model->getRoadsterSelectionList($page);
+			$header['page_title'] = "Configure Roadster Selection";
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
+			$roadsterSelectionList = $this->roadsterSelection_model->getRoadsterSelectionList($data);
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
 
@@ -35,7 +34,7 @@ class RoadsterSelection extends MY_Controller {
 			}
 			else
 			{
-				$this->load->view('admin/roadsterSelection/add');
+				$this->load->view('admin/roadsterSelection/add',$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -48,10 +47,11 @@ class RoadsterSelection extends MY_Controller {
 		{
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);
+			$type = trim($this->uri->segment(4));
+			$uploadPath = "upload/roadsterSelection/$type";
 				if(!empty($_FILES['topBarImage']['name']))
 				{
 					$_FILES['topBarImage']['name'] = $this->generateRandomNumber().$_FILES['topBarImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -64,7 +64,6 @@ class RoadsterSelection extends MY_Controller {
 				if(!empty($_FILES['BackbuttonImage']['name']))
 				{
 					$_FILES['BackbuttonImage']['name'] = $this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -76,9 +75,7 @@ class RoadsterSelection extends MY_Controller {
 				}
 				if(!empty($_FILES['collectionMenImage']['name']))
 				{
-					$_FILES['collectionMenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionMenImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
-					$config['upload_path'] = $uploadPath;
+					$_FILES['collectionMenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionMenImage']['name'];					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
@@ -90,7 +87,6 @@ class RoadsterSelection extends MY_Controller {
 				if(!empty($_FILES['catalogueMenImage']['name']))
 				{
 					$_FILES['catalogueMenImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueMenImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -103,7 +99,6 @@ class RoadsterSelection extends MY_Controller {
 				if(!empty($_FILES['collectionWomenImage']['name']))
 				{
 					$_FILES['collectionWomenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionWomenImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -116,7 +111,6 @@ class RoadsterSelection extends MY_Controller {
 				if(!empty($_FILES['catalogueWomenImage']['name']))
 				{
 					$_FILES['catalogueWomenImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueWomenImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -129,7 +123,6 @@ class RoadsterSelection extends MY_Controller {
 				if(!empty($_FILES['collectionBtnImage']['name']))
 				{
 					$_FILES['collectionBtnImage']['name'] = $this->generateRandomNumber().$_FILES['collectionBtnImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -142,7 +135,6 @@ class RoadsterSelection extends MY_Controller {
 				if(!empty($_FILES['catalogueBtnImage']['name']))
 				{
 					$_FILES['catalogueBtnImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueBtnImage']['name'];
-					$uploadPath = 'upload/roadsterSelection/';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -159,7 +151,6 @@ class RoadsterSelection extends MY_Controller {
 				   ) 
 				{
 						$addData = array(
-							'id' => 1,
 							'topBarImage' => $_FILES['topBarImage']['name'],
 							'BackbuttonImage' => $_FILES['BackbuttonImage']['name'],
 							'collectionMenImage' => $_FILES['collectionMenImage']['name'],
@@ -172,6 +163,7 @@ class RoadsterSelection extends MY_Controller {
 							'catalogueHeadingTxt' => $this->input->post('catalogueHeadingTxt'),
 							'catalogueTxt' => $this->input->post('catalogueTxt'),
 							'catalogueBtnImage' => $_FILES['catalogueBtnImage']['name'],
+							'type' => $type,
 							'create_date' => $created
 						);
 						$id = $this->roadsterSelection_model->addRoadsterSelectionInfo($addData);
@@ -182,7 +174,7 @@ class RoadsterSelection extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/roadsterSelection');				
+					redirect("admin/roadsterSelection/$type");				
 				
 	} 
 	else 
@@ -198,7 +190,8 @@ class RoadsterSelection extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
 			$checkRoadsterSelection = $this->roadsterSelection_model->checkRoadsterSelectionInfo($did);
-			$uploadPath = 'upload/roadsterSelection/';
+			$type = $checkRoadsterSelection->result()['0']->type;
+			$uploadPath = "upload/roadsterSelection/$type/";
 			
 			if(!empty($_FILES['topBarImage']['name']))
 			{	
@@ -219,7 +212,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['BackbuttonImage']['name']))
 			{	
 				$_FILES['BackbuttonImage']['name'] = $this->generateRandomNumber().$_FILES['BackbuttonImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -235,7 +227,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['collectionMenImage']['name']))
 			{	
 				$_FILES['collectionMenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionMenImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -251,7 +242,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['catalogueMenImage']['name']))
 			{	
 				$_FILES['catalogueMenImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueMenImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -267,7 +257,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['collectionWomenImage']['name']))
 			{	
 				$_FILES['collectionWomenImage']['name'] = $this->generateRandomNumber().$_FILES['collectionWomenImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -283,7 +272,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['catalogueWomenImage']['name']))
 			{	
 				$_FILES['catalogueWomenImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueWomenImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -299,7 +287,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['collectionBtnImage']['name']))
 			{	
 				$_FILES['collectionBtnImage']['name'] = $this->generateRandomNumber().$_FILES['collectionBtnImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -315,7 +302,6 @@ class RoadsterSelection extends MY_Controller {
 			if(!empty($_FILES['catalogueBtnImage']['name']))
 			{	
 				$_FILES['catalogueBtnImage']['name'] = $this->generateRandomNumber().$_FILES['catalogueBtnImage']['name'];
-                $uploadPath = 'upload/roadsterSelection/';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $this->load->library('upload', $config);
@@ -376,7 +362,7 @@ class RoadsterSelection extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/roadsterSelection');
+				redirect("admin/roadsterSelection/$type");
 				
 			} 
 			else {
@@ -402,6 +388,7 @@ class RoadsterSelection extends MY_Controller {
 								'catalogueHeadingTxt' => $row->catalogueHeadingTxt,
 								'catalogueTxt' => $row->catalogueTxt,
 								'catalogueBtnImage' => $row->catalogueBtnImage,
+								'type' => $row->type,
 								'create_date'=>$created, 
 							);		
 						}

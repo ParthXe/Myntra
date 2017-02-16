@@ -15,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Edit Style Image </h3>
+                  <h3 class="box-title">Edit Style</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -29,13 +29,17 @@
 							<input type="text" class="form-control" id="title" name="title" value="<?php echo $styleList['title'];?>" required/>
 						</div>
 						<div class="form-group">
+							<label for="title">Style ID:</label>
+							<input type="text" class="form-control" id="style_id" name="style_id" value="<?php echo $styleList['style_id'];?>" required/>
+						</div>
+						<div class="form-group">
 							<label for="title">Carousel ID:</label>
-							<input type="text" class="form-control" id="carousel_id" name="" value="<?php echo $styleList['carousel_id'];?>" disabled/>
+							<!--<input type="text" class="form-control" id="carousel_id" name="" value="<?php echo $styleList['carousel_id'];?>" disabled/>-->
 							<input type="hidden" class="form-control"  name="carousel_id" value="<?php echo $styleList['carousel_id'];?>" required/>
 						</div>
 						<div class="form-group">
-							<label for="title">Style ID:</label>
-							<input type="text" class="form-control" id="style_id" name="style_id" value="<?php echo $styleList['style_id'];?>" required/>
+							<label for="title">Carousel Image:</label><br>
+							<span><img style="background-color:grey;height:350px;width:250px" src="<?php echo ASSET_PATH."carousel/".$styleList['imagePath'];?>" /></span>
 						</div>
 						<div class="form-group">
 		                	<label>Status</label>

@@ -62,12 +62,12 @@ var config = {
 						<div class="form-group">
 							<label for="screensaver">Screensaver:</label>
 							<input type="file" class="form-control" id="bgPath" name="bgPath" value="" 	/>
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['bgPath']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['type']."/".$collectionvideoinfo['bgPath']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
 							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value=""/>
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['homebuttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['type']."/".$collectionvideoinfo['homebuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="screentext">Screen Text:</label>
@@ -91,7 +91,7 @@ var config = {
 							<label for="motoGPvid">MotoGP Video:</label>
 							<input type="file" class="form-control" id="motoGpvideo" name="motoGpvideo" value=""/>
 							<span><video width="320" height="240" controls>
-									<source src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['motoGpvideo']; ?>" type="video/mp4">
+									<source src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['type']."/".$collectionvideoinfo['motoGpvideo']; ?>" type="video/mp4">
 								</video>
 							</span>
 						</div>
@@ -99,19 +99,19 @@ var config = {
 							<label for="outlandervid">Outlander Video:</label>
 							<input type="file" class="form-control" id="outLandervideo" name="outLandervideo" value=""/>
 							<span><video width="320" height="240" controls>
-									<source src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['outLandervideo']; ?>" type="video/mp4">
+									<source src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['type']."/".$collectionvideoinfo['outLandervideo']; ?>" type="video/mp4">
 								</video>
 							</span>
 						</div>
 						<div class="form-group">
 							<label for="buttonimg">Button Image:</label>
 							<input type="file" class="form-control" id="buttonImage" name="buttonImage" value=""/>
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['buttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['type']."/".$collectionvideoinfo['buttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="clsbutton">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['closeImageButton']; ?>" /></span>
+							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."collectionvideo/".$collectionvideoinfo['type']."/".$collectionvideoinfo['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="row">
 							<!-- /.col -->

@@ -25,13 +25,13 @@
 					<?php echo validation_errors(); ?>
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
-							<label for="topBarImage">Image:</label>
-							<input type="file" class="form-control" id="imagePath" name="imagePath" value="" />
-							<span><img style="background-color:grey;height:200px;width:200px" src="<?php echo ASSET_PATH."carousel/".$carouselList['imagePath']; ?>" /></span>
-						</div>
-						<div class="form-group">
 							<label for="title">Title:</label>
 							<input type="text" class="form-control" id="title" name="title" value="<?php echo $carouselList['title'];?>" required/>
+						</div>
+						<div class="form-group">
+							<label for="topBarImage">Image:</label>
+							<span><br><img style="background-color:grey;height:350px;width:250px" src="<?php echo ASSET_PATH."carousel/".$carouselList['imagePath']; ?>" /></span>
+							<input type="file" class="form-control" id="imagePath" name="imagePath" value="" />
 						</div>
 						<div class="form-group">
 							<label for="gender">Gender:</label><br>

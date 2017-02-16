@@ -3,23 +3,24 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Send SMS
-		<!--<small><a href="<?php echo base_url("admin/genderSelection/add"); ?>">Gender Selection</a></small>-->
+        License
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Gender Selection</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
+	<ul class="nav nav-tabs">
+		<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+		<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+		<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+		<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+	</ul>
     <section class="content">
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Configure Send SMS</h3>
+                  <h3 class="box-title">Configure License</h3>
                   <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -50,9 +51,9 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($licenseList as $info) : ?>
                         <tr><!-- topBarImage headingTxt BackbuttonImage tab1 tab2 tab3 tab4 tab5 -->
-							<td><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."license/".$info->topBarImage; ?>" /></td>
+							<td><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."license/".$info->type."/".$info->topBarImage; ?>" /></td>
 							<td><?php echo isset($info->headingTxt) ? $info->headingTxt : "NA";?></td>
-							<td><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."license/".$info->BackbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."license/".$info->type."/".$info->BackbuttonImage; ?>" /></td>
 							<td><?php echo isset($info->tab1) ? $info->tab1 : "NA";?></td>
                             <td><?php echo isset($info->tab2 ) ? $info->tab2  : "NA";?></td>
 							<td><?php echo isset($info->tab3) ? $info->tab3 : "NA";?></td>

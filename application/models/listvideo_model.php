@@ -10,8 +10,9 @@ class listvideo_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getlistvideolist($page) {
+    public function getlistvideolist($data) {
         $listvideolist = [];
+		$this->db->where('type', $data['type']);
         $query = $this->db->get('listvideo');
         // $this->output->enable_profiler(TRUE);
         foreach ($query->result() as $row) {

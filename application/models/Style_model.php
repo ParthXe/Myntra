@@ -10,8 +10,9 @@ class Style_model extends MY_Model {
         return $user_id;
     }
 	
-    public function getStyleList($page) {
+    public function getStyleList($limit, $start) {
         $sendStyleList = [];
+		$this->db->limit($limit, $start);
 		$this->db->order_by("carousel_id","ASC");
 		$this->db->order_by("title","ASC");
         $query = $this->db->get('styles_data');
@@ -28,10 +29,15 @@ class Style_model extends MY_Model {
         }
 		return $sendStyleList;
     } 
-	
+	 public function record_count() {
+        return $this->db->count_all("styles_data");
+    }
     public function checkStyleInfo($did) {
-        $this->db->where('id', $did);
-        $query = $this->db->get('styles_data');
+        $this->db->where('a.id', $did);
+		$this->db->select('a.*,b.imagePath'); 
+		$this->db->from('styles_data a');
+		$this->db->join('carousel_data b', 'b.id = a.carousel_id', 'inner');
+        $query = $this->db->get();
         return $query;        
     }
 

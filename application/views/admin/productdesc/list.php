@@ -3,22 +3,24 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Collection Video<small><a href="<?php echo base_url("admin/collectionvideo/add"); ?>">collectionvideo</a></small>
+        Product Description
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Collection Video</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+	<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Configure Collection Video</h3>
+                  <h3 class="box-title">Configure Product Description</h3>
                   <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -60,11 +62,11 @@
                    <!--?php if (count($tshirts_male) > 0 ){ ?-->  
                     <?php foreach($productdesclist as $info) : ?>
                         <tr>
-                            <td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->topBarImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->BackbuttonImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->homebuttonImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->myntralogoImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->getProdBtn; ?>" /></td>
+                            <td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->topBarImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->BackbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->homebuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->myntralogoImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->getProdBtn; ?>" /></td>
 							<?php $str= $info->relatedProdHeadingTxt;$relatedProdHeadingTxt = strip_tags($str,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $relatedProdHeadingTxt;?></td>
 							<?php $str1= $info->descTxtHeading;$descTxtHeading = strip_tags($str1,0);?>
@@ -84,8 +86,8 @@
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $prodUrl;?></td>
 							<?php $str8= $info->sizeUrl;$sizeUrl = strip_tags($str8,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizeUrl;?></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->nextbuttonImage; ?>" /></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->backbtnImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->nextbuttonImage; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->backbtnImage; ?>" /></td>
                             <td><a href="<?php echo base_url("admin/productdesc/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
                         </tr>
                     <?php endforeach; ?>

@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><img style="background-color:grey;height:40px;width:40px;" src="<?php echo ASSET_PATH."filterBy/".$filterByList['closeImageButton']; ?>" /></span>
+							<span><img style="background-color:grey;height:40px;width:40px;" src="<?php echo ASSET_PATH."filterBy/".$filterByList['type']."/".$filterByList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="clearButton">Clear Button Text:</label>
