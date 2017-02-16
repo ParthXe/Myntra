@@ -81,6 +81,7 @@ $route['user/seller/product'] 		= 'frontend/user/seller_products';
 $route['user/orders']				= 'frontend/user/myorders';
 $route['user/update_details'] 		= 'frontend/user/update_details';
 
+$route['admin/Xml/(:any)']= 'admin/Xml/index/$1';
 $route['admin/looksJSON/(:any)/(:any)']= 'admin/looksJSON/index/$1/$2';
 $route['admin/screensaver/(:any)']= 'admin/screensaver/index/$1';
 $route['admin/collectionvideo/(:any)']= 'admin/collectionvideo/index/$1';
