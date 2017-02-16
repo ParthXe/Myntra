@@ -28,10 +28,6 @@ var config = {
       <h1>
       Collection Video
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Collection Video</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
