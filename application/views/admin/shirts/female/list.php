@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Shirt Products List<small><a href="<?php echo base_url("admin/shirt/male_add"); ?>">Add Shirt Products</a></small>
+        Shirt Products List<small><a href="<?php echo base_url("admin/shirts/female_add"); ?>">Add Shirt Products</a></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

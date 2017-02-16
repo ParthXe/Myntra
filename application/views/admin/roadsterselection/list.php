@@ -6,10 +6,6 @@
         Roadster Selection
 		<!--<small><a href="<?php echo base_url("admin/genderSelection/add"); ?>">Gender Selection</a></small>-->
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Gender Selection</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->

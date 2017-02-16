@@ -248,6 +248,10 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
+                if(empty($_FILES['championsProductsImages']['name'][$j]))
+                {
+                    continue;
+                } 
                 $_FILES['championsProductsImages']['name'][$j] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
                 $_FILES['championsProductsImage']['type'] = $_FILES['championsProductsImages']['type'][$j];
@@ -274,6 +278,10 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['trendsImages']['name'])){
             $filesCount2 = count($_FILES['trendsImages']['name']);
             for($i = 0; $i < $filesCount2; $i++){
+                if(empty($_FILES['trendsImages']['name'][$i]))
+                {
+                    continue;
+                } 
                 $_FILES['trendsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['trendsImages']['name'][$i];
             	
                 $_FILES['trendsImage']['name'] = $_FILES['trendsImages']['name'][$i];
@@ -302,7 +310,10 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['vintageImage']['name'])){
             $filesCount3 = count($_FILES['vintageImage']['name']);
             for($i = 0; $i < $filesCount3; $i++){
-
+                if(empty($_FILES['vintageImage']['name'][$i]))
+                {
+                    continue;
+                } 
                 $_FILES['vintageImage']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['name'] = $_FILES['vintageImage']['name'][$i];
                 $_FILES['vintageImages']['type'] = $_FILES['vintageImage']['type'][$i];
@@ -633,6 +644,10 @@ class Shirts extends MY_Controller {
 				 if(!empty($_FILES['championsProductsImages']['name'])){
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
             for($j = 0; $j < $filesCount1; $j++){
+                if(empty($_FILES['championsProductsImages']['name'][$j]))
+                {
+                    continue;
+                }
                 $_FILES['championsProductsImages']['name'][$j] = $this->generateRandomNumber().$_FILES['championsProductsImages']['name'][$j];
 
                 $_FILES['championsProductsImage']['name'] = $_FILES['championsProductsImages']['name'][$j];
@@ -660,6 +675,10 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['trendsImages']['name'])){
             $filesCount2 = count($_FILES['trendsImages']['name']);
             for($i = 0; $i < $filesCount2; $i++){
+                if(empty($_FILES['trendsImages']['name'][$i]))
+                {
+                    continue;
+                }
                 $_FILES['trendsImages']['name'][$i] = $this->generateRandomNumber().$_FILES['trendsImages']['name'][$i];
             	
                 $_FILES['trendsImage']['name'] = $_FILES['trendsImages']['name'][$i];
@@ -688,6 +707,10 @@ class Shirts extends MY_Controller {
         if(!empty($_FILES['vintageImage']['name'])){
             $filesCount3 = count($_FILES['vintageImage']['name']);
             for($i = 0; $i < $filesCount3; $i++){
+                if(empty($_FILES['vintageImage']['name'][$i]))
+                {
+                    continue;
+                }
                 $_FILES['vintageImage']['name'][$i] = $this->generateRandomNumber().$_FILES['vintageImage']['name'][$i];
 
                 $_FILES['vintageImages']['name'] = $_FILES['vintageImage']['name'][$i];

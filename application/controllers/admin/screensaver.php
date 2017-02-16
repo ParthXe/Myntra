@@ -19,7 +19,8 @@ class screensaver extends MY_Controller {
 			// Set Page Title
 			$header['page_title'] = "Screensaver Configuration";
 			$type = trim($this->uri->segment(3));
-			$data['type']=$type;		
+			$data['type']=$type;	
+			
 			$screensaverlist = $this->screensaver_model->getscreensaverlist($data);
 			
 			// Create the data array to pass to view
@@ -69,7 +70,7 @@ class screensaver extends MY_Controller {
 				if(!empty($_FILES['exploreBtnPath']['name']))
 				{    
 					$_FILES['exploreBtnPath']['name']=$this->generateRandomNumber().$_FILES['exploreBtnPath']['name'];			
-					$uploadPath = 'upload/screensaver/';
+					$uploadPath = 'upload/screensaver/$type';
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					
