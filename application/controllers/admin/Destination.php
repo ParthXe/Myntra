@@ -193,6 +193,10 @@ class Destination extends MY_Controller {
 			 if(!empty($_FILES['userFiles']['name'])){
             $filesCount = count($_FILES['userFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
+                if(empty($_FILES['userFiles']['name'][$j]))
+                {
+                    continue;
+                }
     	   	    $_FILES['userFiles']['name'][$i] =  $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['name'] = $_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['userFiles']['type'][$i];
