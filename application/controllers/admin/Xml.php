@@ -32,7 +32,7 @@ class Xml extends CI_Controller
     {
         /* 	if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 			{ */
-				$did = $type=$this->uri->segment(3);
+				$did=$this->uri->segment(3);
 				$menu_details['session'] = $this->session->userdata;
 				$getscreensaver = $this->Xml_model->getscreensaverlist($did);
 				$getcollectionvideo = $this->Xml_model->getcollectionvideolist($did);
