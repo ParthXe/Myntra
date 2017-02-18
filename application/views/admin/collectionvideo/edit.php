@@ -20,14 +20,14 @@ var config = {
                         element: 'b',
                         overrides: 'strong',
                     },
-				/* colorButton_foreStyle: {
-					element: 'font',
-					styles: { 'color': '#(color)' },
-					overrides: [ { element: 'span', attributes: { 'style': null } } ],
-					childRule: function( element ) {
-						return !element.is( 'a' );
-					} 
-				}, */
+				colorButton_foreStyle : {
+						element: 'font',
+						attributes: { 'color': '#(color)' }
+					},
+				fontSize_style :{
+						element: 'font',
+						attributes: {'font-size': '#(font-size)' }
+				},
 
 			}	  
 </script>
