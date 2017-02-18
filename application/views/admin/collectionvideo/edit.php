@@ -19,16 +19,18 @@ var config = {
 				coreStyles_bold: {
                         element: 'b',
                         overrides: 'strong',
-                    },
-				/* colorButton_foreStyle: {
+                    }, 
+			/* 	fontSize_style: {
+                        element: 'font',
+						styles:  'font-size: #(font-size);' ,
+                        overrides: 'span',
+                    },	
+				colorButton_foreStyle: {
 					element: 'font',
-					styles: { 'color': '#(color)' },
+					styles: { 'color':'#(color);' },
 					overrides: [ { element: 'span', attributes: { 'style': null } } ],
-					childRule: function( element ) {
-						return !element.is( 'a' );
-					} 
 				}, */
-
+				//present address pan card aadhar card ` 
 			}	  
 </script>
 <div class="content-wrapper">
