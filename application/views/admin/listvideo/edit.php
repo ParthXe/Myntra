@@ -23,6 +23,16 @@ var config = {
                         element: 'b',
                         overrides: 'strong',
                     },
+				/* fontSize_style: {
+                        element: 'font',
+						styles:  {'size': '#(size)'} ,
+                        overrides: [ { element: 'span', attributes: { 'font-size': null } } ],
+                    },
+				colorButton_foreStyle: {
+					element: 'font',
+					styles: { 'color': '#(color)' },
+					overrides: [ { element: 'span', attributes: { 'style': null } } ],
+				}, */		
 			}
 </script>
     <section class="content-header">

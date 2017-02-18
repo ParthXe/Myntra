@@ -19,6 +19,7 @@ var config = {
 				coreStyles_bold: {
                         element: 'b',
                         overrides: 'strong',
+<<<<<<< HEAD
                     },
 				colorButton_foreStyle : {
 						element: 'font',
@@ -29,6 +30,20 @@ var config = {
 						attributes: {'font-size': '#(font-size)' }
 				},
 
+=======
+                    }, 
+			/* 	fontSize_style: {
+                        element: 'font',
+						styles:  'font-size: #(font-size);' ,
+                        overrides: 'span',
+                    },	
+				colorButton_foreStyle: {
+					element: 'font',
+					styles: { 'color':'#(color);' },
+					overrides: [ { element: 'span', attributes: { 'style': null } } ],
+				}, */
+				//present address pan card aadhar card ` 
+>>>>>>> b399b90d2c0799a5767deef9f19aeafffaaebf49
 			}	  
 </script>
 <div class="content-wrapper">
