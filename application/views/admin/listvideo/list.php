@@ -68,7 +68,7 @@
 							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."listvideo/".$info->type."/".$info->blackbgImage; ?>" /></td>
 							<?php $str1= $info->imageGalleryPos;$imageGalleryPos = strip_tags($str1,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $imageGalleryPos;?></td>
-							<td><a href="<?php echo base_url("admin/listvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
+							<td><a href="<?php echo base_url("admin/listvideo/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>
                   </table>

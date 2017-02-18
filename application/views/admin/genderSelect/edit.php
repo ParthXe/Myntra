@@ -45,7 +45,7 @@
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['image2Disabled']; ?>" /></span>
 						</div>
 						<div class="form-group">
-							<label for="thunderImage">Thunder Image:</label>
+							<label for="thunderImage">Sepration Image:</label>
 							<input type="file" class="form-control" id="thunderImage" name="thunderImage" value="" 	/>
 							<span><img style="background-color:grey;height:20%;width:20%" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['thunderImage']; ?>" /></span>
 						</div>

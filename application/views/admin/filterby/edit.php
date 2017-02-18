@@ -4,12 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-         License
+        Filter By
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Screensaver</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -19,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Change Send SMS </h3>
+                  <h3 class="box-title">Configure Filter By </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -36,7 +32,7 @@
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><img style="background-color:grey;height:40px;width:40px;" src="<?php echo ASSET_PATH."filterBy/".$filterByList['type']."/".$filterByList['closeImageButton']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:100px;" src="<?php echo ASSET_PATH."filterBy/".$filterByList['type']."/".$filterByList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="clearButton">Clear Button Text:</label>

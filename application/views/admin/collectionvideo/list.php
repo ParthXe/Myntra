@@ -69,7 +69,7 @@
 							</video></td>
 							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->buttonImage; ?>" /></td>
 							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->closeImageButton; ?>" /></td>
-                            <td><a href="<?php echo base_url("admin/collectionvideo/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
+                            <td><a href="<?php echo base_url("admin/collectionvideo/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>
                   </table>
