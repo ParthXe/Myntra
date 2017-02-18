@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 define("ASSET_PATH","http://".$_SERVER['HTTP_HOST']."/myntra/upload/");
+define("USER_IMAGE","http://".$_SERVER['HTTP_HOST']."/myntra/image/user2-160x160.jpg");
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

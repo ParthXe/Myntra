@@ -27,7 +27,7 @@
 	      <!-- User Account: style can be found in dropdown.less -->
 	      <li class="dropdown user user-menu">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          <img src="../image/user2-160x160.jpg" class="user-image" alt="User Image">
+	          <img src="<?php echo USER_IMAGE;?>" class="user-image" alt="User Image">
 	          <span class="hidden-xs"><?php echo $session['usr_fname']; ?></span>
 	        </a>
 	        <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
 	          </li>
 	          <!-- Menu Footer-->
 	          <li class="user-footer">
-	            <div class="pull-right">
+	            <div class="text-center">
 	              <a href="<?php echo $this->config->item('base_url_admin')."/login/logout"; ?>" class="btn btn-default btn-flat">Sign out</a>
 	            </div>
 	          </li>

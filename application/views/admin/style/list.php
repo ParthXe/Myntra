@@ -36,7 +36,7 @@
                   <table class="table">
                     <tr>
 						<th>Title</th>
-						<th>Carousel</th>
+						<th>Carousel Image</th>
 						<th>Style ID</th>
 						<th>Status</th>
 						<th>EDIT</th>
@@ -46,13 +46,10 @@
                     <?php foreach($styleList as $info) : ?>
                         <tr>
 							<td><?php echo isset($info->title) ? $info->title : "NA";?></td>
-<<<<<<< HEAD
 							<td><img style="background-color:grey;height:170px;width:140px" src="<?php echo ASSET_PATH."carousel/".$info->imagePath; ?>" /></td>
 							<!--<td><?php echo isset($info->carousel_id ) ? $info->imagePath : "NA";?></td>-->
-=======
-							<td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."carousel/".$info->imagePath; ?>" /></td>
+							<!--<td><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."carousel/".$info->imagePath; ?>" /></td>-->
 							<!--<td><!--?php echo isset($info->carousel_id ) ? $info->imagePath : "NA";?></td>-->
->>>>>>> 0fa8a6857dbc23d486798766c283b4ba5b0366a7
 							<td><?php echo isset($info->style_id) ? $info->style_id : "NA";?></td>
 							<td><?php echo isset($info->status) ? $info->status : "NA";?></td>
                             <td><a href="<?php echo base_url("admin/style/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
