@@ -61,7 +61,7 @@
 							<?php if($images = $denim_male['champion_products_images']){
 								$image = explode(",", $images);
 								foreach ($image as $img) {
-								echo '<img src="'.base_url().'upload/denim/male/champion_products/'.$img.'" width="150px"><a href="#" onclick="imageRemove('."'".$img."'".','."'".$denim_male['id']."'".','."'champion-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_products/pro_denims/champion_product_images/'.$img.'" width="150px"><a href="#" onclick="imageRemove('."'".$img."'".','."'".$denim_male['id']."'".','."'champion-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -84,7 +84,7 @@
 							<?php if($trend_images = $denim_male['trends_images']){
 								$trend_image = explode(",", $trend_images);
 								foreach ($trend_image as $trend_img) {
-								echo '<img src="'.base_url().'upload/denim/male/trend_images/'.$trend_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$trend_img."'".','."'".$denim_male['id']."'".','."'trends_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_products/pro_denims/trends_images/'.$trend_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$trend_img."'".','."'".$denim_male['id']."'".','."'trends_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -94,12 +94,12 @@
 							?>
 						</div>			
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Images</label>
+							<label for="userEditMobile">Process Video Thumbnail Images</label>
 							<input type="file" class="form-control" name="vintageImage[]" value="" multiple>
 							<?php if($vintage_images = $denim_male['vintage_images']){
 								$vintage_image = explode(",", $vintage_images);
 								foreach ($vintage_image as $vintage_img) {
-								echo '<img src="'.base_url().'upload/denim/male/vintage_images/'.$vintage_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$vintage_img."'".','."'".$denim_male['id']."'".','."'vintage_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_products/pro_denims/process_video_and_tumbnails/'.$vintage_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$vintage_img."'".','."'".$denim_male['id']."'".','."'vintage_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -109,8 +109,8 @@
 							?>
 						</div>	
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Video</label>
-							<input type="file" class="form-control" name="vintageVideo" value="" >
+							<label for="userEditMobile">Process Videos</label>
+							<input type="file" class="form-control" name="vintageVideo[]" value="" multiple>
 							<?php
 							$path = base_url()."upload/denim/male/vintage_video/".$denim_male['vintage_video'];  if(!empty($denim_male['vintage_video'])) {?> 
 							<video width="200">
@@ -121,11 +121,11 @@
                            <?php } ?>
 						</div>
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Title</label>
+							<label for="userEditMobile">Process Title</label>
 							<input type="text" class="form-control" id="vintageTitle" name="vintage_title" placeholder="Vintage Title" value="<?php echo isset($denim_male['vintage_title']) ? $denim_male['vintage_title'] : "NA"; ?>" required>
 						</div>
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Description</label>
+							<label for="userEditMobile">Process Description</label>
 							<textarea class="form-control" id="vintageDescription" name="vintage_description" placeholder="Vintage Description" required><?php echo isset($denim_male['vintage_desc']) ? $denim_male['vintage_desc'] : "NA"; ?></textarea>
 						</div>				
 

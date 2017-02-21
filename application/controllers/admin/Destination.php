@@ -63,20 +63,27 @@ class Destination extends MY_Controller {
 				$time=time();
 				$created = date ("Y-m-d H:i:s", $time);	
 		if($this->form_validation->run() == TRUE) {
-			
+			$myString = $this->input->post('destination_name');
+                $strArray = explode(' ',$myString);
+				$dest_title = strtolower($strArray[1]);
 			//$data = array();
         if(!empty($_FILES['userFiles']['name'])){
+
             $filesCount = count($_FILES['userFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
             	
-            	$_FILES['userFiles']['name'][$i] = $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
+            	//$_FILES['userFiles']['name'][$i] = $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['name'] = $_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['userFiles']['type'][$i];
                 $_FILES['userFile']['tmp_name'] = $_FILES['userFiles']['tmp_name'][$i];
                 $_FILES['userFile']['error'] = $_FILES['userFiles']['error'][$i];
                 $_FILES['userFile']['size'] = $_FILES['userFiles']['size'][$i];
+                if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination', 0777, TRUE);
 
-                $uploadPath = 'upload/destination/destination_images';
+				}
+                $uploadPath = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination';
+              //  $uploadPath = 'upload/destination/destination_images';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -91,22 +98,32 @@ class Destination extends MY_Controller {
             }
         }
 
-        if(!empty($_FILES['destination_bg_img']['name'])){
-           		$_FILES['destination_bg_img']['name'] =  $this->generateRandomNumber().$_FILES['destination_bg_img']['name'];
-                $uploadPath = 'upload/destination/destination_bg';
-                $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+    //     if(!empty($_FILES['destination_bg_img']['name'])){
+    //        		$_FILES['destination_bg_img']['name'] =  $this->generateRandomNumber().$_FILES['destination_bg_img']['name'];
+				// if (!is_dir('upload/'.'dest_'.$this->input->post('marker_code').'_'.$this->input->post('destination_name'))) {
+				// $uploadPath= mkdir('./uploads/' .'dest_'.$this->input->post('marker_code').'_'.$this->input->post('destination_name'), 0777, TRUE);
+
+				// }
+    //            // $uploadPath = 'upload/destination/destination_bg';
+    //             $config['upload_path'] = $uploadPath;
+    //             $config['allowed_types'] = 'gif|jpg|png';
                 
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if($this->upload->do_upload('destination_bg_img')){
-                    $fileData = $this->upload->data();
-                }
-            }
+    //             $this->load->library('upload', $config);
+    //             $this->upload->initialize($config);
+    //             if($this->upload->do_upload('destination_bg_img')){
+    //                 $fileData = $this->upload->data();
+    //             }
+    //         }
 
         if(!empty($_FILES['destination_matching_male']['name'])){
-           $_FILES['destination_matching_male']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_male']['name'];
-                $uploadPath1 = 'upload/destination/male';
+
+           //$_FILES['destination_matching_male']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_male']['name'];
+              //  $uploadPath1 = 'upload/destination/male';
+                if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game', 0777, TRUE);
+
+				}
+                $uploadPath1 = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game';
                 $config['upload_path'] = $uploadPath1;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -118,8 +135,13 @@ class Destination extends MY_Controller {
             } 
 
           if(!empty($_FILES['destination_matching_female']['name'])){
-        	    $_FILES['destination_matching_female']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_female']['name'];
-                $uploadPath2 = 'upload/destination/female';
+        	   // $_FILES['destination_matching_female']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_female']['name'];
+          	  if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game', 0777, TRUE);
+
+				}
+                $uploadPath2 = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game';
+                
                 $config['upload_path'] = $uploadPath2;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -135,6 +157,7 @@ class Destination extends MY_Controller {
 
 				if(!empty($this->input->post('destination_name'))) {
 						$addData = array(
+							'marker_code' => $this->input->post('marker_code'),
 							'destination_name' => $this->input->post('destination_name'),
 							'destination_state' => $this->input->post('destination_state'),
 							'destination_desc' => $this->input->post('destination_desc'),
@@ -190,6 +213,9 @@ class Destination extends MY_Controller {
 			$this->form_validation->set_error_delimiters('<p class="alert alert-danger"><a class="close" data-dismiss="alert" href="#">&times;</a>', '</p>');
 
 			if($this->form_validation->run() == TRUE) {
+				$myString = $this->input->post('destination_name');
+                $strArray = explode(' ',$myString);
+				$dest_title = strtolower($strArray[1]);
 			 if(!empty($_FILES['userFiles']['name'])){
             $filesCount = count($_FILES['userFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
@@ -197,14 +223,18 @@ class Destination extends MY_Controller {
                 {
                     continue;
                 }
-    	   	    $_FILES['userFiles']['name'][$i] =  $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
+    	   	   // $_FILES['userFiles']['name'][$i] =  $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['name'] = $_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['userFiles']['type'][$i];
                 $_FILES['userFile']['tmp_name'] = $_FILES['userFiles']['tmp_name'][$i];
                 $_FILES['userFile']['error'] = $_FILES['userFiles']['error'][$i];
                 $_FILES['userFile']['size'] = $_FILES['userFiles']['size'][$i];
 
-                $uploadPath = 'upload/destination/destination_images';
+                if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination', 0777, TRUE);
+
+				}
+                $uploadPath = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -218,23 +248,30 @@ class Destination extends MY_Controller {
                 }
             }
         }
-                if(!empty($_FILES['destination_bg_img']['name'])){
-           	    $_FILES['destination_bg_img']['name'] =  $this->generateRandomNumber().$_FILES['destination_bg_img']['name'];
+    //             if(!empty($_FILES['destination_bg_img']['name'])){
+           	    
+    //        	    if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				//  mkdir('./upload/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination', 0777, TRUE);
 
-                $uploadPath = 'upload/destination/destination_bg';
-                $config['upload_path'] = $uploadPath;
-                $config['allowed_types'] = 'gif|jpg|png';
+				// }
+    //             $uploadPath = 'upload/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination';
+    //             $config['upload_path'] = $uploadPath;
+    //             $config['allowed_types'] = 'gif|jpg|png';
                 
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if($this->upload->do_upload('destination_bg_img')){
-                    $fileData = $this->upload->data();
-                }
-            }
+    //             $this->load->library('upload', $config);
+    //             $this->upload->initialize($config);
+    //             if($this->upload->do_upload('destination_bg_img')){
+    //                 $fileData = $this->upload->data();
+    //             }
+    //         }
 
              if(!empty($_FILES['destination_matching_male']['name'])){
-           	    $_FILES['destination_matching_male']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_male']['name'];
-                $uploadPath1 = 'upload/destination/male';
+           	   // $_FILES['destination_matching_male']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_male']['name'];
+               if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game', 0777, TRUE);
+
+				}
+                $uploadPath1 = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game';
                 $config['upload_path'] = $uploadPath1;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -246,8 +283,13 @@ class Destination extends MY_Controller {
             } 
 
           if(!empty($_FILES['destination_matching_female']['name'])){
-          	    $_FILES['destination_matching_female']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_female']['name'];
-                $uploadPath2 = 'upload/destination/female';
+          	   // $_FILES['destination_matching_female']['name'] =  $this->generateRandomNumber().$_FILES['destination_matching_female']['name'];
+                
+               	if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game', 0777, TRUE);
+
+				}
+                $uploadPath2 = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_game';
                 $config['upload_path'] = $uploadPath2;
                 $config['allowed_types'] = 'gif|jpg|png';
                 
@@ -261,6 +303,7 @@ class Destination extends MY_Controller {
 
 				$data = array(
 					'Id' => $did,
+					'marker_code' => $this->input->post('marker_code'),
 					'destination_name' => $this->input->post('destination_name'),
 					'destination_state' => $this->input->post('destination_state'),
 					'destination_desc' => $this->input->post('destination_desc'),
@@ -296,6 +339,7 @@ class Destination extends MY_Controller {
 						foreach ($checkDestination->result() as $row) {
 							$data['destination'] = array(
 								'id' => $row->Id,
+								'marker_code' => $row->marker_code,
 								'destination_name' => $row->destination_name,
 								'destination_state' => $row->destination_state,
 								'destination_desc' => $row->destination_desc,

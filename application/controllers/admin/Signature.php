@@ -111,7 +111,7 @@ class Signature extends MY_Controller {
 
 			if(!empty($_FILES['denim_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/denim';
+                $uploadPath = 'myntra/section_products/pro_denims/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -170,7 +170,7 @@ class Signature extends MY_Controller {
 
 			if(!empty($_FILES['shirt_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/shirt';
+                $uploadPath = 'myntra/section_products/pro_shirts/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -229,7 +229,7 @@ class Signature extends MY_Controller {
 
 			if(!empty($_FILES['tshirt_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/tshirt';
+                $uploadPath = 'myntra/section_products/pro_tshirts/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 

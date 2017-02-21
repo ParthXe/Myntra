@@ -102,8 +102,14 @@ class Denim_model extends MY_Model {
         $data['vintage_images'] = $images_name[0]->vintage_images;
     }
 
+    $prev_vintagevideo = explode(",", $images_name[0]->vintage_video);
+
+    $image_vintagevideo=array();
     if (!empty($data['vintage_video'])) {
-        $data['vintage_video'];
+        $image_vintagevideo[] = $data['vintage_video'];
+        $new_vintagevideo =  array_merge($image_vintagevideo,$prev_vintagevideo);
+        $imagesVintageVideoNew = implode(",",$new_vintagevideo);  
+        $data['vintage_video'] = $imagesVintageVideoNew; 
     }
     else{
         $data['vintage_video'] = $images_name[0]->vintage_video;
