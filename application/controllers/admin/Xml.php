@@ -32,7 +32,7 @@ class Xml extends CI_Controller
     {
         /* 	if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 			{ */
-				$did=1;
+				$did=$this->uri->segment(3);
 				$menu_details['session'] = $this->session->userdata;
 				$getscreensaver = $this->Xml_model->getscreensaverlist($did);
 				$getcollectionvideo = $this->Xml_model->getcollectionvideolist($did);
@@ -85,7 +85,7 @@ class Xml extends CI_Controller
 								'thunderImage' => $row->thunderImage,
 								'image1Disabled' => $row->image1Disabled,
 								'image2Disabled' => $row->image2Disabled,
-								'category' => $row->category,
+								'type' => $row->type,
 								'create_date' => $row->create_date,
 							);		
 						}
@@ -107,7 +107,7 @@ class Xml extends CI_Controller
 								'collectionBtnImage' => $row->collectionBtnImage,
 								'catalogueHeadingTxt' => $row->catalogueHeadingTxt,
 								'catalogueTxt' => $row->catalogueTxt,
-								'category' => $row->category,
+								'type' => $row->type,
 								'catalogueBtnImage' => $row->catalogueBtnImage,
 							);		
 						}

@@ -10,7 +10,7 @@
     <!-- Main content -->
     <section class="content">
 	<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="Catalogue">catalogue</a></li>
 			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
 			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
 			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
@@ -20,17 +20,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Configure Product Description</h3>
-                  <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                      <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
                   <?php if (isset($message)) : ?>
@@ -77,7 +67,7 @@
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizeSelectionHeading;?></td>
 							<?php $str4= $info->notsureHeading;$notsureHeading = strip_tags($str4,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $notsureHeading;?></td>
-							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->closeImageButton; ?>" /></td>
+							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->closeImageButton; ?>" /></td>
 							<?php $str5= $info->sizePopupHeadingTxt;$sizePopupHeadingTxt = strip_tags($str5,0);?>
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizePopupHeadingTxt;?></td>
 							<?php $str6= $info->sizePopupFirstTabTxt;$sizePopupFirstTabTxt = strip_tags($str6,0);?>
@@ -88,7 +78,7 @@
 							<td style="font-color:#000;margin-top: 15px;"><?php echo $sizeUrl;?></td>
 							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->nextbuttonImage; ?>" /></td>
 							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."productdesc/".$info->type."/".$info->backbtnImage; ?>" /></td>
-                            <td><a href="<?php echo base_url("admin/productdesc/edit/".$info->id); ?>"><small class="label bg-red">edit</small></a></td>
+                            <td><a href="<?php echo base_url("admin/productdesc/edit/".$info->id); ?>"><small class="label bg-red">EDIT</small></a></td>
                         </tr>
                     <?php endforeach; ?>
                   </table>

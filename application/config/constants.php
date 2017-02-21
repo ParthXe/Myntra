@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 define("ASSET_PATH","http://".$_SERVER['HTTP_HOST']."/myntra/upload/");
+define("USER_IMAGE","http://".$_SERVER['HTTP_HOST']."/myntra/image/user2-160x160.jpg");
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
@@ -84,3 +85,5 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+ini_set('max_execution_time', 0); 
+ini_set('memory_limit','2048M');

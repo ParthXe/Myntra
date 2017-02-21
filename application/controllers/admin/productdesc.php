@@ -229,7 +229,7 @@ class productdesc extends MY_Controller {
 
 						$this->session->set_flashdata('message', 'Settings saved successfully..');
 				} 
-					redirect('admin/productdesc/$type');				
+					redirect("admin/productdesc/$type");				
 				
 	} 
 	else 
@@ -245,10 +245,10 @@ class productdesc extends MY_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
 			$flag=0;	
-			$type=$checkscreensaver->result()['0']->type;	
-			$uploadPath = "upload/productdesc/$type/";
 			
 			$checkproductdesc = $this->productdesc_model->checkproductdescinfo($did);
+			$type=$checkproductdesc->result()['0']->type;	
+			$uploadPath = "upload/productdesc/$type/";
 			
 				if(!empty($_FILES['topBarImage']['name']))
 				{
@@ -448,7 +448,7 @@ class productdesc extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Settings saved successfully..');
 				
-				redirect('admin/productdesc');				
+				redirect("admin/productdesc/$type");				
 			} 
 			else {
 				if(is_numeric($did)) {

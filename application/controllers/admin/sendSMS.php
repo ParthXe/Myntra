@@ -17,25 +17,23 @@ class SendSMS extends MY_Controller {
 	public function index() {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
 			// Set Page Title
-			$header['page_title'] = "Configure Send SMS";
-			$page = 1;		
-
-			//$screensaverlist = $this->screensaver_model->getscreensaverlist($page);
-			$sendSMSList = $this->sendSMS_model->getSendSMSList($page);
+			$header['page_title'] = "Send SMS";
+			$type = trim($this->uri->segment(3));
+			$data['type']=$type;
+			$sendSMSList = $this->sendSMS_model->getSendSMSList($data);
 			// Create the data array to pass to view
 			$menu_details['session'] = $this->session->userdata;
-
 			$data['sendSMSList'] = $sendSMSList;
 			$data['message'] = $this->session->flashdata('message');
 			$this->load->view('admin/common/header', $header);
 			$this->load->view('admin/common/left_menu', $menu_details);
 			if(count($sendSMSList)>0)
 			{
-				$this->load->view('admin/sendSMS/list', $data);	
+				$this->load->view('admin/sendSMS/list',$data);	
 			}
 			else
 			{
-				$this->load->view('admin/sendSMS/add');
+				$this->load->view('admin/sendSMS/add',$data);
 			}
 			$this->load->view('admin/common/footer');
 		} else {
@@ -47,11 +45,12 @@ class SendSMS extends MY_Controller {
 		if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) 
 		{
 			$time=time();
-			$created = date ("Y-m-d H:i:s", $time);					
+			$created = date ("Y-m-d H:i:s", $time);	
+			$type = trim($this->uri->segment(4));
+			$uploadPath = "upload/sendSMS/$type";	
 				if(!empty($_FILES['closeImageButton']['name']))
 				{
-					$_FILES['closeImageButton']['name'] = $this->$this->generateRandomNumber().$_FILES['closeImageButton']['name'];
-					$uploadPath = 'upload/sendSMS/';
+					$_FILES['closeImageButton']['name'] = $this->generateRandomNumber().$_FILES['closeImageButton']['name'];
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'gif|jpg|png';
 					$this->load->library('upload', $config);
@@ -64,12 +63,12 @@ class SendSMS extends MY_Controller {
 				if(!empty($_FILES['closeImageButton']['name'])) 
 				{
 						$addData = array(
-							'id' => 1,
 							'headingTxt' => $this->input->post('headingTxt'),
 							'closeImageButton' => $_FILES['closeImageButton']['name'],
 							'bodyTxt' => $this->input->post('bodyTxt'),
 							'button1' => $this->input->post('button1'),
 							'button2' => $this->input->post('button2'),
+							'type' => $type,
 							'create_date' => $created
 						);
 						$id = $this->sendSMS_model->addSendSMSInfo($addData);
@@ -80,7 +79,7 @@ class SendSMS extends MY_Controller {
 						$this->session->set_flashdata('message', 'Problem Adding Data!!!');
 				}
 
-					redirect('admin/sendSMS');				
+					redirect("admin/sendSMS/$type");				
 				
 	} 
 	else 
@@ -97,7 +96,8 @@ class SendSMS extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);
 			$flag = 0;
 			$checksendSMS = $this->sendSMS_model->checkSendSMSInfo($did);
-			$uploadPath = 'upload/sendSMS/';
+			$type = $checksendSMS->result()['0']->type;
+			$uploadPath = "upload/sendSMS/$type/";
 			  
 			if(!empty($_FILES['closeImageButton']['name']))
 			{	
@@ -136,19 +136,15 @@ class SendSMS extends MY_Controller {
 
 				$this->session->set_flashdata('message', 'Setting has been saved');
 
-				redirect('admin/sendSMS');
+				redirect("admin/sendSMS/$type");
 				
 			} 
 			else {
 				if(is_numeric($did)) {
 
 					if($checksendSMS->num_rows() == 1) {
-						// Create the data array to pass to view
 						$menu_details['session'] = $this->session->userdata;
-
-						// Set Page Title
-						$header['page_title'] = "Edit Screensaver";				
-
+						$header['page_title'] = "Edit Send SMS";
 						foreach ($checksendSMS->result() as $row) {
 							$data['sendSMSList'] = array(
 								'headingTxt' => $row->headingTxt,
@@ -156,6 +152,7 @@ class SendSMS extends MY_Controller {
 								'bodyTxt' => $row->bodyTxt,
 								'button1' => $row->button1,
 								'button2' => $row->button2,
+								'type' => $row->type,
 								'create_date'=>$created, 
 							);		
 						}

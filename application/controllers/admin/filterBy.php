@@ -64,7 +64,6 @@ class FilterBy extends MY_Controller {
 				if(!empty($_FILES['closeImageButton']['name'])) 
 				{
 						$addData = array(
-							'id' => 1,
 							'headingTxt' => $this->input->post('headingTxt'),
 							'closeImageButton' => $_FILES['closeImageButton']['name'],
 							'clearButton' => $this->input->post('clearButton'),

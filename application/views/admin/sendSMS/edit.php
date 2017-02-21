@@ -6,10 +6,6 @@
       <h1>
          Send SMS
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Screensaver</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -37,7 +33,7 @@
 						<div class="form-group">
 							<label for="closeImageButton">Close Button Image:</label>
 							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
-							<span><img style="background-color:grey;height:40px;width:40px" src="<?php echo ASSET_PATH."sendSMS/".$sendSMSList['closeImageButton']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."sendSMS/".$sendSMSList['type']."/".$sendSMSList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image2">Body Text:</label>

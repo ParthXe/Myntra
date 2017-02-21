@@ -6,10 +6,6 @@
       <h1>
          License
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="#">Screensaver</a></li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -19,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Change Send SMS </h3>
+                  <h3 class="box-title">Edit License </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -41,7 +37,7 @@
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
 							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value=""/>
-							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."license/".$licenseList['BackbuttonImage']; ?>" /></span>
+							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."license/".$licenseList['type']."/".$licenseList['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="thunderImage">Button1 Text:</label>

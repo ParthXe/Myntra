@@ -1,26 +1,39 @@
 <!-- Content Wrapper. Contains page content -->
 <script type="text/javascript" src="../assets/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
-var config = {
-				width:720,
-				height:200,
-				resize_enabled : false,
-				//toolbar:'full',
-				toolbar:[['Source', '-', 'Bold', 'Italic', 'Underline', '-','Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo','-','Font','FontSize','Format','Styles','-','TextColor','BGColor','-']],
-				enterMode:CKEDITOR.ENTER_BR,
-				extraPlugins:'colorbutton,font',
-				colorButton_colors : '000,800000,8B4513,2F4F4F,008080,000080,4B0082,696969,' +
-									'B22222,A52A2A,DAA520,006400,40E0D0,0000CD,800080,808080,' +
-									'F00,FF8C00,FFD700,008000,0FF,00F,EE82EE,A9A9A9,' +
-									'FFA07A,FFA500,FFFF00,00FF00,AFEEEE,ADD8E6,DDA0DD,D3D3D3,' +
-									'FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF',			
-				basicEntities : false,
-				entities : false,
-				coreStyles_bold: {
-                        element: 'b',
-                        overrides: 'strong',
-                    },
+var config = 
+	{
+		width : 720,
+		height : 200,
+		resize_enabled : false,
+		//toolbar:'full',
+		toolbar : [['Source', '-', 'Bold', 'Italic', 'Underline', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', '-', 'Font', 'FontSize', 'Format', 'Styles', '-', 'TextColor', 'BGColor', '-']],
+		enterMode : CKEDITOR.ENTER_BR,
+		extraPlugins : 'colorbutton,font',
+		colorButton_colors : '000,800000,8B4513,2F4F4F,008080,000080,4B0082,696969,' +
+							'B22222,A52A2A,DAA520,006400,006600,40E0D0,0000CD,800080,808080,' +
+							'F00,FF8C00,FFD700,008000,0FF,00F,EE82EE,A9A9A9,' +
+							'FFA07A,FFA500,FFFF00,00FF00,AFEEEE,ADD8E6,DDA0DD,D3D3D3,' +
+							'FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF',
+		basicEntities : false,
+		entities : false,
+		coreStyles_bold : {
+			element : 'b',
+			overrides : 'strong',
+		},
+		colorButton_foreStyle : {
+			element : 'font',
+			attributes : {
+				'color' : '#(color)'
 			}
+		},
+		fontSize_style : {
+			element : 'font',
+			attributes : {
+				'size' : '#(size)'
+			}
+		},
+	}
 </script>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,7 +46,7 @@ var config = {
     <!-- Main content -->
     <section class="content">
 	<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalouge") ? "active" : ""; ?>"><a href="catalouge">Catalouge</a></li>
+			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
 			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
 			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
 			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
