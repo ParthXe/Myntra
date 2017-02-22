@@ -360,4 +360,22 @@ class Denim_model extends MY_Model {
 
     }
 
+   public function update_order($data)
+    {
+        $this->db->where('Id',$data['Id']);
+        $this->db->set('champion_products_images',$data['champion_products_images']);
+        $this->db->update('denim_male');
+
+
+    }
+
+   public function update_order_trends($data)
+    {
+        $this->db->where('Id',$data['Id']);
+        $this->db->set('trends_images',$data['trends_images']);
+        $this->db->update('denim_male');
+
+
+    }
+
 }

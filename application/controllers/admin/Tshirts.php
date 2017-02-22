@@ -982,5 +982,114 @@ class Tshirts extends MY_Controller {
 		
 	}
 
+public function reorder() {
+    if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+                // Set Page Title
+                $header['page_title'] = "Reorder Images";
+                $page = 1;      
+                $did = trim($this->uri->segment(4));
+                        $checkTshirt = $this->Tshirts_model->checkTshirtMale($did);
+                        if($checkTshirt->num_rows() == 1) {
+                            // Create the data array to pass to view
+                            $menu_details['session'] = $this->session->userdata;
+
+                            // Set Page Title
+                            $header['page_title'] = "Edit Denim";             
+
+                            foreach ($checkTshirt->result() as $row) {
+                                $data['tshirt_male'] = array(
+                                'id' => $row->Id,
+                                'champion_products_title' => $row->champion_products_title,
+                                'champion_products_images' => $row->champion_products_images,
+                                );      
+                            }
+
+
+                $data['message'] = $this->session->flashdata('message');
+
+                $this->load->view('admin/common/header', $header);
+                $this->load->view('admin/common/left_menu', $menu_details);
+                $this->load->view('admin/tshirts/male/reorder_champion', $data);
+                //$this->load->view('admin/common/footer');
+                } else {
+                redirect('admin/login');
+                }
+            }
+    }
+
+    public function reorder_trend_images() {
+    if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+                // Set Page Title
+                $header['page_title'] = "Reorder Images";
+                $page = 1;      
+                $did = trim($this->uri->segment(4));
+                        $checkTshirt = $this->Tshirts_model->checkTshirtMale($did);
+                        if($checkTshirt->num_rows() == 1) {
+                            // Create the data array to pass to view
+                            $menu_details['session'] = $this->session->userdata;
+
+                            // Set Page Title
+                            $header['page_title'] = "Edit Tshirts";             
+
+                            foreach ($checkTshirt->result() as $row) {
+                                $data['tshirt_male'] = array(
+                                'id' => $row->Id,
+                                'champion_products_title' => $row->champion_products_title,
+                                'champion_products_images' => $row->champion_products_images,
+                                'trends_images' => $row->trends_images,                        
+                                );      
+                            }
+
+
+                $data['message'] = $this->session->flashdata('message');
+
+                $this->load->view('admin/common/header', $header);
+                $this->load->view('admin/common/left_menu', $menu_details);
+                $this->load->view('admin/tshirts/male/reorder_trends', $data);
+                //$this->load->view('admin/common/footer');
+                } else {
+                redirect('admin/login');
+                }
+            }
+    }
+
+    public function reorder_images()
+    {
+        $data = array(
+            'Id' => $this->input->post('testimonial_id'));
+
+        $update_order = $this->Tshirts_model->checkTshirtMale($data['Id']);
+        $images = $update_order->result()[0]->champion_products_images;
+        $final = explode(",", $images);
+        $list_order = $this->input->post('list_order');
+        $list_arr = explode(',' , $list_order);
+        $temp_arr = array();
+        for($nn=0;$nn<count($final);$nn++){
+            $temp_arr[] = $final[$list_arr[$nn]];
+        }
+        $imagePathNew = implode(",",$temp_arr); 
+        $data['champion_products_images'] = $imagePathNew;
+        $update_order = $this->Tshirts_model->update_order($data);
+    }
+
+    public function reorder_trends()
+    {
+        $data = array(
+            'Id' => $this->input->post('testimonial_id')
+            );
+
+        $update_order =  $this->Tshirts_model->checkTshirtMale($data['Id']);
+        $images = $update_order->result()[0]->trends_images;
+        $final = explode(",", $images);
+        $list_order = $this->input->post('list_order');
+        $list_arr = explode(',' , $list_order);
+        $temp_arr = array();
+        for($nn=0;$nn<count($final);$nn++){
+            $temp_arr[] = $final[$list_arr[$nn]];
+        }
+        $imagePathNew = implode(",",$temp_arr); 
+        $data['trends_images'] = $imagePathNew;
+        $update_order = $this->Tshirts_model->update_order_trends($data);
+    }
 
 }

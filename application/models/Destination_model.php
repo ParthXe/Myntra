@@ -141,4 +141,13 @@ class Destination_model extends MY_Model {
         }
         
     }
+
+    public function update_order($data)
+    {
+        $this->db->where('Id',$data['Id']);
+        $this->db->set('destination_images',$data['destination_images']);
+        $this->db->update('destination');
+
+
+    }
 }

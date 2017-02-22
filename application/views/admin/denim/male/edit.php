@@ -69,6 +69,7 @@
 
 							}
 							?>
+							<a class="btn btn-primary" href="<?php echo base_url("admin/denim/reorder/".$denim_male['id']); ?>">Reorder</a>
 						</div>
 						<div class="form-group">
 							<label for="userEditLname">Trends Launch Date</label>
@@ -92,6 +93,7 @@
 
 							}
 							?>
+							<a class="btn btn-primary" href="<?php echo base_url("admin/denim/reorder_trend_images/".$denim_male['id']); ?>">Reorder</a>
 						</div>			
 						<div class="form-group">
 							<label for="userEditMobile">Process Video Thumbnail Images</label>

@@ -429,7 +429,62 @@ class Destination extends MY_Controller {
 		
 	}
 
+	public function reorder() {
+	if ($this->session->userdata('logged_in') == TRUE && $this->session->userdata('rid') == 1 ) {
+				// Set Page Title
+				$header['page_title'] = "Reorder Images";
+				$page = 1;		
+				$did = trim($this->uri->segment(4));
+						$checkDestination = $this->Destination_model->checkDestination($did);
+						if($checkDestination->num_rows() == 1) {
+							// Create the data array to pass to view
+							$menu_details['session'] = $this->session->userdata;
 
+							// Set Page Title
+							$header['page_title'] = "Edit Destination";				
 
+							foreach ($checkDestination->result() as $row) {
+								$data['destination'] = array(
+									'id' => $row->Id,
+									'marker_code' => $row->marker_code,
+									'destination_name' => $row->destination_name,
+									'destination_images' => $row->destination_images
+									
 
+								);		
+							}
+
+				$data['destinations'] = $checkDestination;
+				$data['message'] = $this->session->flashdata('message');
+
+				$this->load->view('admin/common/header', $header);
+				$this->load->view('admin/common/left_menu', $menu_details);
+				$this->load->view('admin/destination/reorder', $data);
+				//$this->load->view('admin/common/footer');
+				} else {
+				redirect('admin/login');
+				}
+			}
+	}
+
+	public function reorder_images()
+	{
+		$data = array(
+			'Id' => $this->input->post('testimonial_id'));
+
+		$update_order = $this->Destination_model->checkDestination($data['Id']);
+		$images = $update_order->result()[0]->destination_images;
+		$final = explode(",", $images);
+		$list_order = $this->input->post('list_order');
+		$list_arr = explode(',' , $list_order);
+		
+		$temp_arr = array();
+		for($nn=0;$nn<count($final);$nn++){
+			$temp_arr[] = $final[$list_arr[$nn]];
+		}
+		$imagePathNew = implode(",",$temp_arr); 
+		$data['destination_images'] = $imagePathNew;
+		
+		$update_order = $this->Destination_model->update_order($data);
+	}
 }
