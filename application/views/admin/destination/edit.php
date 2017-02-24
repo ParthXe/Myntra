@@ -1,13 +1,13 @@
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
 <script type="text/javascript">
- function imageRemove(img,id,action)
+ function imageRemove(img,id,dir,action)
 {
 	
     $.ajax({
          type: "POST",
          url: base_url+"destination/delete_image",
-        data: "image=" + img+"&id="+id+"&action="+action,
+        data: "image=" + img+"&id="+id+"&directory="+dir+"&action="+action,
          success: function(data){
          		  alert('delete');
                   location.reload();
@@ -83,7 +83,7 @@
 							<?php if($images = $destination['destination_images']){
 								$image = explode(",", $images);
 								foreach ($image as $img) {
-								echo '<img src="'.base_url().'myntra/section_journey/'.$dir_name.'/images_destination/'.$img.'" width="150px"><a href="#" onclick="imageRemove('."'".$img."'".','."'".$destination['id']."'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_journey/'.$dir_name.'/images_destination/'.$img.'" width="150px"><a href="#" onclick="imageRemove('."'".$img."'".','."'".$destination['id']."'".','."'".$dir_name."'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -96,7 +96,7 @@
 							<label for="userEditMobile">Destination Matching Male Image</label>
 							<input type="file" class="form-control" name="destination_matching_male" value="" >
 							<?php if($destination['destination_matching_male_img']){
-								echo '<img src="'.base_url().'myntra/section_journey/'.$dir_name.'/images_game/'.$destination['destination_matching_male_img'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_matching_male_img']."'".','."'".$destination['id']."'".','."'matching-male'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_journey/'.$dir_name.'/images_game/'.$destination['destination_matching_male_img'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_matching_male_img']."'".','."'".$destination['id']."'".','."'".$dir_name."'".','."'matching-male'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								
 							}
 							else
@@ -113,7 +113,7 @@
 							<label for="userEditMobile">Destination Matching Female Image</label>
 							<input type="file" class="form-control" name="destination_matching_female" value="" >
 							<?php if($destination['destination_matching_female_img']){
-								echo '<img src="'.base_url().'myntra/section_journey/'.$dir_name.'/images_game/'.$destination['destination_matching_female_img'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_matching_female_img']."'".','."'".$destination['id']."'".','."'matching-female'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_journey/'.$dir_name.'/images_game/'.$destination['destination_matching_female_img'].'" width="150px"><a href="#" onclick="imageRemove('."'".$destination['destination_matching_female_img']."'".','."'".$destination['id']."'".','."'".$dir_name."'".','."'matching-female'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								
 							}
 							else

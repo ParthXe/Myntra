@@ -52,13 +52,16 @@ class Denim_model extends MY_Model {
     }
 
     public function updateDenimMale($data) {
-    $this->db->select('champion_products_images, trends_images, vintage_images'); 
+    $this->db->select('champion_products_images, trends_images, vintage_images,vintage_video'); 
     $this->db->from('denim_male');   
     $this->db->where('Id', $data['Id']);
     $images_name = $this->db->get()->result();
 
-    $prev_image = explode(",", $images_name[0]->champion_products_images);
-
+    $prev_image = array();
+    if(!empty($images_name[0]->champion_products_images)){
+        $prev_image = explode(",", $images_name[0]->champion_products_images);
+    }
+    
     $image_select=array();
     if(!empty($data['champion_products_images']))
     {
@@ -72,8 +75,10 @@ class Denim_model extends MY_Model {
         $data['champion_products_images'] = $images_name[0]->champion_products_images;
     }
 
-    $prev_trendimage = explode(",", $images_name[0]->trends_images);
-
+    $prev_trendimage = array();
+    if(!empty($images_name[0]->trends_images)){
+        $prev_trendimage = explode(",", $images_name[0]->trends_images);
+    }
     $image_trendselect=array();
     if(!empty($data['trends_images']))
     {
@@ -86,9 +91,11 @@ class Denim_model extends MY_Model {
     {
         $data['trends_images'] = $images_name[0]->trends_images;
     }
-
-    $prev_vintageimage = explode(",", $images_name[0]->vintage_images);
-
+    $prev_vintageimage = array();
+    if(!empty($images_name[0]->vintage_images)){
+        $prev_vintageimage = explode(",", $images_name[0]->vintage_images);
+    }
+    
     $image_vintageselect=array();
     if(!empty($data['vintage_images']))
     {
@@ -102,8 +109,12 @@ class Denim_model extends MY_Model {
         $data['vintage_images'] = $images_name[0]->vintage_images;
     }
 
-    $prev_vintagevideo = explode(",", $images_name[0]->vintage_video);
-
+   
+    $prev_vintagevideo = array();
+    if(!empty($images_name[0]->vintage_video)){
+        $prev_vintagevideo = explode(",", $images_name[0]->vintage_video);
+    }
+    
     $image_vintagevideo=array();
     if (!empty($data['vintage_video'])) {
         $image_vintagevideo[] = $data['vintage_video'];
@@ -163,6 +174,8 @@ class Denim_model extends MY_Model {
         $image_vintageselect[] = $data['vintage_images'];
         $new_vintageimage =  array_merge($image_vintageselect,$prev_vintageimage);
         $imagesVintageNew = implode(",",$new_vintageimage);  
+        print_r($imagesVintageNew);
+        exit();
         $data['vintage_images'] = $imagesVintageNew;  
     }
     else
@@ -182,7 +195,7 @@ class Denim_model extends MY_Model {
     }
 
     public function removeMaleImage($data){
-    $this->db->select('champion_products_images,trends_images,vintage_images'); 
+    $this->db->select('champion_products_images,trends_images,vintage_images,vintage_video'); 
     $this->db->from('denim_male');   
     $this->db->where('Id', $data['id']);
     $image_delete = $data['image'];
@@ -237,34 +250,50 @@ class Denim_model extends MY_Model {
             $this->db->update('denim_male');
         }
 
-        if($data['action']=='vintage_img')
+        if($data['action']=='vintage_img' || $data['action']=='vintage_video')
         {
             $test = $images_name[0]->vintage_images;
+            $vid = $images_name[0]->vintage_video;
+
             $test1 = explode(",", $test);
+            $vid_explode = explode(",", $vid);
             // print_r($test1);
             // echo $image_delete;
             // exit();
             $imagesNew = "";
-            if(count($test1)>1){
+            $videoNew = "";
+            if(count($test1)>1 || count($vid_explode)>1){
             $temp_arr = array();
-            for($nn=0;$nn<count($test1);$nn++)
+            $video_arr = array();
+            if($data['action']=='vintage_img')
             {
-                if($test1[$nn] != $image_delete)
+                for($nn=0;$nn<count($test1);$nn++)
                 {
+                if($test1[$nn] != $image_delete)
+                    {
                     $temp_arr[] = $test1[$nn];
-                }
+                    $video_arr[] = $vid_explode[$nn];
+                    }
+                }    
             }
+            elseif($data['action']=='vintage_video')
+            {
+                for($nn=0;$nn<count($vid_explode);$nn++)
+                {
+                if($vid_explode[$nn] != $image_delete)
+                    {
+                    $temp_arr[] = $test1[$nn];
+                    $video_arr[] = $vid_explode[$nn];
+                    }
+                }         
+            }
+            
              $imagesNew = implode(",",$temp_arr);
+             $videoNew = implode(",",$video_arr);
             }
             $this->db->where('Id',$data['id']);
             $this->db->set('vintage_images',$imagesNew);
-            $this->db->update('denim_male');
-        }
-
-        if($data['action']=='vintage_video')
-        {
-            $this->db->where('Id',$data['id']);
-            $this->db->set('vintage_video',"");
+            $this->db->set('vintage_video',$videoNew);
             $this->db->update('denim_male');
         }
 

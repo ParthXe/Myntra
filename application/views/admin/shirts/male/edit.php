@@ -8,7 +8,7 @@
          url: base_url+"shirts/remove_maleimage",
         data: "image=" + img+"&id="+id+"&action="+action,
          success: function(data){
-         		  alert('delete');
+         		  alert(data);
                   location.reload();
     }
 });
@@ -111,15 +111,18 @@
 						</div>	
 						<div class="form-group">
 							<label for="userEditMobile">Process Video</label>
-							<input type="file" class="form-control" name="vintageVideo" value="">
-							<?php
-							$path = base_url()."upload/shirts/male/vintage_video/".$shirt_male['vintage_video'];  if(!empty($shirt_male['vintage_video'])) {?> 
-							<video width="200">
-                            <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
-                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$shirt_male['vintage_video']."'".','."'".$shirt_male['id']."'".','."'vintage_video'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
-                            <?php } else { ?>
-                            No videos
-                           <?php } ?>
+							<input type="file" class="form-control" name="vintageVideo[]" value="" multiple>
+							<?php if($vintage_video = $shirt_male['vintage_video']){
+								$vintage_videos = explode(",", $vintage_video);
+								foreach ($vintage_videos as $vintage_vid) {
+								echo '<video width="200"><source src="'.base_url().'myntra/section_products/pro_shirts/process_video_and_tumbnails/'.$vintage_vid.'" type="video/mp4"></video><a href="#" onclick="imageRemove('."'".$vintage_vid."'".','."'".$shirt_male['id']."'".','."'vintage_video'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+								echo 'No videos';
+							}
+							?>
 						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Process Title</label>

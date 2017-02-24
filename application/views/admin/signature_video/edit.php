@@ -1,12 +1,12 @@
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
 <script type="text/javascript">
- function imageRemove(img,id,action)
+ function imageRemove(vid,img,id,action)
 {
     $.ajax({
          type: "POST",
          url: base_url+"signature/delete_video",
-        data: "image=" + img+"&id="+id+"&action="+action,
+        data: "video=" + vid+"&image="+ img+"&id="+id+"&action="+action,
          success: function(data){
          		  alert('delete');
                   location.reload();
@@ -40,14 +40,26 @@
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off"  enctype="multipart/form-data"') ; ?>
-					<?php  $path = base_url()."upload/signature/denim/".$signature['video']; ?>
+					<?php  $path = base_url()."myntra/section_products/pro_denims/signature_video/".$signature['video']; ?>
+             <div class="form-group">
+              <label for="userEditFname">Denim Signature Video Thumbnail</label>
+              <input type="file" class="form-control" name="thumbnail" value="" required>
+              <?php if($signature_images = $signature['thumbnail']){
+               echo '<img src="'.base_url().'myntra/section_products/pro_denims/signature_video/'.$signature_images.'" width="150px"><a href="#" onclick="imageRemove('."'".$signature['video']."'".','."'".$signature['thumbnail']."'".','."'".$signature['id']."'".','."'denim'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;'; 
+                }
+                else
+                {
+
+                }
+               ?>
+            </div>
 						<div class="form-group">
 							<label for="userEditMobile">Denim Signature Video</label>
 							<input type="file" class="form-control" name="denim_signature_video" value="" >
 							<?php if(!empty($signature['video'])) {?> 
 							<video width="200">
                             <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
-                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$signature['video']."'".','."'".$signature['id']."'".','."'denim'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
+                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$signature['video']."'".','."'".$signature['thumbnail']."'".','."'".$signature['id']."'".','."'denim'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
                             <?php } else { ?>
                             No videos
                            <?php } ?>

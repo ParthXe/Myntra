@@ -380,6 +380,7 @@ class Shirts extends MY_Controller {
        	$trendsImages_array = implode(",",$_FILES['trendsImages']['name']);
        	$vintageImage_array = implode(",",$_FILES['vintageImage']['name']);
         $vintageVideo_array = implode(",",$_FILES['vintageVideo']['name']);
+
 				$data = array(
 						'Id' => $did,
 						//'anatomy' => json_encode($image_array, true),
@@ -924,7 +925,7 @@ class Shirts extends MY_Controller {
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/shirts/male/champion_products/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_shirts/champion_product_images/'.$this->input->post('image');
 			$this->Shirt_model->removeMaleImage($data);
 			unlink($path);
 
@@ -937,35 +938,22 @@ class Shirts extends MY_Controller {
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/denim/male/trend_images/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_shirts/trends_images/'.$this->input->post('image');
 			$this->Shirt_model->removeMaleImage($data);
 			unlink($path);
 
             break;
 
             case "vintage_img":
-
+            case "vintage_video":
     		$data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/denim/male/vintage_images/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_shirts/process_video_and_tumbnails/'.$this->input->post('image');
 			$this->Shirt_model->removeMaleImage($data);
 			unlink($path);
-
-            break;
-
-            case "vintage_video":
-
-            $data = array(
-            'id' => $this->input->post('id'),
-            'action' => $this->input->post('action'),
-            'image' => $this->input->post('image')
-            );
-            $path = 'upload/shirts/male/vintage_video/'.$this->input->post('image');
-            $this->Shirt_model->removeMaleImage($data);
-            unlink($path);
 
             break;
 

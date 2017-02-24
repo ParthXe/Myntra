@@ -70,10 +70,16 @@ class Signature_model extends MY_Model {
 
 
     public function updateSignatureVideo($data) {
-        $this->db->select('video'); 
+        $this->db->select('thumbnail,video'); 
         $this->db->from('signature_video');   
         $this->db->where('Id', $data['Id']);
         $images_name = $this->db->get()->result();
+        if (!empty($data['thumbnail'])) {
+            $data['thumbnail'];
+        }
+        else{
+            $data['thumbnail'] = $images_name[0]->thumbnail;
+        }
 
         if (!empty($data['video'])) {
             $data['video'];
@@ -93,6 +99,7 @@ class Signature_model extends MY_Model {
             case "denim":
 
             $this->db->where('Id',$data['id']);
+            $this->db->set('thumbnail',"");
             $this->db->set('video',"");
             $this->db->update('signature_video');
 
@@ -101,6 +108,7 @@ class Signature_model extends MY_Model {
             case "shirt":
 
             $this->db->where('Id',$data['id']);
+            $this->db->set('thumbnail',"");
             $this->db->set('video',"");
             $this->db->update('signature_video');
 
@@ -109,6 +117,7 @@ class Signature_model extends MY_Model {
             case "t-shirt":
 
             $this->db->where('Id',$data['id']);
+            $this->db->set('thumbnail',"");
             $this->db->set('video',"");
             $this->db->update('signature_video');
 

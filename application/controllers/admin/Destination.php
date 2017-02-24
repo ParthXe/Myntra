@@ -219,10 +219,7 @@ class Destination extends MY_Controller {
 			 if(!empty($_FILES['userFiles']['name'])){
             $filesCount = count($_FILES['userFiles']['name']);
             for($i = 0; $i < $filesCount; $i++){
-                if(empty($_FILES['userFiles']['name'][$j]))
-                {
-                    continue;
-                }
+
     	   	   // $_FILES['userFiles']['name'][$i] =  $this->generateRandomNumber().$_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['name'] = $_FILES['userFiles']['name'][$i];
                 $_FILES['userFile']['type'] = $_FILES['userFiles']['type'][$i];
@@ -230,14 +227,15 @@ class Destination extends MY_Controller {
                 $_FILES['userFile']['error'] = $_FILES['userFiles']['error'][$i];
                 $_FILES['userFile']['size'] = $_FILES['userFiles']['size'][$i];
 
-                if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
+                if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination')) {
 				 mkdir('./myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination', 0777, TRUE);
 
 				}
                 $uploadPath = 'myntra/section_journey/' .'dest_'.$this->input->post('marker_code').'_'.$dest_title.'/images_destination';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'gif|jpg|png';
-                
+                //         echo $uploadPath;
+                // exit();
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if($this->upload->do_upload('userFile')){
@@ -248,6 +246,7 @@ class Destination extends MY_Controller {
                 }
             }
         }
+
     //             if(!empty($_FILES['destination_bg_img']['name'])){
            	    
     //        	    if (!is_dir('dest_'.$this->input->post('marker_code').'_'.$dest_title)) {
@@ -380,24 +379,25 @@ class Destination extends MY_Controller {
 	{	
 		switch ($this->input->post('action'))
         {
-            case "bg-image":
+   //          case "bg-image":
 
-            $data = array(
-			'id' => $this->input->post('id'),
-			'action' => $this->input->post('action'));
-			$path = 'upload/destination/destination_bg/'.$this->input->post('image');
-					$this->Destination_model->removeSingleImage($data);
-					unlink($path);
+   //          $data = array(
+			// 'id' => $this->input->post('id'),
+			// 'action' => $this->input->post('action'));
+			// $path = 'myntra/section_journey'.$this->input->post('image');
+			// 		$this->Destination_model->removeSingleImage($data);
+			// 		unlink($path);
 
-            break;
+   //          break;
 
             case "matching-male":
 
             $data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'));
-			$path = 'upload/destination/male/'.$this->input->post('image');
+			$path = 'myntra/section_journey/'.$this->input->post('directory').'/images_game/'.$this->input->post('image');
 					$this->Destination_model->removeSingleImage($data);
+					//echo $path;
 					unlink($path);
 
             break;
@@ -407,7 +407,7 @@ class Destination extends MY_Controller {
             $data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'));
-			$path = 'upload/destination/female/'.$this->input->post('image');
+			$path = 'myntra/section_journey/'.$this->input->post('directory').'/images_game/'.$this->input->post('image');
 					$this->Destination_model->removeSingleImage($data);
 					unlink($path);
 
@@ -418,7 +418,7 @@ class Destination extends MY_Controller {
 			$data = array(
 			'id' => $this->input->post('id'),
 			'image' => $this->input->post('image'));
-			$path = 'upload/destination/destination_images/'.$this->input->post('image');
+			$path = 'myntra/section_journey/'.$this->input->post('directory').'/images_destination/'.$this->input->post('image');
 			// echo $this->input->post('id');
 			// exit();
 

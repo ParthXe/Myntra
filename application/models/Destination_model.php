@@ -35,7 +35,10 @@ class Destination_model extends MY_Model {
     $this->db->where('Id', $data['Id']);
     $images_name = $this->db->get()->result();
 
-    $prev_image = explode(",", $images_name[0]->destination_images);
+    $prev_image = array();
+    if(!empty($images_name[0]->destination_images)){
+        $prev_image = explode(",", $images_name[0]->destination_images);
+    }
 
     $image_select=array();
     if(!empty($data['destination_images']))
@@ -70,7 +73,6 @@ class Destination_model extends MY_Model {
     else{
         $data['destination_matching_female_img'] = $images_name[0]->destination_matching_female_img;
     }
-
 
         $this->db->where('Id',$data['Id']);
         $this->db->update('destination',$data);

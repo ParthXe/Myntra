@@ -261,9 +261,8 @@ class Denim extends MY_Controller {
 			if(!empty($this->input->post('champions_products_title'))) {
 
 			 if(!empty($_FILES['championsProductsImages']['name'])){
-                print_r($_FILES);
             $filesCount1 = count($_FILES['championsProductsImages']['name']);
-            echo $filesCount1;
+            
             for($j = 0; $j < $filesCount1; $j++){
                 if(empty($_FILES['championsProductsImages']['name'][$j]))
                 {
@@ -867,7 +866,7 @@ class Denim extends MY_Controller {
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/denim/male/champion_products/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_denims/champion_product_images/'.$this->input->post('image');
 			$this->Denim_model->removeMaleImage($data);
 			unlink($path);
 
@@ -880,35 +879,22 @@ class Denim extends MY_Controller {
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/denim/male/trend_images/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_denims/trends_images/'.$this->input->post('image');
 			$this->Denim_model->removeMaleImage($data);
 			unlink($path);
 
             break;
 
             case "vintage_img":
-
+            case "vintage_video":
     		$data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/denim/male/vintage_images/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_denims/process_video_and_tumbnails/'.$this->input->post('image');
 			$this->Denim_model->removeMaleImage($data);
 			unlink($path);
-
-            break;
-
-            case "vintage_video":
-
-            $data = array(
-            'id' => $this->input->post('id'),
-            'action' => $this->input->post('action'),
-            'image' => $this->input->post('image')
-            );
-            $path = 'upload/denim/male/vintage_video/'.$this->input->post('image');
-            $this->Denim_model->removeMaleImage($data);
-            unlink($path);
 
             break;
 

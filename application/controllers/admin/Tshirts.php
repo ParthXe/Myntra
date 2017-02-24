@@ -868,7 +868,7 @@ class Tshirts extends MY_Controller {
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/t-shirts/male/champion_products/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_tshirts/champion_product_images/'.$this->input->post('image');
 			$this->Tshirts_model->removeMaleImage($data);
 			unlink($path);
 
@@ -881,35 +881,22 @@ class Tshirts extends MY_Controller {
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/t-shirts/male/trend_images/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_tshirts/trends_images/'.$this->input->post('image');
 			$this->Tshirts_model->removeMaleImage($data);
 			unlink($path);
 
             break;
 
             case "vintage_img":
-
+            case "vintage_video":
     		$data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'),
 			'image' => $this->input->post('image')
 			);
-			$path = 'upload/t-shirts/male/vintage_images/'.$this->input->post('image');
+			$path = 'myntra/section_products/pro_tshirts/process_video_and_tumbnails/'.$this->input->post('image');
 			$this->Tshirts_model->removeMaleImage($data);
 			unlink($path);
-
-            break;
-
-            case "vintage_video":
-
-            $data = array(
-            'id' => $this->input->post('id'),
-            'action' => $this->input->post('action'),
-            'image' => $this->input->post('image')
-            );
-            $path = 'upload/t-shirts/male/vintage_video/'.$this->input->post('image');
-            $this->Tshirts_model->removeMaleImage($data);
-            unlink($path);
 
             break;
 
