@@ -28,6 +28,7 @@
 <script src="<?php echo site_url('assets/js/main.js'); ?>"></script>
 
 
+
 <script>
   $(function () {
     //Initialize Select2 Elements

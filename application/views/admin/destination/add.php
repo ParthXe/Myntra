@@ -38,6 +38,10 @@
 							<input type="text" class="form-control" id="destinationName" name="destination_name" placeholder="Destination Name" autocomplete="off" value="" required>
 						</div>
 						<div class="form-group">
+							<label for="userEditName">Marker Code</label>
+							<input type="text" class="form-control" id="destinationMarker" name="marker_code" placeholder="Marker Code" autocomplete="off" value="" required>
+						</div>
+						<div class="form-group">
 							<label for="userEditPass">Destination State</label>
 							<input type="text" class="form-control" id="destinationState" name="destination_state" placeholder="Destination State" autocomplete="off" value="" required>
 						</div>
@@ -57,10 +61,10 @@
 							<label for="userEditMobile">Best Time Visit</label>
 							<input type="text" class="form-control" id="BestTimeVisit" name="best_time_visit" placeholder="Best Time Visit" value="" required>
 						</div>
-						<div class="form-group">
+<!-- 						<div class="form-group">
 							<label for="userEditMobile">Destination Background Image</label>
 							<input type="file" class="form-control" name="destination_bg_img" value="" required>
-						</div>			
+						</div>	 -->		
 						<div class="form-group">
 							<label for="userEditMobile">Destination Images</label>
 							<input type="file" class="form-control" name="userFiles[]" value="" required multiple>

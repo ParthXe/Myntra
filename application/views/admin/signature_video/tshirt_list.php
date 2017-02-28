@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Signature Video List<small><a href="<?php echo base_url("admin/signature/tshirt_edit"); ?>">Add Signature Video</a></small>
+        Signature Video List<small><a href="<?php echo base_url("admin/signature/add_tshirt_video"); ?>">Add Signature Video</a></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -45,7 +45,7 @@
                      <?php if (count($videos) > 0 ){ ?>
                     <?php foreach($videos as $video) : ?>
                         <tr>
-                          <?php $path = base_url()."upload/signature/tshirt/".$video->video; ?>
+                          <?php $path = base_url()."myntra/section_products/pro_tshirts/signature_video/".$video->video; ?>
                             <td><video width="200">
                             <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
                             </video></td>

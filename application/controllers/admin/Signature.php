@@ -108,10 +108,22 @@ class Signature extends MY_Controller {
 			// Set validation rules for view filters
 
 		if(!empty($_FILES['denim_signature_video']['name'])) {
-
+			
+			if(!empty($_FILES['thumbnail']['name'])){
+           
+                $uploadPath = 'myntra/section_products/pro_denims/signature_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'gif|jpg|png';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('thumbnail')){
+                    $fileData = $this->upload->data();
+                }
+            }
 			if(!empty($_FILES['denim_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/denim';
+                $uploadPath = 'myntra/section_products/pro_denims/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -128,6 +140,7 @@ class Signature extends MY_Controller {
 				if(!empty($_FILES['denim_signature_video']['name'])) {
 						$addData = array(
 							'category_id' => 1,
+							'thumbnail' => $_FILES['thumbnail']['name'],
 							'video' => $_FILES['denim_signature_video']['name'],
 							'active' => ($this->input->post('active') == "on") ? 1 : 0,
 							'modify' => $created
@@ -168,9 +181,22 @@ class Signature extends MY_Controller {
 
 		if(!empty($_FILES['shirt_signature_video']['name'])) {
 
+			if(!empty($_FILES['shirt_thumbnail']['name'])){
+           
+                $uploadPath = 'myntra/section_products/pro_shirts/signature_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'gif|jpg|png';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('shirt_thumbnail')){
+                    $fileData = $this->upload->data();
+                }
+            }
+
 			if(!empty($_FILES['shirt_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/shirt';
+                $uploadPath = 'myntra/section_products/pro_shirts/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -187,6 +213,7 @@ class Signature extends MY_Controller {
 				if(!empty($_FILES['shirt_signature_video']['name'])) {
 						$addData = array(
 							'category_id' => 2,
+							'thumbnail' => $_FILES['shirt_thumbnail']['name'],
 							'video' => $_FILES['shirt_signature_video']['name'],
 							'active' => ($this->input->post('active') == "on") ? 1 : 0,
 							'modify' => $created
@@ -227,9 +254,22 @@ class Signature extends MY_Controller {
 
 		if(!empty($_FILES['tshirt_signature_video']['name'])) {
 
+			if(!empty($_FILES['tshirt_thumbnail']['name'])){
+           
+                $uploadPath = 'myntra/section_products/pro_tshirts/signature_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'gif|jpg|png';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('tshirt_thumbnail')){
+                    $fileData = $this->upload->data();
+                }
+            }	
+
 			if(!empty($_FILES['tshirt_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/tshirt';
+                $uploadPath = 'myntra/section_products/pro_tshirts/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -246,6 +286,7 @@ class Signature extends MY_Controller {
 				if(!empty($_FILES['tshirt_signature_video']['name'])) {
 						$addData = array(
 							'category_id' => 3,
+							'thumbnail' => $_FILES['tshirt_thumbnail']['name'],
 							'video' => $_FILES['tshirt_signature_video']['name'],
 							'active' => ($this->input->post('active') == "on") ? 1 : 0,
 							'modify' => $created
@@ -291,10 +332,21 @@ class Signature extends MY_Controller {
 			$time=time();
 			$created = date ("Y-m-d H:i:s", $time);	
 			if($this->form_validation->run() == TRUE) {
-
+			if(!empty($_FILES['thumbnail']['name'])){
+           
+                $uploadPath = 'myntra/section_products/pro_denims/signature_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'gif|jpg|png';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('thumbnail')){
+                    $fileData = $this->upload->data();
+                }
+            }
 				if(!empty($_FILES['denim_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/denim';
+                $uploadPath = 'myntra/section_products/pro_denims/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -308,6 +360,7 @@ class Signature extends MY_Controller {
 				$data = array(
 					'Id' => $did,
 					'category_id' => 1,
+					'thumbnail' => $_FILES['thumbnail']['name'],
 					'video' => $_FILES['denim_signature_video']['name'],
 					'active' => ($this->input->post('active') == "on") ? 1 : 0,
 					'modify' => $created
@@ -334,6 +387,7 @@ class Signature extends MY_Controller {
 							$data['signature'] = array(
 								'id' => $row->Id,
 								'category_id' => $row->category_id,
+								'thumbnail' => $row->thumbnail,
 								'video' => $row->video,
 								'active' => $row->active,
 
@@ -372,9 +426,22 @@ class Signature extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);	
 			if($this->form_validation->run() == TRUE) {
 
+			if(!empty($_FILES['shirt_thumbnail']['name'])){
+           
+                $uploadPath = 'myntra/section_products/pro_shirts/signature_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'gif|jpg|png';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('shirt_thumbnail')){
+                    $fileData = $this->upload->data();
+                }
+            }	
+
 				if(!empty($_FILES['shirt_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/shirt';
+                $uploadPath = 'myntra/section_products/pro_shirts/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -388,6 +455,7 @@ class Signature extends MY_Controller {
 				$data = array(
 					'Id' => $did,
 					'category_id' => 2,
+					'thumbnail' => $_FILES['shirt_thumbnail']['name'],
 					'video' => $_FILES['shirt_signature_video']['name'],
 					'active' => ($this->input->post('active') == "on") ? 1 : 0,
 					'modify' => $created
@@ -414,6 +482,7 @@ class Signature extends MY_Controller {
 							$data['signature'] = array(
 								'id' => $row->Id,
 								'category_id' => $row->category_id,
+								'thumbnail' => $row->thumbnail,
 								'video' => $row->video,
 								'active' => $row->active,
 
@@ -452,9 +521,22 @@ class Signature extends MY_Controller {
 			$created = date ("Y-m-d H:i:s", $time);	
 			if($this->form_validation->run() == TRUE) {
 
+			if(!empty($_FILES['tshirt_thumbnail']['name'])){
+           
+                $uploadPath = 'myntra/section_products/pro_tshirts/signature_video';
+                $config['upload_path'] = $uploadPath;
+                $config['allowed_types'] = 'gif|jpg|png';
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('tshirt_thumbnail')){
+                    $fileData = $this->upload->data();
+                }
+            }	
+
 				if(!empty($_FILES['tshirt_signature_video']['name'])){
            
-                $uploadPath = 'upload/signature/tshirt';
+                $uploadPath = 'myntra/section_products/pro_tshirts/signature_video';
                 $config['upload_path'] = $uploadPath;
                 $config['allowed_types'] = 'mp4';
                 
@@ -468,6 +550,7 @@ class Signature extends MY_Controller {
 				$data = array(
 					'Id' => $did,
 					'category_id' => 3,
+					'thumbnail' => $_FILES['tshirt_thumbnail']['name'],
 					'video' => $_FILES['tshirt_signature_video']['name'],
 					'active' => ($this->input->post('active') == "on") ? 1 : 0,
 					'modify' => $created
@@ -494,6 +577,7 @@ class Signature extends MY_Controller {
 							$data['signature'] = array(
 								'id' => $row->Id,
 								'category_id' => $row->category_id,
+								'thumbnail' => $row->thumbnail,
 								'video' => $row->video,
 								'active' => $row->active,
 
@@ -527,9 +611,11 @@ class Signature extends MY_Controller {
             $data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'));
-			$path = 'upload/signature/denim/'.$this->input->post('image');
-					$this->Signature_model->removeVideo($data);
-					unlink($path);
+			$path = 'myntra/section_products/pro_denims/signature_video/'.$this->input->post('image');
+			$path1 = 'myntra/section_products/pro_denims/signature_video/'.$this->input->post('video');
+            unlink($path);
+			$this->Signature_model->removeVideo($data);
+			unlink($path1);
 
             break;
 
@@ -538,9 +624,12 @@ class Signature extends MY_Controller {
             $data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'));
-			$path = 'upload/signature/shirt/'.$this->input->post('image');
-					$this->Signature_model->removeVideo($data);
-					unlink($path);
+			$path = 'myntra/section_products/pro_shirts/signature_video/'.$this->input->post('image');
+			$path1 = 'myntra/section_products/pro_shirts/signature_video/'.$this->input->post('video');
+
+			unlink($path1);
+			$this->Signature_model->removeVideo($data);
+			unlink($path);
 
             break;
 
@@ -549,9 +638,11 @@ class Signature extends MY_Controller {
             $data = array(
 			'id' => $this->input->post('id'),
 			'action' => $this->input->post('action'));
-			$path = 'upload/signature/tshirt/'.$this->input->post('image');
-					$this->Signature_model->removeVideo($data);
-					unlink($path);
+			$path = 'myntra/section_products/pro_tshirts/signature_video/'.$this->input->post('image');
+			$path1 = 'myntra/section_products/pro_tshirts/signature_video/'.$this->input->post('video');
+			unlink($path1);
+			$this->Signature_model->removeVideo($data);
+			unlink($path);
 
             break;
 

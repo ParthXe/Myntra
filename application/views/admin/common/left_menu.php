@@ -89,6 +89,8 @@
 	        <li><a href="<?php echo $this->config->item('base_url_admin')."/users/add"; ?>"><i class="fa fa-circle-o"></i> Add</a></li>
 	      </ul>	      
 	    </li>
+	    
+
 		<li class="treeview">
 	      <a href="#">
 	        <i class="fa fa-files-o"></i>
@@ -194,6 +196,9 @@
             </li> 
           </ul>
         </li>	
+
+        </li> 
+			
 		  <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Looks</span>

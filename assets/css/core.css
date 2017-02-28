@@ -1,0 +1,33 @@
+
+#images {
+	list-style: none;
+}
+#images li {
+	float: left;
+	display: block;
+	width: 200px;
+	height: 220px;
+	cursor: pointer;
+	background:#fff;
+	margin: 0 5px 5px 0;
+	padding:10px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+#images li.active {
+	background:#4c96d8;
+}
+#images li span {
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+

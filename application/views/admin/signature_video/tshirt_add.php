@@ -33,7 +33,10 @@
 					<?php endif ; ?>
 					<?php echo validation_errors(); ?>
 					<?php echo form_open('', 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
-						
+						<div class="form-group">
+							<label for="userEditFname">T-shirt Signature Video Thumbnail</label>
+							<input type="file" class="form-control" name="tshirt_thumbnail" value="" required>
+						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Tshirt Signature Video</label>
 							<input type="file" class="form-control" name="tshirt_signature_video" value="" required>

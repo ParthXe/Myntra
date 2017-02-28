@@ -22,3 +22,55 @@
 .product_cat_select {
 	cursor: pointer;
 }
+
+/* testimonials_sortable ******************/
+.testimonials_sortable { 
+	list-style: none; 
+	text-align: left; 
+}
+.testimonials_sortable li { 
+	margin: 0 0 10px 0;
+	height: 175px; 
+	
+	color: #333333;
+}
+.testimonials_sortable li span {
+	background-color: #b4b3b3;
+	background-image: url('../images/drag.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 30px;
+	height: 175px; 
+	display: inline-block;
+	float: left;
+	cursor: move;
+}
+.testimonials_sortable li img {
+	
+    /* height: 70px;
+    border: 0px solid #cccccc;
+    display: inline-block;
+    float: left; */
+	height: 170px;
+	width:150px;
+	border: 5px solid #cccccc;
+	display: inline-block;
+	float: left;
+	margin-right:20px;
+	margin-left:20px;
+}
+.testimonials_sortable li video {
+	
+	height: 170px;
+	width:150px;
+	border: 5px solid #cccccc;
+	display: inline-block;
+	float: left;
+}
+.testimonials_sortable li div {
+	padding: 5px;
+}
+.testimonials_sortable li h2 {    
+	font-size: 16px;
+    line-height: 20px;
+}

@@ -60,7 +60,7 @@
 							<?php if($champion_images = $tshirts_male['champion_products_images']){
 								$champion_image = explode(",", $champion_images);
 								foreach ($champion_image as $champion_img) {
-								echo '<img src="'.base_url().'upload/t-shirts/male/champion_products/'.$champion_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$champion_img."'".','."'".$tshirts_male['id']."'".','."'champion-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_products/pro_tshirts/champion_product_images/'.$champion_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$champion_img."'".','."'".$tshirts_male['id']."'".','."'champion-image'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -68,6 +68,7 @@
 
 							}
 							?>
+							<a class="btn btn-primary" href="<?php echo base_url("admin/tshirts/reorder/".$tshirts_male['id']); ?>">Reorder</a>
 						</div>
 						<div class="form-group">
 							<label for="userEditLname">Trends Launch Date</label>
@@ -83,7 +84,7 @@
 							<?php if($trends_images = $tshirts_male['trends_images']){
 								$trends_image = explode(",", $trends_images);
 								foreach ($trends_image as $trends_img) {
-								echo '<img src="'.base_url().'upload/t-shirts/male/trend_images/'.$trends_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$trends_img."'".','."'".$tshirts_male['id']."'".','."'trends_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_products/pro_tshirts/trends_images/'.$trends_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$trends_img."'".','."'".$tshirts_male['id']."'".','."'trends_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -91,14 +92,15 @@
 
 							}
 							?>
+							<a class="btn btn-primary" href="<?php echo base_url("admin/tshirts/reorder_trend_images/".$tshirts_male['id']); ?>">Reorder</a>
 						</div>			
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Images</label>
+							<label for="userEditMobile">Process Video Thumbnail</label>
 							<input type="file" class="form-control" name="vintageImage[]" value="" multiple>
 							<?php if($vintage_images = $tshirts_male['vintage_images']){
 								$vintage_image = explode(",", $vintage_images);
 								foreach ($vintage_image as $vintage_img) {
-								echo '<img src="'.base_url().'upload/t-shirts/male/vintage_images/'.$vintage_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$vintage_img."'".','."'".$tshirts_male['id']."'".','."'vintage_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								echo '<img src="'.base_url().'myntra/section_products/pro_tshirts/process_video_and_tumbnails/'.$vintage_img.'" width="150px"><a href="#" onclick="imageRemove('."'".$vintage_img."'".','."'".$tshirts_male['id']."'".','."'vintage_img'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
 								}
 							}
 							else
@@ -108,23 +110,26 @@
 							?>
 						</div>	
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Video</label>
-							<input type="file" class="form-control" name="vintageVideo" value="">
-							<?php
-							$path = base_url()."upload/t-shirts/male/vintage_video/".$tshirts_male['vintage_video'];  if(!empty($tshirts_male['vintage_video'])) {?> 
-							<video width="200">
-                            <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
-                            </video> <?php echo '<a href="#" onclick="imageRemove('."'".$tshirts_male['vintage_video']."'".','."'".$tshirts_male['id']."'".','."'vintage_video'".')"><i class="fa fa-times" aria-hidden="true"></i></a>' ?>
-                            <?php } else { ?>
-                            No videos
-                           <?php } ?>
+							<label for="userEditMobile">Process Video</label>
+							<input type="file" class="form-control" name="vintageVideo[]" value="" multiple>
+							<?php if($vintage_video = $tshirts_male['vintage_video']){
+								$vintage_videos = explode(",", $vintage_video);
+								foreach ($vintage_videos as $vintage_vid) {
+								echo '<video width="200"><source src="'.base_url().'myntra/section_products/pro_tshirts/process_video_and_tumbnails/'.$vintage_vid.'" type="video/mp4"></video><a href="#" onclick="imageRemove('."'".$vintage_vid."'".','."'".$tshirts_male['id']."'".','."'vintage_video'".')"><i class="fa fa-times" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;';
+								}
+							}
+							else
+							{
+								echo 'No videos';
+							}
+							?>
 						</div>
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Title</label>
+							<label for="userEditMobile">Process Title</label>
 							<input type="text" class="form-control" id="vintageTitle" name="vintage_title" placeholder="Vintage Title" value="<?php echo isset($tshirts_male['vintage_title']) ? $tshirts_male['vintage_title'] : "NA"; ?>" required>
 						</div>
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Description</label>
+							<label for="userEditMobile">Process Description</label>
 							<textarea class="form-control" id="vintageDescription" name="vintage_description" placeholder="Vintage Description" required><?php echo isset($tshirts_male['vintage_desc']) ? $tshirts_male['vintage_desc'] : "NA"; ?></textarea>
 						</div>				
 

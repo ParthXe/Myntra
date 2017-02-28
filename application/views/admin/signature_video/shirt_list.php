@@ -45,7 +45,7 @@
                      <?php if (count($videos) > 0 ){ ?>
                     <?php foreach($videos as $video) : ?>
                         <tr>
-                          <?php $path = base_url()."upload/signature/shirt/".$video->video; ?>
+                          <?php $path = base_url()."myntra/section_products/pro_shirts/signature_video/".$video->video; ?>
                             <td><video width="200">
                             <source src="<?php echo isset($path) ? $path : 'NA';?>" type="video/mp4">
                             </video></td>

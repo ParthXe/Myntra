@@ -63,12 +63,12 @@
 							<input type="file" class="form-control" name="trendsImages[]" value="" required multiple>
 						</div>			
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Images</label>
+							<label for="userEditMobile">Process Video Thumbnail Images</label>
 							<input type="file" class="form-control" name="vintageImage[]" value="" required multiple>
 						</div>	
 						<div class="form-group">
-							<label for="userEditMobile">Vintage Video</label>
-							<input type="file" class="form-control" name="vintageVideo" value="" required>
+							<label for="userEditMobile">Process Videos</label>
+							<input type="file" class="form-control" name="vintageVideo[]" value="" required multiple>
 						</div>
 						<div class="form-group">
 							<label for="userEditMobile">Vintage Title</label>
