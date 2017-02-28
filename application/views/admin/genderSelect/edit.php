@@ -26,27 +26,27 @@
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="image1">Men Active:</label>
-							<input type="file" class="form-control" id="image1" name="image1" value="" 	/>
+							<input type="file" class="form-control" id="image1" name="image1" onchange="return checkFile(this.id);" value="" 	/>
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['image1']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image1Disabled">Men Inactive:</label>
-							<input type="file" class="form-control" id="image1Disabled" name="image1Disabled" value=""/>
+							<input type="file" class="form-control" id="image1Disabled" name="image1Disabled" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['image1Disabled']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image2">Women Active:</label>
-							<input type="file" class="form-control" id="image2" name="image2" value="" 	/>
+							<input type="file" class="form-control" id="image2" name="image2" onchange="return checkFile(this.id);" value="" 	/>
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['image2']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="image2Disabled">Women Inactive:</label>
-							<input type="file" class="form-control" id="image2Disabled" name="image2Disabled" value=""/>
+							<input type="file" class="form-control" id="image2Disabled" name="image2Disabled" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['image2Disabled']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="thunderImage">Sepration Image:</label>
-							<input type="file" class="form-control" id="thunderImage" name="thunderImage" value="" 	/>
+							<input type="file" class="form-control" id="thunderImage" name="thunderImage" onchange="return checkFile(this.id);" value="" 	/>
 							<span><img style="background-color:grey;height:20%;width:20%" src="<?php echo ASSET_PATH."genderSelection/".$genderSelectList['type']."/".$genderSelectList['thunderImage']; ?>" /></span>
 						</div>
 						<div class="row">

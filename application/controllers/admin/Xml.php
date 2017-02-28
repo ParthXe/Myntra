@@ -34,6 +34,7 @@ class Xml extends CI_Controller
 			{ */
 				$did=$this->uri->segment(3);
 				$menu_details['session'] = $this->session->userdata;
+				$getConfigURL = $this->Xml_model->getConfigURLlist($did);
 				$getscreensaver = $this->Xml_model->getscreensaverlist($did);
 				$getcollectionvideo = $this->Xml_model->getcollectionvideolist($did);
 				$getgenderselection = $this->Xml_model->getgenderselectionlist($did);
@@ -46,6 +47,20 @@ class Xml extends CI_Controller
 				$getsmssent = $this->Xml_model->getsmssentlist($did);
 				
 				$data['type']=urldecode(trim($this->uri->segment(3)));
+				if($getConfigURL->num_rows() == 1) 
+				{
+						// Create the data array to pass to view
+						foreach ($getConfigURL->result() as $row) 
+						{
+							$data['configURLInfo'] = array(
+								'jsonProdFilters' => $row->jsonProdFilters,
+								'jsonProdLooks' =>$row->jsonProdLooks,
+								'rowCounts' =>$row->rowCounts,
+								'timeOutSec' =>$row->timeOutSec,
+								'productType' => $row->productType,
+							);		
+						}
+				}
 				if($getscreensaver->num_rows() == 1) 
 				{
 						// Create the data array to pass to view
@@ -67,8 +82,7 @@ class Xml extends CI_Controller
 								'homebuttonImage' =>$row->homebuttonImage,
 								'scrtext' => $row->scrtext,
 								'insttext' => $row->insttext,
-								'motoGpvideo' => $row->motoGpvideo,
-								'outLandervideo' => $row->outLandervideo,
+								'screen_video' => $row->screen_video,
 								'buttonImage' => $row->buttonImage,
 								'closeImageButton' => $row->closeImageButton,
 							);		

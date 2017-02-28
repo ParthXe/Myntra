@@ -46,11 +46,11 @@ var config =
     <!-- Main content -->
     <section class="content">
 	<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
-		</ul>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>
+	</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
@@ -73,23 +73,23 @@ var config =
 					<?php echo form_open("admin/productdesc/add/$tab",'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 					<div class="form-group">
 							<label for="screensaver">Top-Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" required />
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="backbutton">Back Button Image:</label>
-							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value="" required />
+							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
-							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value="" required />
+							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="myntralogoimg">Myntra Logo Image:</label>
-							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" value="" required />
+							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="getprodbuttonimg">Get Product Button Image:</label>
-							<input type="file" class="form-control" id="getProdBtn" name="getProdBtn" value="" required />
+							<input type="file" class="form-control" id="getProdBtn" name="getProdBtn" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="relatedprodtext">Related Product Heading Text:</label>
@@ -133,7 +133,7 @@ var config =
 						</div>
 						<div class="form-group">
 							<label for="clsbuttonimg">Close Button Image:</label>
-							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value="" required />
+							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="sizepopuptext">Size Popup Heading Text:</label>
@@ -161,11 +161,11 @@ var config =
 						</div>
 						<div class="form-group">
 							<label for="nextbuttonimg">Next Button Image:</label>
-							<input type="file" class="form-control" id="nextbuttonImage" name="nextbuttonImage" value="" required />
+							<input type="file" class="form-control" id="nextbuttonImage" name="nextbuttonImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="prevbuttonimg">Previous Button Image:</label>
-							<input type="file" class="form-control" id="backbtnImage" name="backbtnImage" value="" required />
+							<input type="file" class="form-control" id="backbtnImage" name="backbtnImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="row">
 							<!-- /.col -->

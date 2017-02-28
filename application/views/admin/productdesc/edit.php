@@ -61,27 +61,27 @@ var config =
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="screensaver">Top-Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:200px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Back Button Image:</label>
-							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value=""/>
+							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
-							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value=""/>
+							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['homebuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Myntra Logo Image:</label>
-							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" value=""/>
+							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['myntralogoImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Get Product Button Image:</label>
-							<input type="file" class="form-control" id="getProdBtn" name="getProdBtn" value=""/>
+							<input type="file" class="form-control" id="getProdBtn" name="getProdBtn" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:60px;width:100px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['getProdBtn']; ?>" /></span>
 						</div>
 						<div class="form-group">
@@ -131,7 +131,7 @@ var config =
 						</div>
 						<div class="form-group">
 							<label for="buttonimg">Close Button Image:</label>
-							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
+							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">
@@ -162,12 +162,12 @@ var config =
 						</div>
 						<div class="form-group">
 							<label for="clsbutton">Next Button Image:</label>
-							<input type="file" class="form-control" id="nextbuttonImage" name="nextbuttonImage" value=""/>
+							<input type="file" class="form-control" id="nextbuttonImage" name="nextbuttonImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['nextbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="clsbutton">Previous Button Image:</label>
-							<input type="file" class="form-control" id="backbtnImage" name="backbtnImage" value=""/>
+							<input type="file" class="form-control" id="backbtnImage" name="backbtnImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:60px;width:60px" src="<?php echo ASSET_PATH."productdesc/".$productdescinfo['type']."/".$productdescinfo['backbtnImage']; ?>" /></span>
 						</div>
 						<div class="row">

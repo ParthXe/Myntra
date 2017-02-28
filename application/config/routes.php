@@ -93,3 +93,4 @@ $route['admin/filterBy/(:any)']= 'admin/filterBy/index/$1';
 $route['admin/productdesc/(:any)']= 'admin/productdesc/index/$1';
 $route['admin/license/(:any)']= 'admin/license/index/$1';
 $route['admin/sendSMS/(:any)']= 'admin/sendSMS/index/$1';
+$route['admin/confURL/(:any)']= 'admin/confURL/index/$1';

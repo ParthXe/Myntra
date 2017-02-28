@@ -10,10 +10,10 @@
     <!-- Main content -->
     <section class="content">
 		<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<!--<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>-->
 		</ul>
         <!-- /.row -->
         <div class="row">
@@ -45,8 +45,7 @@
                       <th>Home Button Image</th>
                       <th>Screen Text</th>
 					  <th>Insert Text</th>
-                      <th>MotoGP Video</th>
-					  <th>Outlander Video</th>
+                      <th>Screen Video</th>
 					  <th>Button Image</th> 
 					  <th>Close Button Image</th>
                     </tr>
@@ -58,13 +57,9 @@
 							<?php $str= $info->scrtext;$scrtext = strip_tags($str,0);?>
 							<td><?php echo $scrtext;?></td> 
 							<?php $str1= $info->insttext;$insttext = strip_tags($str1,0);?>
-							<td><?php echo $insttext;?></td> 
+							<td><?php echo $insttext;?></td>	
 							<td><video width="125" controls>
-								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->motoGpvideo; ?>" type="video/mp4">
-								Your browser does not support the video tag.
-							</video></td>
-							<td><video width="125" controls>
-								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->outLandervideo; ?>" type="video/mp4">
+								  <source src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->screen_video; ?>" type="video/mp4">
 								Your browser does not support the video tag.
 							</video></td>
 							<td><img style="background-color:grey;width:75px;" src="<?php echo ASSET_PATH."collectionvideo/".$info->type."/".$info->buttonImage; ?>" /></td>

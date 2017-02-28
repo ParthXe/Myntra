@@ -32,7 +32,7 @@
 						</div>
 						<div class="form-group">
 							<label for="closeImageButton">Close Button Image:</label>
-							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
+							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."sendSMS/".$sendSMSList['type']."/".$sendSMSList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">

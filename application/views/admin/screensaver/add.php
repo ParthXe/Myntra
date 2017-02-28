@@ -11,10 +11,10 @@
     <!-- Main content -->
     <section class="content">
 		<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>
 		</ul>
         <!-- /.row -->
         <div class="row">
@@ -33,11 +33,11 @@
 					<!--<form action="http://localhost/myntra/admin/screensaver/add" class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data" -->
 						<div class="form-group">
 							<label for="screensaver">Screensaver:</label>
-							<input type="file" class="form-control" id="bgPath" name="bgPath" value="" required/>
+							<input type="file" class="form-control" id="bgPath" name="bgPath" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="explorebutton">Explore Button:</label>
-							<input type="file" class="form-control" id="exploreBtnPath" name="exploreBtnPath" value="" required/>
+							<input type="file" class="form-control" id="exploreBtnPath" name="exploreBtnPath" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="row">
 							<!-- /.col -->

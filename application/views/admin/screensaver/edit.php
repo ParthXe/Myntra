@@ -26,7 +26,7 @@
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="screensaver">Screensaver:</label>
-							<input type="file" class="form-control" id="bgPath" name="bgPath" value="" 	/>
+							<input type="file" class="form-control" id="bgPath" onchange="return checkFile(this.id);" name="bgPath" value="" 	/>
 							<span><video width="320" height="240" controls>
 									<source src="<?php echo ASSET_PATH."screensaver/".$screensaverinfo['type']."/".$screensaverinfo['bgPath']; ?>" type="video/mp4">
 								</video>
@@ -34,7 +34,7 @@
 						</div>
 						<div class="form-group">
 							<label for="explorebutton">Explore Button:</label>
-							<input type="file" class="form-control" id="exploreBtnPath" name="exploreBtnPath" value=""/>
+							<input type="file" class="form-control" id="exploreBtnPath" onchange="return checkFile(this.id);" name="exploreBtnPath" value=""/>
 							<span><img style="background-color:grey;height:50px;width:150px" src="<?php echo ASSET_PATH."screensaver/".$screensaverinfo['type']."/".$screensaverinfo['exploreBtnPath']; ?>" /></span>
 						</div>
 						<div class="row">

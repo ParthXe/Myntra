@@ -31,7 +31,7 @@
 						</div>
 						<div class="form-group">
 							<label for="BackbuttonImage">Close Button Image:</label>
-							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value=""/>
+							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton"  onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:100px;width:100px" src="<?php echo ASSET_PATH."sortBy/".$sortByList['type']."/".$sortByList['closeImageButton']; ?>" /></span>
 						</div>
 						<div class="form-group">

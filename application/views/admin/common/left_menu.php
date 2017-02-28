@@ -2,6 +2,28 @@
 	var base_url = "<?php echo $this->config->item('base_url_admin').'/'; ?>";
 	var usr_id = <?php echo $session['usr_id']; ?>;
 </script>
+<script type="text/javascript"> 
+	function checkFile(curr_id)
+	{
+		var fileInput = document.getElementById(curr_id);   
+		var String = fileInput.files[0].name;
+		var filename=String.substring(String.lastIndexOf("\/")+1,String.lastIndexOf("."));
+		var bln=true;
+		if(/^[A-Za-z0-9_]+$/.test(filename) == false) {
+			bln=false;
+		}
+		if(bln == false)
+		{
+			alert('Filename should contain only alphanumeric characters.No special characters are allowed.Please rename your file and upload!!');
+			fileInput.value = "";
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+</script>
 
 <header class="main-header">
 	<!-- Logo -->
@@ -67,7 +89,6 @@
 	        <li><a href="<?php echo $this->config->item('base_url_admin')."/users/add"; ?>"><i class="fa fa-circle-o"></i> Add</a></li>
 	      </ul>	      
 	    </li>
-	    <!--
 		<li class="treeview">
 	      <a href="#">
 	        <i class="fa fa-files-o"></i>
@@ -172,8 +193,7 @@
               </ul>
             </li> 
           </ul>
-        </li> 
-		-->	
+        </li>	
 		  <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Looks</span>
@@ -203,34 +223,37 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/screensaver/catalogue"; ?>"><i class="fa fa-circle-o"></i>ScreenSaver</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/confURL/outlander"; ?>"><i class="fa fa-circle-o"></i>Config URL</a>
+            </li>
+			<li>
+              <a href="<?php echo $this->config->item('base_url_admin')."/screensaver/outlander"; ?>"><i class="fa fa-circle-o"></i>ScreenSaver</a>
             </li>          	
             <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/collectionvideo/catalogue"; ?>" ><i class="fa fa-circle-o"></i>Collection Video</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/collectionvideo/outlander"; ?>" ><i class="fa fa-circle-o"></i>Collection Video</a>
             </li>
             <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/genderSelection/catalogue"; ?>" ><i class="fa fa-circle-o"></i>Gender Selection</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/genderSelection/outlander"; ?>" ><i class="fa fa-circle-o"></i>Gender Selection</a>
             </li> 
 			 <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/roadsterSelection/catalogue"; ?>" ><i class="fa fa-circle-o"></i>Roadster Selection</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/roadsterSelection/outlander"; ?>" ><i class="fa fa-circle-o"></i>Roadster Selection</a>
             </li> 
 			 <li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/listvideo/catalogue"; ?>"><i class="fa fa-circle-o"></i>List Video</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/listvideo/outlander"; ?>"><i class="fa fa-circle-o"></i>List View</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/sortBy/catalogue"; ?>" ><i class="fa fa-circle-o"></i>Sort BY</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/sortBy/outlander"; ?>" ><i class="fa fa-circle-o"></i>Sort BY</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/filterBy/catalogue"; ?>" ><i class="fa fa-circle-o"></i>Filter By</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/filterBy/outlander"; ?>" ><i class="fa fa-circle-o"></i>Filter By</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/productdesc/catalogue"; ?>""><i class="fa fa-circle-o"></i>Product Description</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/productdesc/outlander"; ?>""><i class="fa fa-circle-o"></i>Product Description</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/license/catalogue"; ?>" ><i class="fa fa-circle-o"></i>License</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/license/outlander"; ?>" ><i class="fa fa-circle-o"></i>License</a>
             </li> 
 			<li>
-              <a href="<?php echo $this->config->item('base_url_admin')."/sendSMS/catalogue"; ?>" ><i class="fa fa-circle-o"></i>Send SMS</a>
+              <a href="<?php echo $this->config->item('base_url_admin')."/sendSMS/outlander"; ?>" ><i class="fa fa-circle-o"></i>Send SMS</a>
             </li> 
           </ul>
         </li> 

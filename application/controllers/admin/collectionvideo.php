@@ -88,31 +88,16 @@ class collectionvideo extends MY_Controller {
 					}
 					$flag=1;
 				}
-				if(!empty($_FILES['motoGpvideo']['name']))
+				if(!empty($_FILES['screen_video']['name']))
 				{       
-					$_FILES['motoGpvideo']['name']=$this->generateRandomNumber().$_FILES['motoGpvideo']['name'];
+					$_FILES['screen_video']['name']=$this->generateRandomNumber().$_FILES['screen_video']['name'];
 					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
-					if($this->upload->do_upload('motoGpvideo'))
-					{
-						$fileData = $this->upload->data();
-					}
-					$flag=1;
-				}
-				if(!empty($_FILES['outLandervideo']['name']))
-				{           
-			        $_FILES['outLandervideo']['name']=$this->generateRandomNumber().$_FILES['outLandervideo']['name'];
-					
-					$config['upload_path'] = $uploadPath;
-					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
-					
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if($this->upload->do_upload('outLandervideo'))
+					if($this->upload->do_upload('screen_video'))
 					{
 						$fileData = $this->upload->data();
 					}
@@ -164,13 +149,9 @@ class collectionvideo extends MY_Controller {
 				}
 				$data ['scrtext'] = $_REQUEST['scrtext'];
 				$data ['insttext'] = $_REQUEST['insttext'];
-				if(!empty($_FILES['motoGpvideo']['name']))
+				if(!empty($_FILES['screen_video']['name']))
 				{
-					$data ['motoGpvideo'] = $_FILES['motoGpvideo']['name'];
-				}
-				if(!empty($_FILES['outLandervideo']['name']))
-				{
-					$data ['outLandervideo'] = $_FILES['outLandervideo']['name'];
+					$data ['screen_video'] = $_FILES['screen_video']['name'];
 				}
 				if(!empty($_FILES['buttonImage']['name']))
 				{
@@ -240,39 +221,21 @@ class collectionvideo extends MY_Controller {
 					}
 					$flag=1;
 				}
-				if(!empty($_FILES['motoGpvideo']['name']))
+				if(!empty($_FILES['screen_video']['name']))
 				{       
-					$_FILES['motoGpvideo']['name']=$this->generateRandomNumber().$_FILES['motoGpvideo']['name'];
+					$_FILES['screen_video']['name']=$this->generateRandomNumber().$_FILES['screen_video']['name'];
 					
 					$config['upload_path'] = $uploadPath;
 					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
 					
 					$this->load->library('upload', $config);
 					$this->upload->initialize($config);
-					if($this->upload->do_upload('motoGpvideo'))
+					if($this->upload->do_upload('screen_video'))
 					{
 						$fileData = $this->upload->data();
-						$old_motoGpvideo=$checkcollectionvideo->result()['0']->motoGpvideo;
+						$old_motoGpvideo=$checkcollectionvideo->result()['0']->screen_video;
 						$old_motoGpvideo_path=$uploadPath.$old_motoGpvideo;
 						unlink($old_motoGpvideo_path);
-					}
-					$flag=1;
-				}
-				if(!empty($_FILES['outLandervideo']['name']))
-				{           
-			        $_FILES['outLandervideo']['name']=$this->generateRandomNumber().$_FILES['outLandervideo']['name'];
-					
-					$config['upload_path'] = $uploadPath;
-					$config['allowed_types'] = 'mp4|mpg|avi|wmv|mov';
-					
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if($this->upload->do_upload('outLandervideo'))
-					{
-						$fileData = $this->upload->data();
-						$old_outLandervideo=$checkcollectionvideo->result()['0']->outLandervideo;
-						$old_outLandervideo_path=$uploadPath.$old_outLandervideo;
-						unlink($old_outLandervideo_path);
 					}
 					$flag=1;
 				}
@@ -328,13 +291,9 @@ class collectionvideo extends MY_Controller {
 				}
 				$data ['scrtext'] = $_REQUEST['scrtext'];
 				$data ['insttext'] = $_REQUEST['insttext'];
-				if(!empty($_FILES['motoGpvideo']['name']))
+				if(!empty($_FILES['screen_video']['name']))
 				{
-					$data ['motoGpvideo'] = $_FILES['motoGpvideo']['name'];
-				}
-				if(!empty($_FILES['outLandervideo']['name']))
-				{
-					$data ['outLandervideo'] = $_FILES['outLandervideo']['name'];
+					$data ['screen_video'] = $_FILES['screen_video']['name'];
 				}
 				if(!empty($_FILES['buttonImage']['name']))
 				{
@@ -367,8 +326,7 @@ class collectionvideo extends MY_Controller {
 								'homebuttonImage' =>$row->homebuttonImage,
 								'scrtext' => $row->scrtext,
 								'insttext' => $row->insttext,
-								'motoGpvideo' => $row->motoGpvideo,
-								'outLandervideo' => $row->outLandervideo,
+								'screen_video' => $row->screen_video,
 								'buttonImage' => $row->buttonImage,
 								'closeImageButton' => $row->closeImageButton,
 								'type'=>$row->type,

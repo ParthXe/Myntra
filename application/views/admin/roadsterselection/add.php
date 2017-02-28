@@ -10,10 +10,10 @@
 
     <!-- Main content -->
 		<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<!--<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>-->
 		</ul>
     <section class="content">
         <!-- /.row -->
@@ -33,27 +33,27 @@
 						
 						<div class="form-group">
 							<label for="topBarImage">Top Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" required/>
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
-							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value="" required/>
+							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="collectionMenImage">Collection Men Image:</label>
-							<input type="file" class="form-control" id="collectionMenImage" name="collectionMenImage" value="" required/>
+							<input type="file" class="form-control" id="collectionMenImage" name="collectionMenImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="catalogueMenImage">Catalogue Men Image:</label>
-							<input type="file" class="form-control" id="catalogueMenImage" name="catalogueMenImage" value="" required/>
+							<input type="file" class="form-control" id="catalogueMenImage" name="catalogueMenImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="collectionWomenImage">Collection Women Image:</label>
-							<input type="file" class="form-control" id="collectionWomenImage" name="collectionWomenImage" value="" required/>
+							<input type="file" class="form-control" id="collectionWomenImage" name="collectionWomenImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="catalogueWomenImage">Catalogue Women Image:</label>
-							<input type="file" class="form-control" id="catalogueWomenImage" name="catalogueWomenImage" value="" required/>
+							<input type="file" class="form-control" id="catalogueWomenImage" name="catalogueWomenImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="collectionHeadingTxt">Collection Heading Text:</label>
@@ -65,7 +65,7 @@
 						</div>
 						<div class="form-group">
 							<label for="collectionBtnImage">Collection Button Image:</label>
-							<input type="file" class="form-control" id="collectionBtnImage" name="collectionBtnImage" value="" required/>
+							<input type="file" class="form-control" id="collectionBtnImage" name="collectionBtnImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						
 						<div class="form-group">
@@ -78,7 +78,7 @@
 						</div>
 						<div class="form-group">
 							<label for="catalogueBtnImage">Catalogue Button Image:</label>
-							<input type="file" class="form-control" id="catalogueBtnImage" name="catalogueBtnImage" value="" required/>
+							<input type="file" class="form-control" id="catalogueBtnImage" name="catalogueBtnImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						
 						<div class="row">

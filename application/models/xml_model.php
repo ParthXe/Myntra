@@ -3,7 +3,12 @@
 class Xml_model extends MY_Model {
     function __construct() {
         parent::__construct();
-    } 
+    }
+	public function getConfigURLlist($type) {
+        $this->db->where('type', $type);
+        $query = $this->db->get('config_url');
+		return $query;   
+    }	
 	public function getscreensaverlist($type) {
         $this->db->where('type', $type);
         $query = $this->db->get('screensaver');

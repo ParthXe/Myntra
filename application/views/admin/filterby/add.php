@@ -10,10 +10,10 @@
 
     <!-- Main content -->
 	<ul class="nav nav-tabs">
-		<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-		<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-		<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-		<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>
 	</ul>
     <section class="content">
         <!-- /.row -->
@@ -36,7 +36,7 @@
 						</div>
 						<div class="form-group">
 							<label for="closeImageButton">Close Button Image:</label>
-							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value="" required/>
+							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="clearButton">Clear Button Text:</label>

@@ -26,32 +26,32 @@
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="topBarImage">Top Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" />
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
-							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value="" />
+							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="collectionMenImage">Collection Men Image:</label>
-							<input type="file" class="form-control" id="collectionMenImage" name="collectionMenImage" value="" />
+							<input type="file" class="form-control" id="collectionMenImage" name="collectionMenImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['collectionMenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="catalogueMenImage">Catalogue Men Image:</label>
-							<input type="file" class="form-control" id="catalogueMenImage" name="catalogueMenImage" value="" />
+							<input type="file" class="form-control" id="catalogueMenImage" name="catalogueMenImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['catalogueMenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="collectionWomenImage">Collection Women Image:</label>
-							<input type="file" class="form-control" id="collectionWomenImage" name="collectionWomenImage" value="" />
+							<input type="file" class="form-control" id="collectionWomenImage" name="collectionWomenImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['collectionWomenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
 							<label for="catalogueWomenImage">Catalogue Women Image:</label>
-							<input type="file" class="form-control" id="catalogueWomenImage" name="catalogueWomenImage" value="" />
+							<input type="file" class="form-control" id="catalogueWomenImage" name="catalogueWomenImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:150px;width:150px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['catalogueWomenImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
@@ -64,7 +64,7 @@
 						</div>
 						<div class="form-group">
 							<label for="collectionBtnImage">Collection Button Image:</label>
-							<input type="file" class="form-control" id="collectionBtnImage" name="collectionBtnImage" value="" />
+							<input type="file" class="form-control" id="collectionBtnImage" name="collectionBtnImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['collectionBtnImage']; ?>" /></span>
 						</div>
 						
@@ -78,7 +78,7 @@
 						</div>
 						<div class="form-group">
 							<label for="catalogueBtnImage">Catalogue Button Image:</label>
-							<input type="file" class="form-control" id="catalogueBtnImage" name="catalogueBtnImage" value="" />
+							<input type="file" class="form-control" id="catalogueBtnImage" name="catalogueBtnImage" onchange="return checkFile(this.id);" value="" />
 							<span><img style="background-color:grey;height:100px;width:200px" src="<?php echo ASSET_PATH."roadsterSelection/".$roadsterSelectionList['type']."/".$roadsterSelectionList['catalogueBtnImage']; ?>" /></span>
 						</div>
 						<div class="row">

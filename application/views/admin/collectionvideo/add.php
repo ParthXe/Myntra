@@ -41,11 +41,11 @@ var config =
 
     <!-- Main content -->
     <section class="content">
-	<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
+		<ul class="nav nav-tabs">
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<!--<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>-->
 		</ul>
         <!-- /.row -->
         <div class="row">
@@ -70,11 +70,11 @@ var config =
 						
 						<div class="form-group">
 							<label for="screensaver">Screensaver:</label>
-							<input type="file" class="form-control" id="bgPath" name="bgPath" value="" required/>
+							<input type="file" class="form-control" id="bgPath" name="bgPath" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
-							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value="" required/>
+							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="screentext">Screen Text:</label>
@@ -93,20 +93,16 @@ var config =
 							</script>
 						</div>
 						<div class="form-group">
-							<label for="motoGPvid">MotoGP Video:</label>
-							<input type="file" class="form-control" id="motoGpvideo" name="motoGpvideo" value="" required/>
-						</div>
-						<div class="form-group">
-							<label for="outlandervid">Outlander Video:</label>
-							<input type="file" class="form-control" id="outLandervideo" name="outLandervideo" value="" required/>
+							<label for="motoGPvid">Screen Video:</label>
+							<input type="file" class="form-control" id="screen_video" name="screen_video" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="buttonimg">Button Image:</label>
-							<input type="file" class="form-control" id="buttonImage" name="buttonImage" value="" required/>
+							<input type="file" class="form-control" id="buttonImage" name="buttonImage" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 						<div class="form-group">
 							<label for="clsbutton">Close Button Image:</label>
-							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" value="" required/>
+							<input type="file" class="form-control" id="closeImageButton" name="closeImageButton" onchange="return checkFile(this.id);" value="" required/>
 						</div>
 		                </div>						
 						<div class="row">

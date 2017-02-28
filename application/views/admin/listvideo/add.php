@@ -39,24 +39,24 @@
 </script>
   <section class="content-header">
       <h1>
-		List Video
+		List View
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
 	<ul class="nav nav-tabs">
-			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue">Catalogue</a></li>
-			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander">Outlander</a></li>
-			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp">MotoGP</a></li>
-			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster">Roadster</a></li>
-		</ul>
+			<li class="<?php echo ($type == "outlander") ? "active" : ""; ?>"><a href="outlander"><?php echo HEADING1; ?></a></li>
+			<li class="<?php echo ($type == "motogp") ? "active" : ""; ?>"><a href="motogp"><?php echo HEADING2; ?></a></li>
+			<li class="<?php echo ($type == "catalogue") ? "active" : ""; ?>"><a href="catalogue"><?php echo HEADING3; ?></a></li>
+			<li class="<?php echo ($type == "roadster") ? "active" : ""; ?>"><a href="roadster"><?php echo HEADING4; ?></a></li>
+	</ul>
         <!-- /.row -->
         <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Set List Video Cofiguration</h3>
+                  <h3 class="box-title">Set List View Cofiguration</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -73,7 +73,7 @@
 					<?php echo form_open("admin/listvideo/add/$tab", 'class="form-add-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 					<div class="form-group">
 							<label for="topbarimg">Top-Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value="" required />
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="headtext">Heading Text:</label>
@@ -85,35 +85,35 @@
 						</div>
 						<div class="form-group">
 							<label for="backbutton">Back Button Image:</label>
-							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value="" required />
+							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="homebutton">Home Button Image:</label>
-							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" value="" required />
+							<input type="file" class="form-control" id="homebuttonImage" name="homebuttonImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="sortBtnImg">Sort Button Image:</label>
-							<input type="file" class="form-control" id="sortBtnImage" name="sortBtnImage" value="" required />
+							<input type="file" class="form-control" id="sortBtnImage" name="sortBtnImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="sortRollBtnImg">Sort Roll Button Image:</label>
-							<input type="file" class="form-control" id="sortRollBtnImage" name="sortRollBtnImage" value="" required />
+							<input type="file" class="form-control" id="sortRollBtnImage" name="sortRollBtnImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="filterBtnImg">Filter Button Image:</label>
-							<input type="file" class="form-control" id="filterBtnImage" name="filterBtnImage" value="" required />
+							<input type="file" class="form-control" id="filterBtnImage" name="filterBtnImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="filterrollBtnImg">Filter Roll Button Image:</label>
-							<input type="file" class="form-control" id="filterRollBtnImage" name="filterRollBtnImage" value="" required />
+							<input type="file" class="form-control" id="filterRollBtnImage" name="filterRollBtnImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="myntralogoImg">Myntra Logo Image:</label>
-							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" value="" required />
+							<input type="file" class="form-control" id="myntralogoImage" name="myntralogoImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="blackbgImg">Black Background Image:</label>
-							<input type="file" class="form-control" id="blackbgImage" name="blackbgImage" value="" required />
+							<input type="file" class="form-control" id="blackbgImage" name="blackbgImage" onchange="return checkFile(this.id);" value="" required />
 						</div>
 						<div class="form-group">
 							<label for="imgGalleryPos">Image Gallery Position:</label>

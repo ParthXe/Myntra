@@ -26,7 +26,7 @@
 					<?php echo form_open('', 'class="form-user-edit" role="form" autocomplete="off" enctype="multipart/form-data"') ; ?>
 						<div class="form-group">
 							<label for="topBarImage">Top Bar Image:</label>
-							<input type="file" class="form-control" id="topBarImage" name="topBarImage" value=""/>
+							<input type="file" class="form-control" id="topBarImage" name="topBarImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:150px;width:100px" src="<?php echo ASSET_PATH."license/".$licenseList['type']."/".$licenseList['topBarImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
@@ -36,7 +36,7 @@
 						</div>
 						<div class="form-group">
 							<label for="BackbuttonImage">Back Button Image:</label>
-							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" value=""/>
+							<input type="file" class="form-control" id="BackbuttonImage" name="BackbuttonImage" onchange="return checkFile(this.id);" value=""/>
 							<span><img style="background-color:grey;height:100px;width:150px" src="<?php echo ASSET_PATH."license/".$licenseList['type']."/".$licenseList['BackbuttonImage']; ?>" /></span>
 						</div>
 						<div class="form-group">
